@@ -49,12 +49,14 @@ def sortout_rcfile():
     # ====================================+====================================
     #                               USER SETTINGS
     # ====================================+====================================
-    # <Make sure we are in skysearcher/skysearcher & save path variables>
-    # -------------------------------------------------------------------
-    # Get a string value for the path to the current directory (curdir_path).
+    # <Make sure we're in skysearcher/skysearcher & save path variables>
+    # ------------------------------------------------------------------
+    # Get a string value for the path to the current directory
+    # (curdir_path).
     curdir_path = os.path.abspath(os.path.curdir)
 
-    # Get a string value for 1.) path to parent directory (pardir_path) &
+    # Get a string value for
+    # 1.) path to parent directory (pardir_path) &
     # 2.) name of current directory (curdir_name).
     pardir_path, curdir_name = os.path.split(curdir_path)
 
@@ -62,18 +64,20 @@ def sortout_rcfile():
     pardir_name = os.path.split(pardir_path)[1]
 
     # Make sure that parent & current directory names are the same &
-    # if not, then ask user to quit and start again from the proper directory
-    # skysearcher/skysearcher.
+    # if not, then ask user to quit and start again from the proper
+    # directory skysearcher/skysearcher.
     if not curdir_name == pardir_name:
         os.sys.exit(msg_exit_wrongdir)
 
-    # <get the configuration file either made or located and then loaded>
-    # -------------------------------------------------------------------
-    # Determine if there exists a configuration file by making a list of
-    # filenames for all the files in the current directory (curdir_files).
+    # <get configuration file either made or located and then loaded>
+    # ------------------------------------------------------------------
+    # Determine if there exists a configuration file by making a list
+    # of filenames for all the files in the current directory
+    # (curdir_files).
     curdir_files = os.listdir(curdir_path)
 
-    # Isolate all files with .cfg extension within curdir_files (rc_files).
+    # Isolate all files with .cfg extension within curdir_files
+    # (rc_files).
     rc_files = [f for f in curdir_files if os.path.splitext(f)[
         1] == rcfile_ext]
 
@@ -113,7 +117,7 @@ def sortout_rcfile():
 
     # If there is not:
     else:
-        # Use the configuration file generator function <new_cfg.new_rc()>
+        # Use the configuration file generator function new_cfg.new_rc()
         # and clean up.
         import new_cfg
         rc_fh = new_cfg.new_rc(new_rc_fh)
@@ -202,7 +206,7 @@ def sortout_directories(directory_list=dir_list):
     Helper function to quickly check that all directories are in place.
 
     Keyword Arguments:
-        directory_list {list} -- list of directories to check 
+        directory_list {list} -- list of directories to check
         (default: {dir_list})
 
     Returns:
@@ -232,10 +236,10 @@ def sortout_directories(directory_list=dir_list):
     # No failures, return True
     return True
 
-def load_halo(g_fh=grid_fh, t_fh=table_fh, frmt=t_format, hdf5_pth=hdf5_pth):
+def load_halo(g_fh=grid_fh, t_fh=table_fh, frmt=t_format, h5_pth=hdf5_pth):
     '''
-    This loads both a grid and table for the halo in the configuration file. 
-    Just for easy loading, returns both grid and table.
+    This loads both a grid and table for the halo in the configuration
+    file. Just for easy loading, returns both grid and table.
 
     Keyword Arguments:
         g_fh {str} -- grid file handle (default: {grid_fh})
@@ -250,3 +254,43 @@ def load_halo(g_fh=grid_fh, t_fh=table_fh, frmt=t_format, hdf5_pth=hdf5_pth):
 
 # =============================================================================
 # =============================================================================
+def regions(
+    int r_0=10,
+    int  r_1=275,
+    int r_step=1,
+    float r_scale=0.1,
+    float deg_0=-180.0,
+    float deg_1=180.0,
+    float deg_step=1.0):
+    '''[summary]
+
+    [description]
+
+    Keyword Arguments:
+        int r_0 {number} -- [description] (default: {10})
+        int  r_1 {number} -- [description] (default: {275})
+        int r_step {number} -- [description] (default: {1})
+        float r_scale {number} -- [description] (default: {0.1})
+        float deg_0 {number} -- [description] (default: {-180.0})
+        float deg_1 {number} -- [description] (default: {180.0})
+        float deg_step {number} -- [description] (default: {1.0})
+
+    Yields:
+        [type] -- [description]
+    '''
+
+    for radius in xrange(r_0, r_1, r_step):
+
+        region = radius * r_scale
+        r_in = radius - region
+        r_out = radius + region
+        #r_in = radius
+        #r_out = radius + r_step
+
+        for annular_segment in np.linspace(
+            deg_0,
+            deg_1,
+            deg_step,
+            dtype=np.float16):
+
+            yield r_in, r_out, annular_segment

@@ -8,11 +8,11 @@ Columbia University NYC, NY
 ===========================================================================
 python skysearcher/new_cfg.py
 
-This script contains a single function <new_rc()>.  It is to be called in 
-the event that no configuration file exists in the main skysearcher 
-directory <skysearcher/skysearcher>.  After running this function, there 
-will be a new configuration file titled "rc.cfg."  Skysearcher will read 
-this file.  The file can be manually edited as text prior to running 
+This script contains a single function <new_rc()>.  It is to be called in
+the event that no configuration file exists in the main skysearcher
+directory <skysearcher/skysearcher>.  After running this function, there
+will be a new configuration file titled "rc.cfg."  Skysearcher will read
+this file.  The file can be manually edited as text prior to running
 skysearcher.
 
 to read this file:
@@ -26,7 +26,7 @@ https://docs.python.org/2/library/configparser.html
 
 def new_rc(rc_fh=None):
     '''
-    create and write a new rc configuration file to 
+    create and write a new rc configuration file to
     the provided file handle
 
     Keyword Arguments:
@@ -45,7 +45,7 @@ def new_rc(rc_fh=None):
 
     #
     # <select data parameters ("Data")>
-    # =====================================================================
+    # =========================================================================
     # dmpc = '4.0'
     # filter_type = 'h158'
     # halo ='halo02'
@@ -67,7 +67,7 @@ def new_rc(rc_fh=None):
 
     #
     # <select or set PATH values ("PATH")>
-    # =====================================================================
+    # =========================================================================
     config.add_section('PATH')
 
     # Get a string value for the path to the
@@ -121,11 +121,11 @@ def new_rc(rc_fh=None):
     # Table file designator (table_file_designator).
     config.set('PATH', 'table_file_designator', 'table')
 
-    # Table file type (table_format). 
+    # Table file type (table_format).
     table_format ='hdf5'
     config.set('PATH', 'table_format', table_format)
 
-    # Table hdf5 path (table_hdf5_path). 
+    # Table hdf5 path (table_hdf5_path).
     config.set('PATH', 'table_hdf5_path', 'data')
 
     # Table file extension (table_ext).
@@ -135,7 +135,7 @@ def new_rc(rc_fh=None):
 
     #
     # <select distance units ("Program Units")>
-    # =====================================================================
+    # =========================================================================
     config.add_section('Program Units')
 
     # Set the units to be used for the halo's radius (units_radius).
@@ -147,7 +147,7 @@ def new_rc(rc_fh=None):
 
     #
     # <select search extent ("Search Extent")>
-    # =====================================================================
+    # =========================================================================
     config.add_section('Search Extent')
 
     # Set the beginning radius (r_start).
@@ -171,7 +171,7 @@ def new_rc(rc_fh=None):
 
     #
     # <select accept-reject criterion ("Accept Reject")>
-    # =====================================================================
+    # =========================================================================
     config.add_section('Accept Reject')
 
     # Set the minimum number of grid spaces (boxes) for
@@ -182,7 +182,7 @@ def new_rc(rc_fh=None):
 
     #
     # <select plots ("Plots")>
-    # =====================================================================
+    # =========================================================================
     config.add_section('Plots')
 
     # Plot a full projected image of the halo using each stars px, py
@@ -200,7 +200,7 @@ def new_rc(rc_fh=None):
 
     #
     # <write rc file to disc>
-    # =====================================================================
+    # =========================================================================
     if not rc_fh:
 
         # Make a new file name (file handle or fh).
