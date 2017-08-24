@@ -1,0 +1,1321 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"feature",
+				"feature_id\tstatement"
+			],
+			[
+				"ann",
+				"annulus_phi_step\tstatement"
+			],
+			[
+				"ss",
+				"ss_lib\tmodule"
+			],
+			[
+				"dir",
+				"directory\tstatement"
+			],
+			[
+				"table_",
+				"table_fh\tstatement"
+			],
+			[
+				"pard",
+				"pardir_path\tstatement"
+			],
+			[
+				"ex",
+				"except\tkeyword"
+			],
+			[
+				"new",
+				"new_cfg\tmodule"
+			],
+			[
+				"rc",
+				"rc_files\tstatement"
+			],
+			[
+				"cur",
+				"curdir_name\tstatement"
+			],
+			[
+				"add",
+				"add_cascade\tfunction"
+			],
+			[
+				"mag",
+				"mag_table_fh\tstatement"
+			],
+			[
+				"plot",
+				"plot_fh\tstatement"
+			],
+			[
+				"add_",
+				"add_columns\tfunction"
+			],
+			[
+				"cmd",
+				"cmd_table\tstatement"
+			],
+			[
+				"plot_set_units_arc",
+				"plot_set_units_arcmin"
+			],
+			[
+				"plo",
+				"plotwindow\tstatement"
+			],
+			[
+				"Attr",
+				"AttributeError\terror"
+			],
+			[
+				"plot_ha",
+				"plot_has_cb\tstatement"
+			],
+			[
+				"plot_c",
+				"plot_cb\tstatement"
+			],
+			[
+				"has",
+				"has_cb\tstatement"
+			],
+			[
+				"plot_",
+				"plot_has_cb\tstatement"
+			],
+			[
+				"docs",
+				"doublequote()\tcsv"
+			],
+			[
+				"class",
+				"class\tNew Class"
+			],
+			[
+				"plot_h",
+				"plot_has_cb\tstatement"
+			],
+			[
+				"kpc_t",
+				"kpc_to_arcmin\tfunction"
+			],
+			[
+				"cl",
+				"clear_label_image\tfunction"
+			],
+			[
+				"ask",
+				"askfloat\tfunction"
+			],
+			[
+				"gri",
+				"grid_center_x\tstatement"
+			],
+			[
+				"re",
+				"region_pixel_size\tstatement"
+			],
+			[
+				"kpc_to",
+				"kpc_to_arcsec\tfunction"
+			],
+			[
+				"region_",
+				"region_pixel_size\tstatement"
+			],
+			[
+				"ccd",
+				"ccd_y\tstatement"
+			],
+			[
+				"is",
+				"isfile\tfunction"
+			],
+			[
+				"rm",
+				"remove\tfunction"
+			],
+			[
+				"regio",
+				"regions\tstatement"
+			],
+			[
+				"cat",
+				"catalog_extention\tstatement"
+			],
+			[
+				"plot_r",
+				"plot_radius_kpc\tstatement"
+			],
+			[
+				"tk",
+				"tkSimpleDialog\tmodule"
+			],
+			[
+				"ca",
+				"catalog_dir\tstatement"
+			],
+			[
+				"recor",
+				"record_text\tstatement"
+			],
+			[
+				"cata",
+				"catalog_fh\tstatement"
+			],
+			[
+				"a",
+				"askdirectory\tfunction"
+			],
+			[
+				"pl",
+				"plot_halo\tfunction"
+			],
+			[
+				"s",
+				"smsg_region\tstatement"
+			],
+			[
+				"asko",
+				"askopenfilename\tfunction"
+			],
+			[
+				"ne",
+				"new_dir\tstatement"
+			],
+			[
+				"config",
+				"configure\tfunction"
+			],
+			[
+				"regi",
+				"regions\tstatement"
+			],
+			[
+				"ha",
+				"has_plot\tstatement"
+			],
+			[
+				"sm",
+				"smsg_kpc_xy\tstatement"
+			],
+			[
+				"sms",
+				"smsg_mouse_xy\tstatement"
+			],
+			[
+				"cu",
+				"current_y\tstatement"
+			],
+			[
+				"mou",
+				"mousexy_to_plotxy\tfunction"
+			],
+			[
+				"try",
+				"try\tTry/Except/Finally"
+			],
+			[
+				"la",
+				"Label\tclass"
+			],
+			[
+				"warn",
+				"warn()\twarnings"
+			],
+			[
+				"halo",
+				"halo_ebf_files\tstatement"
+			],
+			[
+				"mai",
+				"main_menu\tmodule"
+			],
+			[
+				"sel",
+				"select_region\tmodule"
+			],
+			[
+				"selec",
+				"select_halo\tmodule"
+			],
+			[
+				"ra",
+				"raw_input\tfunction"
+			],
+			[
+				"de",
+				"default\tstatement"
+			],
+			[
+				"all",
+				"all_menus\tstatement"
+			],
+			[
+				"isdi",
+				"isdir()\tos"
+			],
+			[
+				"pro",
+				"program_data\tstatement"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"None",
+				"None\tinstance"
+			],
+			[
+				"table",
+				"table_dir\tstatement"
+			],
+			[
+				"satid",
+				"satids\tstatement"
+			],
+			[
+				"sat",
+				"sats_book\tparam"
+			],
+			[
+				"xbox",
+				"xbox_values\tstatement"
+			],
+			[
+				"xbo",
+				"xbox_values\tstatement"
+			],
+			[
+				"fea",
+				"feature\tstatement"
+			],
+			[
+				"known_",
+				"known_points\tstatement"
+			],
+			[
+				"r_st",
+				"r_stop\tstatement"
+			],
+			[
+				"d",
+				"deg0\tstatement"
+			],
+			[
+				"super",
+				"superset\tstatement"
+			],
+			[
+				"f",
+				"f_dict\tparam"
+			],
+			[
+				"un",
+				"unknown_points\tstatement"
+			],
+			[
+				"plt",
+				"plt_num\tparam"
+			],
+			[
+				"featur",
+				"feature_id\tstatement"
+			],
+			[
+				"rev",
+				"reverse()\tarray"
+			],
+			[
+				"mer",
+				"merge_heavy\tfunction"
+			],
+			[
+				"feat",
+				"feat_dict\tparam"
+			],
+			[
+				"feature_",
+				"feature_number\tstatement"
+			],
+			[
+				"pp",
+				"pprint()\tpprint"
+			],
+			[
+				"bin",
+				"bin_table\tstatement"
+			],
+			[
+				"r",
+				"radius_Kpc\tforstmt"
+			],
+			[
+				"v",
+				"vstack\tfunction"
+			],
+			[
+				"col",
+				"columns\tstatement"
+			],
+			[
+				"tab",
+				"table_fh\tstatement"
+			],
+			[
+				"B",
+				"BOXES\tstatement"
+			],
+			[
+				"blank",
+				"blank_int\tstatement"
+			],
+			[
+				"grid",
+				"grid_fh\tstatement"
+			],
+			[
+				"slice",
+				"slice_num\tforstmt"
+			],
+			[
+				"grid_",
+				"grid_dir\tstatement"
+			],
+			[
+				"tabl",
+				"table_fh\tstatement"
+			],
+			[
+				"get",
+				"getint"
+			],
+			[
+				"std",
+				"stdout\tinstance"
+			],
+			[
+				"file",
+				"file_name\tstatement"
+			],
+			[
+				"rad",
+				"radius_start\tparam"
+			],
+			[
+				"radius_",
+				"radius_end\tparam"
+			],
+			[
+				"fl",
+				"float64\timport"
+			],
+			[
+				"conf",
+				"config_fh\tstatement"
+			],
+			[
+				"d_",
+				"d_table\tstatement"
+			],
+			[
+				"_file",
+				"_file\tforstmt"
+			],
+			[
+				"key",
+				"key_fh\tstatement"
+			],
+			[
+				"cf",
+				"cfg_file\twithstmt"
+			],
+			[
+				"n",
+				"nthreads\tstatement"
+			],
+			[
+				"__",
+				"__name__\tinstance"
+			],
+			[
+				"no",
+				"normalize_list"
+			],
+			[
+				"load",
+				"load_satid\tfunction"
+			],
+			[
+				"def",
+				"def\tFunction"
+			],
+			[
+				"threads",
+				"threads"
+			],
+			[
+				"N",
+				"NUM_PROCESSORS"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+			"settings":
+			{
+				"buffer_size": 19698,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "skysearcher/skysearch_lib.py",
+			"settings":
+			{
+				"buffer_size": 9080,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "skysearcher/new_cfg.py",
+			"settings":
+			{
+				"buffer_size": 7076,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "skysearcher/__init__.py",
+			"settings":
+			{
+				"buffer_size": 470,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "skysearcher/skysearcher.py",
+			"settings":
+			{
+				"buffer_size": 10386,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "notes.txt",
+			"settings":
+			{
+				"buffer_size": 195,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Anaconda Python Builder",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/MagicPython/settings/sublime/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/MagicPython/settings/sublime/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Anaconda Python Builder",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 490.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"python pep",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 626.0
+	},
+	"console":
+	{
+		"height": 140.0,
+		"history":
+		[
+			"directory-tree",
+			"install directory-tree",
+			"npm install directory-tree"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/swc21/GitHub",
+		"/C/Users/swc21/GitHub/skysearcher",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher",
+		"/C/Users/swc21/GitHub/skysurvey",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey",
+		"/C/Users/swc21/GitHub/starcat",
+		"/C/Users/swc21/GitHub/starcat/starcat",
+		"/C/Users/swc21/GitHub/starcat/starcat/saved"
+	],
+	"file_history":
+	[
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearch_lib.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/new_cfg.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/rc.cfg",
+		"/C/Users/swc21/GitHub/skysearcher/skysearch.sublime-project",
+		"/C/Users/swc21/GitHub/skysearcher/skysearch_lib.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/__init__.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/gui_plotlib.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/starcat_gui.py",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/swc21/GitHub/filesystem/filesystem.py",
+		"/C/Users/swc21/GitHub/starcat/README.md",
+		"/C/Users/swc21/GitHub/starcat/data/readme_png/selectunits.png",
+		"/C/Users/swc21/GitHub/starcat/data/readme_png/makecats.png",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/functions.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/spinbin.py",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/C/Users/swc21/GitHub/starcat/starcat/__init__.py",
+		"/C/Users/swc21/GitHub/parallel_toolkit",
+		"/C/Users/swc21/GitHub/parallel_toolkit/parallel_toolkit.py",
+		"/C/Users/swc21/GitHub/starcat/setup.py",
+		"/C/Users/swc21/GitHub/starcat/README.rst",
+		"/C/Users/swc21/test.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/MANIFEST.in",
+		"/C/Users/swc21/GitHub/starcat/.pypirc",
+		"/C/Users/swc21/GitHub/starcat/LICENSE.txt",
+		"/C/Users/swc21/GitHub/starcat/notebooks/heatmap selector.ipynb",
+		"/C/Users/swc21/GitHub/skysurvey/setup.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/setup.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/gui_2.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/gridplot.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/starcat.py",
+		"/C/Users/swc21/GitHub/starcat/.gitignore",
+		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.py",
+		"/C/Users/swc21/skysurvey/setup.cfg",
+		"/C/Users/swc21/GitHub/starcat/starcat/plot_halo.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/session.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/gui.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/test.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/data_dirs.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/printlib.py",
+		"/C/Users/swc21/GitHub/starcat/data/plots/png.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/png.py",
+		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/sys_conf.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/makefilesystem.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/new_config.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/table_bin.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/starcatlib.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/exit_menu.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/load_save.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/make_catalog .py",
+		"/C/Users/swc21/GitHub/starcat/starcat/select_region.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/select_halo.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/main_menu.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/starcat.sublime-project",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Python PEP8 Autoformat/pep8_autoformat.sublime-settings",
+		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
+		"/C/Users/swc21/GitHub/starcat/starcat/plot_functions.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/table_functions.py",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/swc21/GitHub/skysurvey/setup.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/__init__.py",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo20_logfile",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo17_logfile",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo15_logfile",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo05_logfile",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo02_logfile",
+		"/C/Users/swc21/plot.py",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo07_logfile",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/grid.py",
+		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyxx.pyx",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/fix_grids.py",
+		"/C/Users/swc21/.glue/config.py",
+		"/G/my_python_packages/skysurvey/skysurvey/functions.py",
+		"/C/Users/swc21/GitHub/skysurvey/MANIFEST.in",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/find_config.py",
+		"/C/Users/swc21/GitHub/skysurvey/src/skysurvey/makefilesystem.py",
+		"/C/Users/swc21/GitHub/skysurvey/src/skysurvey/command_line.py",
+		"/C/Users/swc21/GitHub/skysurvey/src/__init__.py",
+		"/C/Users/swc21/GitHub/skysurvey/src/skysurvey/new_config.py",
+		"/C/Users/swc21/GitHub/skysurvey/README.md",
+		"/C/Users/swc21/Desktop/arg.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/__init__.py",
+		"/C/Users/swc21/Anaconda2/Scripts/glue-deps-script.py",
+		"/C/Users/swc21/Anaconda2/Scripts/glue-script.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/c_functions.pyx",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/c_functions.py",
+		"/C/Users/swc21/Anaconda2/Scripts/glue-config-script.py",
+		"/C/Users/swc21/GitHub/skysurvey/bin/skysurvey-mkfs.py",
+		"/C/Users/swc21/GitHub/skysurvey/bin/skysurvey-newcfg.py",
+		"/C/Users/swc21/Anaconda2/Scripts/glue.exe",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/command_line.py",
+		"/C/Users/swc21/Desktop/temp/skysurvey/functions.py",
+		"/C/Users/swc21/GitHub/skysurvey/data/tables/config.py",
+		"/C/Users/swc21/Desktop/temp/setup.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/options.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/setup.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/notebooks/example.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/notebooks/setup.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/data/tables/target_table.hdf5",
+		"/C/Users/swc21/GitHub/skysurvey/README.html",
+		"/C/Users/swc21/GitHub/skysurvey/.gitignore",
+		"/C/Users/swc21/GitHub/skysurvey/cython_extentions/c_functions.pyx",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/cython_extentions/__init__.py",
+		"/C/Users/swc21/GitHub/skysurvey/.gitattributes",
+		"/C/Users/swc21/GitHub/skysurvey/LICENSE",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/__init__.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/gridplot.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/mainarrayplot.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/makefilesystem.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/targetlist.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/c_functions.pyx",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/spinbin.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/functions.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/.gitignore",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/grid.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/setup.py",
+		"/C/Users/swc21/tester.py",
+		"/G/my_python_packages/skysurvey/c_functions.pyx",
+		"/G/my_python_packages/skysurvey/skysurvey/gridplot.py",
+		"/G/my_python_packages/skysurvey/skysurvey/options.py",
+		"/G/my_python_packages/skysurvey/skysurvey/spinbin.py",
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/plots/4.0Mpc_h158_halo08_30.png",
+		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/gridplot.py",
+		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/spinbin.py",
+		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/targetlist.py",
+		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/functions.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"lims",
+			"new_feature",
+			"feature_id",
+			"cycle",
+			"master_dict",
+			"grid",
+			"Grid",
+			"grid",
+			"Grid",
+			"grid",
+			"Grid",
+			"grid",
+			"PATH",
+			"Data",
+			"add",
+			"np",
+			"Column",
+			"_sleep",
+			"OrderedDict",
+			"message",
+			"ss_lib.",
+			"plots",
+			"accept_reject",
+			"search_extent",
+			"program_units",
+			"data",
+			"=",
+			"=========================================================================",
+			"_plot",
+			"_plot_halo",
+			"starcat",
+			"swallow",
+			"padding",
+			"dir",
+			"make_datawindow",
+			"make_plotwindow",
+			"cmd_table",
+			"pos_table",
+			"plot_set_ext",
+			"plot_set_radius",
+			"plot_set_dpi",
+			"plot_units",
+			"plot_known_units",
+			"plot_set_units",
+			"plot_show_colorbar",
+			"np",
+			"numpy",
+			"sys",
+			"pickle",
+			"plot_show_colorbar",
+			"plot_has_cb",
+			"plot_show_colorbar",
+			"my_mkdir",
+			"tkSimpleDialog",
+			"my_mkdir",
+			"row=",
+			"region_size",
+			".grid(",
+			"update_status_bar",
+			"regions",
+			"session.halo",
+			"load_halo",
+			"region",
+			"regions",
+			"grid",
+			"pack",
+			"grid()",
+			"pack()",
+			"grid()",
+			"pack()",
+			"dataplot",
+			"regions",
+			"bind",
+			"f_center",
+			"a_center",
+			"_feh",
+			"_age",
+			"gplt.plot_halo",
+			"plot",
+			"right_click",
+			"mouse_location",
+			"right_click",
+			"Button-3",
+			"plot_fh",
+			".grid()",
+			"print(space, ",
+			"main_menu",
+			"HELP",
+			"Image",
+			".GIF",
+			".png",
+			"# end of function ===============================================",
+			"# end of function",
+			"os.path.listdir",
+			"program_data",
+			"raw_input(space",
+			"raw_input(space,",
+			"'\\n', space,",
+			"print('         ----------------------------------------')",
+			"_Config",
+			"sats_book",
+			"add_to_feature",
+			"print",
+			"master_dict",
+			"new_feature",
+			"_plot",
+			"resort_dict",
+			"add_to_feature",
+			"resort_dict",
+			"_plot",
+			"minn",
+			"merge",
+			"_plot",
+			"l0",
+			"add_to_feature",
+			"new_feature",
+			"listdir",
+			"join",
+			"os.path.join",
+			"join",
+			"merge",
+			"resort_dict",
+			"master_dict[halo]",
+			"resort_dict",
+			"i",
+			"merge",
+			"last_empty",
+			"feature_id_dict"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"msg",
+			"space",
+			"top_dir",
+			"str(session.halo)",
+			"grid()",
+			"y_center",
+			"x_center",
+			"ylims",
+			"xlims",
+			".pack()",
+			"print(",
+			"self.menu",
+			".png",
+			".GIF",
+			"# end of function =====================================================",
+			"# end of function ===============================================",
+			"os.listdir",
+			"pgrm_data",
+			"raw_input('\\n' + space",
+			"raw_input(space +",
+			"'\\n' + space,",
+			"print(line)",
+			"Config",
+			"temp_dict",
+			"os.listdir",
+			"os.path.join",
+			"master_dict",
+			"master_dict[halo]",
+			"np.ones(n_boxes).astype(np.int16)",
+			"np.ones(n_boxes).astype(np.uint32)",
+			"np.ones(n_boxes).astype(np.int32)",
+			"np.ones(n_boxes).astype(np.uint32)",
+			"np.ones(n_boxes).astype(np.uint16)",
+			"max_lines=25",
+			"",
+			"np.ones(n_boxes, dtype=np.float64)",
+			"np.ones(n_boxes, dtype=np.int64)",
+			"int64",
+			"float64",
+			"np.int64",
+			"os.path.join",
+			"_config_fh",
+			"_data_path",
+			"_main_path",
+			"os.path.join",
+			"Config.get('PATH', 'halo_dir')",
+			"join",
+			"halo_ebf_dir",
+			"_main_path"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19698,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1940,
+								1940
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 219.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "skysearcher/skysearch_lib.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9080,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5695,
+								5695
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"spell_check": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1712.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "skysearcher/new_cfg.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7076,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1621,
+								1621
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"spell_check": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 423.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "skysearcher/__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "skysearcher/skysearcher.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10386,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7166,
+								7166
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"spell_check": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1806.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "notes.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 195,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.385106051625,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 100.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 221.0
+	},
+	"pinned_build_system": "",
+	"project": "skysearch.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 151.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

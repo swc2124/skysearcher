@@ -1,0 +1,7 @@
+fix table meta data in spinbin. 
+    table.meta['satids'] must be type list
+    for satid in table.meta['satids']:
+
+Make sure the tables have a column for "degrees."
+    min = 0.0
+    max = 360.0
