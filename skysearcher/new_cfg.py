@@ -1,15 +1,15 @@
 '''
-===========================================================================
+===============================================================================
 skysearcher v0.1.0
 August 2017
 Sol W. Courtney
 swc2124@columbia.edu
 Columbia University NYC, NY
-===========================================================================
+===============================================================================
 python skysearcher/new_cfg.py
 
-This script contains a single function <new_rc()>.  It is to be called in
-the event that no configuration file exists in the main skysearcher
+This script contains a single function <new_rc()>.  It is to be called
+in the event that no configuration file exists in the main skysearcher
 directory <skysearcher/skysearcher>.  After running this function, there
 will be a new configuration file titled "rc.cfg."  Skysearcher will read
 this file.  The file can be manually edited as text prior to running
@@ -176,8 +176,8 @@ def new_rc(rc_fh=None):
 
     # Set the minimum number of grid spaces (boxes) for
     # features (min_boxes).
-    # Prospect features must have at least this many boxes to be accepted
-    # as a feature.
+    # Prospect features must have at least this many boxes to be
+    # accepted as a feature.
     config.set('Accept Reject', 'min_boxes', 25)
 
     #

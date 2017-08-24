@@ -179,9 +179,7 @@ grid_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
 
 
 # Grid file handle (full Path) (grid_fh).
-grid_fh = os.path.join(
-    config.get('PATH', 'grid_dir'),
-    config.get('PATH', 'grid_file_name'))
+grid_fh = os.path.join( config.get('PATH', 'grid_dir'), grid_file_name)
 
 # Table file name without full PATH (table_file_name).
 table_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
@@ -189,9 +187,7 @@ table_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
 
 
 # Table file handle (full Path) (table_fh).
-table_fh = os.path.join(
-    config.get('PATH', 'table_dir'),
-    config.get('PATH', 'table_file_name'))
+table_fh = os.path.join( config.get('PATH', 'table_dir'), table_file_name)
 
 dir_list = [data_dir, grid_dir, table_dir, plot_dir]
 
@@ -236,7 +232,11 @@ def sortout_directories(directory_list=dir_list):
     # No failures, return True
     return True
 
-def load_halo(g_fh=grid_fh, t_fh=table_fh, frmt=t_format, h5_pth=hdf5_pth):
+def load_halo(
+    g_fh=grid_fh,
+    t_fh=table_fh,
+    frmt=t_format,
+    h5_pth=hdf5_pth):
     '''
     This loads both a grid and table for the halo in the configuration
     file. Just for easy loading, returns both grid and table.
@@ -254,14 +254,8 @@ def load_halo(g_fh=grid_fh, t_fh=table_fh, frmt=t_format, h5_pth=hdf5_pth):
 
 # =============================================================================
 # =============================================================================
-def regions(
-    int r_0=10,
-    int  r_1=275,
-    int r_step=1,
-    float r_scale=0.1,
-    float deg_0=-180.0,
-    float deg_1=180.0,
-    float deg_step=1.0):
+def regions(r_0=10, r_1=275, r_step=1, r_scale=0.1,
+    deg_0=-180.0, deg_1=180.0, deg_step=1.0):
     '''[summary]
 
     [description]

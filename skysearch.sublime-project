@@ -9,8 +9,8 @@
 		}
 	],
 	"settings":
-    {	"word_wrap": true,
-    	"wrap_width": 85,
+    {	"word_wrap": false,
+    	"wrap_width": 79,
     	"indent_subsequent_lines": true,
         "tab_size": 4,
         "rulers": [39, 72,79],

@@ -42,20 +42,23 @@ feature_id = 0
 # ----------------------------------------------------------------------
 # Begin moving outward from the halo projection's center.
 #
-# "annulus_id"       - An integer increasing from 0 for each radial step
-#                     outward from center of halo projection.
+# "annulus_id"                        - An integer increasing from 0 for
+#                                       each radial step outward from
+#                                       center of halo projection.
 
-# "annulus"          - An integer value representing the distance from
-#                     the halo projection's center in unites set by
-#                     the rc.cfg file.
+# "annulus"                           - An integer value representing
+#                                       the distance from the halo
+#                                       projection's center in unites
+#                                       set by the rc.cfg file.
 
-# <<ss_lib.r_start>> - An integer value representing the starting
-#                     radius (same units).
+# <<ss_lib.r_start>>                  - An integer value representing
+#                                       the starting radius (same units).
 
-# <<ss_lib.r_stop>>  - An integer value representing the ending
-#                     radius(same units).
+# <<ss_lib.r_stop>>                   - An integer value representing
+#                                       the ending radius(same units).
 
-# "annuli"           - An array of annular segments radially separated.
+# "annuli"                            - An array of annular segments
+#                                       radially separated.
 annuli = xrange(ss_lib.r_start, ss_lib.r_stop, 1)
 
 for annulus_id, annulus in enumerate(annuli):
