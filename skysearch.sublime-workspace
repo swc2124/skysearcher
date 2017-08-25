@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"max",
+				"max_width\tparam"
+			],
+			[
+				"r_",
+				"r_stop\tstatement"
+			],
+			[
+				"table",
+				"table_fh\tstatement"
+			],
+			[
+				"new",
+				"new_table\tstatement"
+			],
+			[
 				"feature",
 				"feature_id\tstatement"
 			],
@@ -30,10 +46,6 @@
 			[
 				"ex",
 				"except\tkeyword"
-			],
-			[
-				"new",
-				"new_cfg\tmodule"
 			],
 			[
 				"rc",
@@ -276,10 +288,6 @@
 				"None\tinstance"
 			],
 			[
-				"table",
-				"table_dir\tstatement"
-			],
-			[
 				"satid",
 				"satids\tstatement"
 			],
@@ -472,37 +480,46 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+			"file": "skysearcher/rc.cfg",
 			"settings":
 			{
-				"buffer_size": 19698,
+				"buffer_size": 881,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
+			"settings":
+			{
+				"buffer_size": 15534,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "skysearcher/skysearch_lib.py",
 			"settings":
 			{
-				"buffer_size": 9080,
+				"buffer_size": 13716,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "skysearcher/new_cfg.py",
+			"file": "skysearcher/mpi_search.py",
 			"settings":
 			{
-				"buffer_size": 7076,
+				"buffer_size": 2778,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "skysearcher/__init__.py",
+			"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
 			"settings":
 			{
-				"buffer_size": 470,
+				"buffer_size": 19808,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -511,16 +528,7 @@
 			"file": "skysearcher/skysearcher.py",
 			"settings":
 			{
-				"buffer_size": 10386,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "notes.txt",
-			"settings":
-			{
-				"buffer_size": 195,
+				"buffer_size": 11008,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -638,22 +646,34 @@
 	"expanded_folders":
 	[
 		"/C/Users/swc21/GitHub",
+		"/C/Users/swc21/GitHub/filesystem",
 		"/C/Users/swc21/GitHub/skysearcher",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher",
 		"/C/Users/swc21/GitHub/skysurvey",
-		"/C/Users/swc21/GitHub/skysurvey/skysurvey",
-		"/C/Users/swc21/GitHub/starcat",
-		"/C/Users/swc21/GitHub/starcat/starcat",
-		"/C/Users/swc21/GitHub/starcat/starcat/saved"
+		"/C/Users/swc21/GitHub/skysurvey/c_functions"
 	],
 	"file_history":
 	[
-		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearch_lib.py",
-		"/C/Users/swc21/GitHub/skysearcher/skysearcher/new_cfg.py",
-		"/C/Users/swc21/GitHub/skysearcher/skysearcher/rc.cfg",
+		"/C/Users/swc21/GitHub/plottest.py",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo08_logfile",
 		"/C/Users/swc21/GitHub/skysearcher/skysearch.sublime-project",
-		"/C/Users/swc21/GitHub/skysearcher/skysearch_lib.py",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo02_logfile",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo05_logfile",
+		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo07_logfile",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/spinbin.py",
+		"/C/Users/swc21/skysurvey/setup.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/table_bin.py",
+		"/C/Users/swc21/GitHub/skysearcher/notes.txt",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearcher.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearcher_scratchpad.ipynb",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher/__init__.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/new_cfg.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearch_lib.py",
+		"/C/Users/swc21/GitHub/extra_snips.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/rc.cfg",
+		"/C/Users/swc21/GitHub/skysearcher/skysearch_lib.py",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/gui_plotlib.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/starcat_gui.py",
@@ -663,7 +683,6 @@
 		"/C/Users/swc21/GitHub/starcat/data/readme_png/selectunits.png",
 		"/C/Users/swc21/GitHub/starcat/data/readme_png/makecats.png",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/functions.py",
-		"/C/Users/swc21/GitHub/skysurvey/skysurvey/spinbin.py",
 		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
 		"/C/Users/swc21/GitHub/starcat/starcat/__init__.py",
 		"/C/Users/swc21/GitHub/parallel_toolkit",
@@ -682,7 +701,6 @@
 		"/C/Users/swc21/GitHub/starcat/starcat/starcat.py",
 		"/C/Users/swc21/GitHub/starcat/.gitignore",
 		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.py",
-		"/C/Users/swc21/skysurvey/setup.cfg",
 		"/C/Users/swc21/GitHub/starcat/starcat/plot_halo.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/session.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/gui.py",
@@ -694,7 +712,6 @@
 		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/sys_conf.cfg",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/makefilesystem.py",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/new_config.py",
-		"/C/Users/swc21/GitHub/skysurvey/skysurvey/table_bin.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/starcatlib.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/exit_menu.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/load_save.py",
@@ -704,7 +721,6 @@
 		"/C/Users/swc21/GitHub/starcat/starcat/main_menu.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/starcat.sublime-project",
 		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Python PEP8 Autoformat/pep8_autoformat.sublime-settings",
-		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
 		"/C/Users/swc21/GitHub/starcat/starcat/plot_functions.py",
 		"/C/Users/swc21/GitHub/starcat/starcat/table_functions.py",
 		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
@@ -714,10 +730,7 @@
 		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo20_logfile",
 		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo17_logfile",
 		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo15_logfile",
-		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo05_logfile",
-		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo02_logfile",
 		"/C/Users/swc21/plot.py",
-		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo07_logfile",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/grid.py",
 		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyxx.pyx",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/fix_grids.py",
@@ -768,14 +781,7 @@
 		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/setup.py",
 		"/C/Users/swc21/tester.py",
 		"/G/my_python_packages/skysurvey/c_functions.pyx",
-		"/G/my_python_packages/skysurvey/skysurvey/gridplot.py",
-		"/G/my_python_packages/skysurvey/skysurvey/options.py",
-		"/G/my_python_packages/skysurvey/skysurvey/spinbin.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/plots/4.0Mpc_h158_halo08_30.png",
-		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/gridplot.py",
-		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/spinbin.py",
-		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/targetlist.py",
-		"/C/Users/swc21/Anaconda2/Lib/site-packages/skysurvey/functions.py"
+		"/G/my_python_packages/skysurvey/skysurvey/gridplot.py"
 	],
 	"find":
 	{
@@ -793,6 +799,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"i",
+			"xbox_min_value",
+			"unit",
+			"description",
+			"name",
+			"data",
+			"unit",
+			"halo",
+			"name",
+			"data",
+			"halo",
+			"unit",
+			"description",
+			"name",
+			"data",
+			"Column",
+			"align=None",
+			"max_lines=25",
+			"astotable",
+			"msg",
+			"astype",
+			"n_boxes",
+			"description",
+			"Column",
+			"unit",
+			"description",
+			"name",
+			"Column",
+			"center",
+			"_grid_",
+			"fix_rslice",
+			"table_dirs_names",
+			"    #",
+			"        #",
 			"lims",
 			"new_feature",
 			"feature_id",
@@ -886,41 +926,7 @@
 			".png",
 			"# end of function ===============================================",
 			"# end of function",
-			"os.path.listdir",
-			"program_data",
-			"raw_input(space",
-			"raw_input(space,",
-			"'\\n', space,",
-			"print('         ----------------------------------------')",
-			"_Config",
-			"sats_book",
-			"add_to_feature",
-			"print",
-			"master_dict",
-			"new_feature",
-			"_plot",
-			"resort_dict",
-			"add_to_feature",
-			"resort_dict",
-			"_plot",
-			"minn",
-			"merge",
-			"_plot",
-			"l0",
-			"add_to_feature",
-			"new_feature",
-			"listdir",
-			"join",
-			"os.path.join",
-			"join",
-			"merge",
-			"resort_dict",
-			"master_dict[halo]",
-			"resort_dict",
-			"i",
-			"merge",
-			"last_empty",
-			"feature_id_dict"
+			"os.path.listdir"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -928,6 +934,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"align='^'",
+			"max_lines=100",
+			"tjoin",
+			"#    ",
+			"#        ",
 			"msg",
 			"space",
 			"top_dir",
@@ -981,183 +992,142 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 19698,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1940,
-								1940
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 219.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "skysearcher/skysearch_lib.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9080,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5695,
-								5695
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"git_gutter_is_enabled": false,
-							"spell_check": true,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1712.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
-			]
-		},
-		{
 			"selected": 2,
 			"sheets":
 			[
 				{
-					"buffer": 2,
-					"file": "skysearcher/new_cfg.py",
+					"buffer": 0,
+					"file": "skysearcher/rc.cfg",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7076,
+						"buffer_size": 881,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1621,
-								1621
+								758,
+								758
 							]
 						],
 						"settings":
 						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
 							"git_gutter_is_enabled": false,
-							"spell_check": true,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 423.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "skysearcher/__init__.py",
+					"buffer": 1,
+					"file": "/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 470,
+						"buffer_size": 15534,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								110,
-								110
+								13669,
+								13669
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
+							"syntax": "Packages/Cython/Cython.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4290.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "skysearcher/skysearcher.py",
+					"buffer": 2,
+					"file": "skysearcher/skysearch_lib.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10386,
+						"buffer_size": 13716,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7166,
-								7166
+								9819,
+								9819
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2769.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "skysearcher/mpi_search.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								983,
+								983
 							]
 						],
 						"settings":
@@ -1174,44 +1144,94 @@
 								}
 							],
 							"git_gutter_is_enabled": false,
-							"spell_check": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1806.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
 				{
-					"buffer": 5,
-					"file": "notes.txt",
+					"buffer": 4,
+					"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 195,
+						"buffer_size": 19808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								129,
-								129
+								8920,
+								8920
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3159.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "skysearcher/skysearcher.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11008,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2468,
+								2468
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": false,
-							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1240,12 +1260,19 @@
 				0,
 				2,
 				1
+			],
+			[
+				2,
+				0,
+				3,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.385106051625,
+			0.375846097127,
+			0.803573461977,
 			1.0
 		],
 		"rows":
@@ -1313,7 +1340,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 151.0,
+	"side_bar_width": 236.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

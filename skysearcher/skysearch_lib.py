@@ -179,7 +179,7 @@ grid_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
 
 
 # Grid file handle (full Path) (grid_fh).
-grid_fh = os.path.join( config.get('PATH', 'grid_dir'), grid_file_name)
+grid_fh = os.path.join(config.get('PATH', 'grid_dir'), grid_file_name)
 
 # Table file name without full PATH (table_file_name).
 table_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
@@ -187,7 +187,7 @@ table_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
 
 
 # Table file handle (full Path) (table_fh).
-table_fh = os.path.join( config.get('PATH', 'table_dir'), table_file_name)
+table_fh = os.path.join(config.get('PATH', 'table_dir'), table_file_name)
 
 dir_list = [data_dir, grid_dir, table_dir, plot_dir]
 
@@ -232,11 +232,12 @@ def sortout_directories(directory_list=dir_list):
     # No failures, return True
     return True
 
+
 def load_halo(
-    g_fh=grid_fh,
-    t_fh=table_fh,
-    frmt=t_format,
-    h5_pth=hdf5_pth):
+        g_fh=grid_fh,
+        t_fh=table_fh,
+        frmt=t_format,
+        h5_pth=hdf5_pth):
     '''
     This loads both a grid and table for the halo in the configuration
     file. Just for easy loading, returns both grid and table.
@@ -250,30 +251,38 @@ def load_halo(
     Returns:
         np.ndarray, astropy.table.Table -- grid, table
     '''
-    return np.load(g_fh), Table.read(t_fh, format=frmt, path=hdf5_pth)
+    return np.load(g_fh).T, Table.read(t_fh, format=frmt, path=hdf5_pth)
 
 # =============================================================================
 # =============================================================================
-def regions(r_0=10, r_1=275, r_step=1, r_scale=0.1,
-    deg_0=-180.0, deg_1=180.0, deg_step=1.0):
-    '''[summary]
+
+
+def regions_mpi(rank=0, size=1, r_0=r_start, r_1=r_stop, r_step=1,
+                r_scale=annulus_scale, deg_0=-np.pi, deg_1=np.pi,
+                deg_step=annulus_phi_step):
+    '''
 
     [description]
 
     Keyword Arguments:
-        int r_0 {number} -- [description] (default: {10})
-        int  r_1 {number} -- [description] (default: {275})
-        int r_step {number} -- [description] (default: {1})
-        float r_scale {number} -- [description] (default: {0.1})
-        float deg_0 {number} -- [description] (default: {-180.0})
-        float deg_1 {number} -- [description] (default: {180.0})
-        float deg_step {number} -- [description] (default: {1.0})
+        rank {number} -- [description] (default: {0})
+        size {number} -- [description] (default: {1})
+        r_0 {number} -- [description] (default: {10})
+        r_1 {number} -- [description] (default: {275})
+        r_step {number} -- [description] (default: {1})
+        r_scale {number} -- [description] (default: {0.1})
+        deg_0 {number} -- [description] (default: {-180.0})
+        deg_1 {number} -- [description] (default: {180.0})
+        deg_step {number} -- [description] (default: {1.0})
 
-    Yields:
+    Returns:
         [type] -- [description]
     '''
-
-    for radius in xrange(r_0, r_1, r_step):
+    worklist = []
+    t_rads = (r_1 - r_0) / r_step
+    my_bit = int(t_rads / size)
+    my_starting_point = int(my_bit * rank)
+    for radius in range(my_starting_point, my_bit, r_step):
 
         region = radius * r_scale
         r_in = radius - region
@@ -282,9 +291,128 @@ def regions(r_0=10, r_1=275, r_step=1, r_scale=0.1,
         #r_out = radius + r_step
 
         for annular_segment in np.linspace(
-            deg_0,
-            deg_1,
-            deg_step,
-            dtype=np.float16):
+                deg_0,
+                deg_1,
+                deg_step,
+                dtype=np.float16):
 
-            yield r_in, r_out, annular_segment
+            worklist.append([r_in, r_out, deg_0, deg_1])
+
+    return worklist
+
+
+def record_table():
+    # make an output table
+    output_colums = ['radius', 'r0', 'r1', 'halo', 'xbox_cut',
+                     'xbox_min', 'xbox_mean', 'xbox_max',
+                     'run_length', 'sat_purity', 'n_stars',
+                     'n_boxes', 'name0', 'name1', 'name2']
+    output_dtyps = ['f', 'f', 'f', 'S10', 'f',
+                    'f', 'f', 'f',
+                    'i', 'f', 'i', 'i',
+                    'f', 'f', 'f']
+    return Table(names=output_colums, dtype=output_dtyps)
+
+
+def fix_rslice(grid, r=4):
+    phi_slice = np.zeros((601, 601, 1))
+    grid = np.concatenate((grid, phi_slice), axis=2)
+
+    center = 300
+    grid = grid
+    for i in range(grid.shape[0]):
+        for q in range(grid.shape[1]):
+            value = np.sqrt(
+                np.square(i - center) + np.square(q - center))
+            try:
+                grid[i, q, r] = value
+                grid[i, q, 5] = np.arctan2(i - 300, q - 300)
+            except IndexError as e:
+                pass
+
+    grid[:, :, 5] = np.rad2deg(grid[:, :, 5], grid[:, :, 5]) + 180.0
+    return grid
+
+
+def mpi_run():
+
+    from mpi4py import MPI
+
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+    name = MPI.Get_processor_name()
+
+    grid, table = load_halo
+
+    for r_in, r_out, deg_0, deg_1 in regions_mpi(rank=0, size=1):
+
+        grid_idx = np.nonzero(
+            np.logical_and(
+                grid[:, :, 4] >= r_in,
+                grid[:, :, 4] < r_out))
+
+        mu = grid[:, :, 0][grid_idx].mean()
+        xbox_min = mu * 0.0005
+
+        one_before = False
+        run_length = 0
+
+        min_xbox = []
+        max_xbox = []
+        mean_xbox = []
+
+        alims = np.nonzero(
+            np.logical_and(
+                np.logical_and(
+                    grid[:, :, 5] >= deg0,
+                    grid[:, :, 5] < deg1),
+                np.logical_and(
+                    grid[:, :, 4] >= r_strt,
+                    grid[:, :, 4] < r_stop)))
+
+        xbox = ((grid[:, :, 0][alims] - mu) / mu)
+
+        if xbox.mean() > xbox_min:
+
+            if not one_before:
+
+                run_length = 0
+
+            run_length += 1
+            one_before = True
+            min_xbox.append(xbox.min())
+            mean_xbox.append(xbox.mean())
+            max_xbox.append(xbox.max())
+
+        else:
+
+            if one_before:
+
+                row = [r,
+                       r_strt,
+                       r_stop,
+                       grids[grid_number].split('_')[0],
+                       xbox_min,
+                       round(np.asarray(min_xbox).min(), 4),
+                       round(np.asarray(mean_xbox).mean(), 4),
+                       round(np.asarray(max_xbox).max(), 4),
+                       run_length,
+                       0.0,
+                       grid[:, :, 0][alims].sum(),
+                       len(alims[0]),
+                       0.0,
+                       0.0,
+                       0.0]
+
+                record_table.add_row(row)
+
+            one_before = False
+            run_length = 0
+        m0 = '\n' + r + ' Kpc   '
+        m1 = str(deg0) + ' deg  '
+        m2 = '  '
+        m3 = str(one_before) + ' '
+        m4 = str(run_length) + ' '
+        sys.stdout.write(m0 + m1 + m2 + m3 + m4)
+        sys.stdout.flush()
