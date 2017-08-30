@@ -38,6 +38,7 @@ def new_rc(rc_fh=None):
     # <imports>
     import ConfigParser
     import os
+    from numpy import pi
 
     # <setup>
     # Make a new configuration file parser object (config).
@@ -156,18 +157,30 @@ def new_rc(rc_fh=None):
     # Set the ending radius (r_stop).
     config.set('Search Extent', 'r_stop', 275)
 
+    # Set the radial step (r_step).
+    config.set('Search Extent', 'r_step', 1)
+
     # Set the percentage of radius to be used as the extent of the
     # annulus (annulus_scale).
     # a0, a1 = radius + and - (radius * annulus_scale) / 2.0
     config.set('Search Extent', 'annulus_scale', 0.1)
 
+    # Set the starting and ending point of the annulus (a0 & a1).
+    config.set('Search Extent', 'a0', -pi)
+    config.set('Search Extent', 'a1', pi)
+
     # Set the step length for each step around the
-    # annulus (annulus_phi_step).
-    config.set('Search Extent', 'annulus_phi_step', 1)
+    # annulus (annulus_phi_step). 360 = 1 deg steps
+    # i.e the number of times to divide the entire annulus.
+    config.set('Search Extent', 'annulus_phi_step', 360)
 
     # Set the minimum value for xbox (contrast density) to be considered
     # for the search (xbox_min).
     config.set('Search Extent', 'xbox_min', 10.0)
+
+    # Set minimum number of annuluii segments a feature must be
+    # (min_seg_size).
+    config.set('Search Extent', 'min_seg_size', 10)
 
     #
     # <select accept-reject criterion ("Accept Reject")>
@@ -214,3 +227,7 @@ def new_rc(rc_fh=None):
         config.write(configfile)
 
     return rc_fh
+
+if __name__ == '__main__':
+
+    new_rc()

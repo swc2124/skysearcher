@@ -4,16 +4,76 @@
 		"selected_items":
 		[
 			[
-				"max",
-				"max_width\tparam"
+				"_xbox_",
+				"_xbox_fixed"
 			],
 			[
-				"r_",
-				"r_stop\tstatement"
+				"_xbox",
+				"_xbox_mu"
+			],
+			[
+				"spin",
+				"spinallMPI\tfunction"
 			],
 			[
 				"table",
-				"table_fh\tstatement"
+				"table_mergeMPI\tfunction"
+			],
+			[
+				"gri",
+				"grid_files\tstatement"
+			],
+			[
+				"t_",
+				"t_stars\tstatement"
+			],
+			[
+				"dat",
+				"data_dir\tstatement"
+			],
+			[
+				"dom",
+				"dom_sat\tstatement"
+			],
+			[
+				"colum_",
+				"column_name"
+			],
+			[
+				"Key",
+				"KeyboardInterrupt\tclass"
+			],
+			[
+				"r_",
+				"r_start\tstatement"
+			],
+			[
+				"_grid",
+				"_grid_idx\tstatement"
+			],
+			[
+				"run",
+				"run_length\tstatement"
+			],
+			[
+				"xbox",
+				"xbox_min\tstatement"
+			],
+			[
+				"add",
+				"add_row\tfunction"
+			],
+			[
+				"ann",
+				"annuli_list\tstatement"
+			],
+			[
+				"flu",
+				"flush\tfunction"
+			],
+			[
+				"max",
+				"max_width\tparam"
 			],
 			[
 				"new",
@@ -22,10 +82,6 @@
 			[
 				"feature",
 				"feature_id\tstatement"
-			],
-			[
-				"ann",
-				"annulus_phi_step\tstatement"
 			],
 			[
 				"ss",
@@ -54,10 +110,6 @@
 			[
 				"cur",
 				"curdir_name\tstatement"
-			],
-			[
-				"add",
-				"add_cascade\tfunction"
 			],
 			[
 				"mag",
@@ -126,10 +178,6 @@
 			[
 				"ask",
 				"askfloat\tfunction"
-			],
-			[
-				"gri",
-				"grid_center_x\tstatement"
 			],
 			[
 				"re",
@@ -294,10 +342,6 @@
 			[
 				"sat",
 				"sats_book\tparam"
-			],
-			[
-				"xbox",
-				"xbox_values\tstatement"
 			],
 			[
 				"xbo",
@@ -470,10 +514,6 @@
 			[
 				"threads",
 				"threads"
-			],
-			[
-				"N",
-				"NUM_PROCESSORS"
 			]
 		]
 	},
@@ -483,16 +523,7 @@
 			"file": "skysearcher/rc.cfg",
 			"settings":
 			{
-				"buffer_size": 881,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
-			"settings":
-			{
-				"buffer_size": 15534,
+				"buffer_size": 773,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -501,7 +532,7 @@
 			"file": "skysearcher/skysearch_lib.py",
 			"settings":
 			{
-				"buffer_size": 13716,
+				"buffer_size": 17167,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -510,27 +541,74 @@
 			"file": "skysearcher/mpi_search.py",
 			"settings":
 			{
-				"buffer_size": 2778,
+				"buffer_size": 13036,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+			"contents": "'''[summary]\n\n[description]\n\nAttributes\n----------\nsys_config_fh : {[type]}\n    [description]\nSysConfig : {[type]}\n    [description]\nSysConfig.read(sys_config_fh) : {[type]}\n    [description]\nconfig_fh : {[type]}\n    [description]\nConfig : {[type]}\n    [description]\nConfig.read(config_fh) : {[type]}\n    [description]\nVERBOSE : {[type]}\n    [description]\nif __name__ : {[type]}\n    [description]\n'''\nfrom __future__ import absolute_import\nfrom __future__ import division\nfrom __future__ import print_function\n\nimport ConfigParser\nimport os\nimport sys\nimport time\n\nfrom astropy.table import Column\nfrom astropy.table import Table\nfrom astropy.table import vstack\n\nfrom astropy.units import ABmag\nfrom astropy.units import degree\nfrom astropy.units import gigayear\nfrom astropy.units import kiloparsec\nfrom astropy.units import mag\nfrom astropy.units import radian\n\n\nimport numpy as np\n\nimport skysurvey\n\nfrom skysurvey.new_config import SYS_CFG_FNAME\n\nsys_config_fh = os.path.join(os.path.dirname(\n                                os.path.realpath(\n                                    skysurvey.__file__)), SYS_CFG_FNAME)\nSysConfig = ConfigParser.ConfigParser()\nSysConfig.read(sys_config_fh)\nconfig_fh = SysConfig.get('skysurvey_global_settings', 'config_fh')\nConfig = ConfigParser.ConfigParser()\nConfig.read(config_fh)\n\nVERBOSE = Config.get('Global', 'verbose')\n\n\ndef window_size():\n\n    from ctypes import windll, create_string_buffer\n    # stdin handle is -10\n    # stdout handle is -11\n    # stderr handle is -12\n    h = windll.kernel32.GetStdHandle(-12)\n    csbi = create_string_buffer(22)\n    res = windll.kernel32.GetConsoleScreenBufferInfo(h, csbi)\n    if res:\n        import struct\n        (bufx, bufy,\n         curx, cury,\n         wattr,\n         left, top, right, bottom,\n         maxx, maxy) = struct.unpack(\"hhhhHhhhhhh\", csbi.raw)\n        sizex = right - left + 1\n        sizey = bottom - top + 1\n    else:\n        # can't determine actual size - return default values\n        sizex, sizey = 80, 25\n\n    return sizex, sizey\n\n\ndef fix_rslice(grid, rslices=[4]):\n\n    center = grid.shape[0] / 2\n    ratio = (1.0 * Config.getint('grid_options', 'size')) / \\\n            (2.0 * Config.getfloat('halo_data_settings', 'radial_cut'))\n    for r in rslices:\n        for i in range(grid.shape[0]):\n            for q in range(grid.shape[1]):\n                value = np.sqrt(\n                    (np.square(i - center) + np.square(q - center)))\n                value /= ratio\n                if value > 300.0:\n                    value = 0.0\n                grid[i, q, r] = value\n    return grid\n\n\ndef table_merge():\n\n    from astropy.table import join as tjoin\n    import ebf\n    import sys\n\n    grid_size = Config.get('grid_options', 'size')\n\n    table_dir = Config.get('PATH', 'table_dir')\n\n    print('loading satprop.ebf')\n    satprop = ebf.read(os.path.join(\n        Config.get('PATH', 'data_dir'),\n        'satprop.ebf'))\n\n    for halo in Config.get('Default_halos', 'halos').split(','):\n\n        print(halo)\n\n        bin_table_fh = os.path.join(\n            table_dir,\n            'table_bin_output',\n            grid_size,\n            '4.0Mpc_h158_' + halo + '_table_bin_table.hdf5')\n\n        bin_table = Table.read(\n            bin_table_fh,\n            format='hdf5',\n            path='data')\n\n        print(bin_table.info)\n\n        bin_table.keep_columns(\n            ['x_int', 'y_int', 'Xbox',\n             't_accretion', 'Rads', 'Phi', 'R_kpc'])\n\n        print(bin_table.info(['attributes', 'stats']))\n        bin_table.pprint(\n            max_lines=100,\n            max_width=window_size()[0],\n            show_name=True,\n            show_unit=True,\n            show_dtype=True,\n            align=None)\n\n        stellar_table_fh = os.path.join(\n            table_dir,\n            'spinbin_output',\n            grid_size,\n            halo + '_4.0Mpc_h158_table.hdf5')\n\n        stellar_table = Table.read(\n            stellar_table_fh,\n            format='hdf5',\n            path='data')\n\n        print(stellar_table.info)\n        d_keys = ['x_int', 'y_int', 'satids', 'feh', 'age', 'px', 'py']\n        stellar_table.keep_columns(d_keys)\n\n        print('removing bound sats')\n        satids = stellar_table.meta['satids']\n        for satid in satids:\n            if satprop['bsat'][satid]:\n                stellar_table.remove_rows(\n                    np.nonzero(stellar_table['satids'] == satid))\n                print(' -> removing satid:', satid)\n        print('done')\n\n        print(stellar_table.info(['attributes', 'stats']))\n        stellar_table.pprint(\n            max_lines=100,\n            max_width=window_size()[0],\n            show_name=True,\n            show_unit=True,\n            show_dtype=True,\n            align=None)\n\n        print('joining tables for', halo, '...')\n        new_table = tjoin(\n            left=stellar_table,\n            right=bin_table,\n            join_type='right',\n            keys=['x_int', 'y_int'])\n        print('done')\n\n        print(new_table.info(['attributes', 'stats']))\n        new_table.pprint(\n            max_lines=100,\n            max_width=window_size()[0],\n            show_name=True,\n            show_unit=True,\n            show_dtype=True,\n            align=None)\n\n        new_table_fh = os.path.join(\n            table_dir,\n            'merged_tables',\n            halo + '.hdf5')\n\n        print('writing new table to: ', new_table_fh)\n        new_table.write(\n            new_table_fh,\n            format='hdf5',\n            path='data',\n            compression=True,\n            overwrite=True,\n            serialize_meta=True)\n        print('done')\n\n\ndef table_bin(size=None, radius_start=1, radius_end=275, step=1, percent=0.05):\n\n    if size == None:\n        size = Config.get('grid_options', 'size')\n\n    grid_dir = os.path.join(\n        Config.get('PATH', 'grid_dir'),\n        size)\n\n    table_dir = os.path.join(\n        Config.get('PATH', 'table_dir'),\n        'table_bin_output', str(size))\n\n    if not os.path.isdir(table_dir):\n        os.mkdir(table_dir)\n\n    grid_files = os.listdir(grid_dir)\n    for grid_fh in grid_files:\n        if not grid_fh.endswith('.npy'):\n            continue\n\n        fh_list = grid_fh.split(os.path.sep)[-1].split('_')\n        halo, d_mpc, f_type, ending = fh_list\n        d_mpc = float(d_mpc[:3])\n        halo_number = int(halo[-2:])\n        _grid_fh_ = os.path.join(grid_dir, grid_fh)\n\n        _grid_ = np.load(_grid_fh_)\n        GRID = fix_rslice(_grid_)\n        center = GRID.shape[0] / 2.0\n\n        n_stars_total = len(\n            np.load(\n                os.path.join(\n                    Config.get('PATH', 'halo_dir'),\n                    halo,\n                    'px.npy')))\n\n        n_stars_in_grid = GRID[:, :, 0].sum()\n        prefix = str(d_mpc) + 'Mpc_' + f_type + '_' + halo\n        table_fh = prefix + '_table_bin_table'\n        target_dir = table_dir\n        file_name = table_fh + '.hdf5'\n\n        if not os.path.isdir(target_dir):\n            os.mkdir(target_dir)\n\n        fh = os.path.join(target_dir, file_name)\n\n        table = Table()\n        table.meta['_grid_fh_'] = _grid_fh_\n        table.meta['grid_shape'] = GRID.shape\n        table.meta['halo'] = halo\n        table.meta['table_dir'] = table_dir\n        table.meta['f_type'] = f_type\n        table.meta['d_mpc'] = d_mpc\n        table.meta['table_bin_output_fh'] = table_fh\n        table.meta['full_path'] = fh\n        table.meta['table_bin_creation_time'] = time.ctime()\n\n        for radius_Kpc in range(radius_start, radius_end, step):\n            region = (radius_Kpc * percent)\n            r_in = radius_Kpc - region\n            r_out = radius_Kpc + region\n\n            selected_boxes = np.nonzero(\n                np.logical_and(\n                    GRID[:, :, 4] < r_out,\n                    GRID[:, :, 4] >= r_in))\n\n            x, y = selected_boxes\n            PHI = np.arctan2(y - center, x - center)\n            BOXES = GRID[:, :, 0][selected_boxes]\n            B_RADS = GRID[:, :, 4][selected_boxes]\n            AGE = GRID[:, :, 2][selected_boxes]\n            mu = BOXES.mean()\n            sigma_mu = mu\n            XBOX = (BOXES - mu) / sigma_mu\n            sigma_sqrt = np.sqrt(BOXES.mean())\n            XBOX_sqrt = (BOXES - mu) / sigma_sqrt\n            sigma_std = BOXES.std()\n            XBOX_std = (BOXES - mu) / sigma_std\n            n_boxes = len(BOXES)\n\n            columns = [\n\n                Column(\n                    data=BOXES.astype(np.float32),\n                    name='Boxes',\n                    description='Number of stars per grid box'),\n\n                Column(\n                    data=np.divide(\n                        BOXES,\n                        np.float64(n_boxes)).astype(np.float32),\n                    name='Percent_Boxes',\n                    description='Boxes / n_boxes'),\n\n                Column(\n                    data=np.log10(BOXES).astype(np.float16),\n                    name='LogBoxes',\n                    description='Log(number of stars) per grid box'),\n\n                Column(\n                    data=XBOX.astype(np.float16),\n                    name='Xbox',\n                    description='(Boxes - mu) / mu'),\n\n                Column(\n                    data=XBOX_sqrt.astype(np.float16),\n                    name='Xbox_sqrt',\n                    description='(Boxes - mu) / sqrt(Boxes.mean())',\n                    unit='float16'),\n\n                Column(\n                    data=XBOX_std.astype(np.float16),\n                    name='Xbox_std',\n                    description='(Boxes - mu) / Boxes.std()',\n                    unit='float16'),\n\n                Column(\n                    data=PHI.astype(np.float16),\n                    name='Phi',\n                    description='arctan(y - center / x - center)',\n                    unit='radian'),\n\n                Column(\n                    data=B_RADS.astype(np.uint16),\n                    name='Rads',\n                    description='Radius of box in Kpc',\n                    unit='kiloparsec'),\n\n                Column(\n                    data=AGE.astype(np.float16),\n                    name='t_accretion',\n                    description='Time since accretion Gyr',\n                    unit='gigayear'),\n\n                Column(\n                    data=(x - center).astype(np.int16),\n                    name='X',\n                    description='x indices on the grid - center',\n                    unit='int16'),\n\n                Column(\n                    data=(y - center).astype(np.int16),\n                    name='Y',\n                    description='y indices on the grid - center',\n                    unit='int16'),\n\n                Column(\n                    data=x.astype(np.uint16),\n                    name='x_int',\n                    description='x indices on the grid',\n                    unit='uint16'),\n\n                Column(\n                    data=y.astype(np.uint16),\n                    name='y_int',\n                    description='y ints for merging table',\n                    unit='uint16'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.uint16) * radius_Kpc,\n                    name='R_kpc',\n                    description='Selected radius in Kpc',\n                    unit='kiloparsec'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.float32) * mu,\n                    name='Mu',\n                    description='mu = Boxes.mean()',\n                    unit='float32'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.uint32) * BOXES.sum(),\n                    name='Nstars_r',\n                    description='Total strs in radial selection',\n                    unit='uint32'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.float16) * np.float16(\n                        np.log10(\n                            BOXES.sum())),\n                    name='Log10(Nstars)_r',\n                    description='Total strs in radial selection',\n                    unit='float16'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.uint32) * n_boxes,\n                    name='N_boxes',\n                    description='Total number of grid boxes at this R',\n                    unit='uint32'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.float16) * np.float16(\n                        np.log10(n_boxes)),\n                    name='Log10(N_boxes_tot)',\n                    description='Total number of grid boxes at this R',\n                    unit='float16'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.uint32) * len(\n                        np.nonzero(BOXES == 0.0)[0]),\n                    name='N_boxes_empty',\n                    unit='uint32'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.float16) * np.float16(\n                        np.log10(\n                            len(np.nonzero(BOXES == 0.0)[0]))),\n                    name='Log10(N_boxes)_empty',\n                    unit='float16'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.float16) * np.float16(\n                        np.log10(\n                            len(np.nonzero(BOXES >= 1.0)[0]))),\n                    name='Log10(N_boxes)_full',\n                    unit='float16'),\n\n                Column(\n                    data=np.ones(\n                        n_boxes,\n                        dtype=np.uint32) * len(\n                        np.nonzero(BOXES >= 1.0)[0]),\n                    name='N_boxes_full',\n                    unit='uint32')]\n\n            temp_table = Table()\n            temp_table.add_columns(columns)\n            table = vstack([table, temp_table])\n\n            if VERBOSE:\n                dr = radius_Kpc - radius_start\n                dr_tot = radius_end - radius_start\n                sfig = (1.0 * (dr + 1) / (1.0 * (dr_tot)))\n                adj_fig = round(1e2 * sfig, 2)\n\n                msg_00 = '\\r\\r' + '[' + halo + '] radius: '\n                msg_01 = str(radius_Kpc + 1)\n                msg_02 = '/' + str(radius_end)\n                msg_03 = ' Kpc - [ ' + str(adj_fig) + '% ] '\n                msg = msg_00 + msg_01 + msg_02 + msg_03\n\n                sys.stdout.write(msg)\n                sys.stdout.flush()\n\n        sys.stdout.write('\\n')\n        sys.stdout.flush()\n\n        log_n_stars_in_grid = str(np.log10(n_stars_in_grid))\n\n        table.meta['radius_start'] = str(radius_start)\n        table.meta['radius_end'] = str(radius_end)\n        table.meta['log_n_stars_in_grid'] = log_n_stars_in_grid\n\n        table.write(\n            fh,\n            format='hdf5',\n            path='data',\n            overwrite=True,\n            serialize_meta=True)\n\n        table.pprint(\n            max_lines=100,\n            max_width=window_size()[0],\n            show_name=True,\n            show_unit=True,\n            show_dtype=True,\n            align=None)\n\n        sys.stdout.write('\\n')\n        sys.stdout.flush()\n\n        if VERBOSE:\n\n            m0 = '[' + halo.upper() + ' DONE] ['\n            m1 = time.ctime() + '] - saved to:'\n            m2 = fh + '\\n'\n\n            sys.stdout.write(msg + m0 + m1 + m2)\n            sys.stdout.flush()\n\n\ndef table_binlite(size=None, radius_start=0, radius_end=220, step=1, \n                  percent=0.05):\n    if size == None:\n        size = Config.get('grid_options', 'size')\n    grid_dir = os.path.join(Config.get('PATH', 'grid_dir'), str(size))\n    table_dir = os.path.join(\n        Config.get('PATH', 'table_dir'),\n        'table_bin_output', str(size))\n    if not os.path.isdir(table_dir):\n        os.mkdir(table_dir)\n    grid_files = os.listdir(grid_dir)\n    for grid_fh in grid_files:\n        if not grid_fh.endswith('.npy'):\n            continue\n\n        fh_list = grid_fh.split(os.path.sep)[-1].split('_')\n        halo, d_mpc, f_type, ending = fh_list\n        d_mpc = float(d_mpc[:3])\n        halo_number = int(halo[-2:])\n\n        _grid_fh_ = os.path.join(grid_dir, grid_fh)\n        GRID = fix_rslice(np.load(_grid_fh_))\n\n        center = GRID.shape[0] / 2\n        n_stars_total = len(\n            np.load(\n                os.path.join(\n                    Config.get('PATH', 'halo_dir'),\n                    halo,\n                    'px.npy')))\n        n_stars_in_grid = GRID[:, :, 0].sum()\n\n        table_fh = str(d_mpc) + 'Mpc_' + f_type + \\\n            '_' + halo + '_table_bin_table'\n        target_dir = table_dir\n        file_name = table_fh + '.hdf5'\n        if not os.path.isdir(target_dir):\n            os.mkdir(target_dir)\n        fh = os.path.join(target_dir, file_name)\n        table = Table()\n        table.meta['_grid_fh_'] = _grid_fh_\n        table.meta['grid_shape'] = GRID.shape\n        table.meta['halo'] = halo\n        table.meta['table_dir'] = table_dir\n        table.meta['f_type'] = f_type\n        table.meta['d_mpc'] = d_mpc\n        table.meta['table_bin_output_fh'] = table_fh\n        table.meta['full_path'] = fh\n        table.meta['table_bin_creation_time'] = time.ctime()\n\n        for radius_Kpc in range(radius_start, radius_end, step):\n            region = (radius_Kpc * percent)\n            r_in = radius_Kpc - region\n            r_out = radius_Kpc + region\n\n            selected_boxes = np.nonzero(\n                np.logical_and(\n                    GRID[:, :, 4] < r_out,\n                    GRID[:, :, 4] >= r_in))\n\n            #print(selected_boxes )\n            x, y = selected_boxes\n\n            PHI = np.arctan2(y - center, x - center)\n            BOXES = GRID[:, :, 0][selected_boxes]\n            B_RADS = GRID[:, :, 4][selected_boxes]\n            AGE = GRID[:, :, 2][selected_boxes]\n            mu = BOXES.mean()\n            sigma_mu = mu\n            XBOX = (BOXES - mu) / sigma_mu\n\n            n_boxes = len(BOXES)\n\n            columns = [\n                Column(\n                    data=BOXES.astype(np.float32),\n                    name='Boxes',\n                    description='Number of stars per grid box'),\n                Column(\n                    data=XBOX.astype(np.float16),\n                    name='Xbox',\n                    description='(Boxes - mu) / Boxes.mean())'),\n                Column(\n                    data=PHI.astype(np.float16),\n                    name='Phi',\n                    description='arctan(y - center / x - center)',\n                    unit='radian'),\n                Column(\n                    data=B_RADS.astype(np.uint16),\n                    name='Rads',\n                    description='Radius of box in Kpc',\n                    unit='kiloparsec'),\n                Column(\n                    data=AGE.astype(np.float16),\n                    name='t_accretion',\n                    description='Time since accretion Gyr',\n                    unit='gigayear'),\n                Column(\n                    data=x.astype(np.uint16),\n                    name='x_int',\n                    description='x indices on the grid',\n                    unit='uint16'),\n                Column(\n                    data=y.astype(np.uint16),\n                    name='y_int',\n                    description='y ints for merging table',\n                    unit='uint16')]\n\n            temp_table = Table()\n            temp_table.add_columns(columns)\n            table = vstack([table, temp_table])\n\n            if VERBOSE:\n                msg = ('\\r\\r[' + halo + '] radius: ' + str(radius_Kpc + 1) +\n                       '/' + str(radius_end) + ' Kpc - [ ' +\n                       str(\n                    round(\n                        1e2 * (1.0 * (radius_Kpc - radius_start + 1) / (1.0 * (radius_end - radius_start))), 2)) +\n                       '% ] ')\n                sys.stdout.write(msg)\n                sys.stdout.flush()\n                #print(radius_Kpc, n_boxes, len(np.unique(table['R_kpc'])))\n        sys.stdout.write('\\n')\n        sys.stdout.flush()\n\n        table.meta['radius_start'] = str(radius_start)\n        table.meta['radius_end'] = str(radius_end)\n        table.meta['log_n_stars_in_grid'] = str(np.log10(n_stars_in_grid))\n        table.write(\n            fh,\n            format='hdf5',\n            path='data',\n            overwrite=True,\n            serialize_meta=True)\n        table.pprint(\n            max_lines=100,\n            max_width=window_size()[0],\n            show_name=True,\n            show_unit=True,\n            show_dtype=True,\n            align=None)\n        sys.stdout.write('\\n')\n        sys.stdout.flush()\n        if VERBOSE:\n            sys.stdout.write(\n                msg + '[' +\n                halo.upper() +\n                ' DONE] [' +\n                time.ctime() + '] - saved to:' +\n                fh + '\\n')\n            sys.stdout.flush()\n\n\ndef table_binMPI(grid_fh, size=None, radius_start=0, radius_end=220, step=1, \n                 percent=0.05):\n    fh_list = grid_fh.split(os.path.sep)[-1].split('_')\n    halo, d_mpc, f_type, ending = fh_list\n    d_mpc = float(d_mpc[:3])\n    halo_number = int(halo[-2:])\n    _grid_fh_ = os.path.join(grid_dir, grid_fh)\n    GRID = fix_rslice(np.load(_grid_fh_))\n    center = GRID.shape[0] / 2\n    n_stars_total = len(\n        np.load(\n            os.path.join(\n                Config.get('PATH', 'halo_dir'),\n                halo,\n                'px.npy')))\n    n_stars_in_grid = GRID[:, :, 0].sum()\n    table_fh = str(d_mpc) + 'Mpc_' + f_type + \\\n        '_' + halo + '_table_bin_table'\n    target_dir = table_dir\n    file_name = table_fh + '.hdf5'\n    if not os.path.isdir(target_dir):\n        os.mkdir(target_dir)\n    fh = os.path.join(target_dir, file_name)\n    print(rank, fh)\n    table = Table()\n    table.meta['_grid_fh_'] = _grid_fh_\n    table.meta['grid_shape'] = GRID.shape\n    table.meta['halo'] = halo\n    table.meta['table_dir'] = table_dir\n    table.meta['f_type'] = f_type\n    table.meta['d_mpc'] = d_mpc\n    table.meta['table_bin_output_fh'] = table_fh\n    table.meta['full_path'] = fh\n    table.meta['table_bin_creation_time'] = time.ctime()\n    for radius_Kpc in range(radius_start, radius_end, step):\n        print(rank, halo, radius_Kpc, 'kpc')\n        region = (radius_Kpc * percent)\n        r_in = radius_Kpc - region\n        r_out = radius_Kpc + region\n        selected_boxes = np.nonzero(\n            np.logical_and(\n                GRID[:, :, 4] < r_out,\n                GRID[:, :, 4] >= r_in))\n        x, y = selected_boxes\n        PHI = np.arctan2(y - center, x - center)\n        BOXES = GRID[:, :, 0][selected_boxes]\n        B_RADS = GRID[:, :, 4][selected_boxes]\n        AGE = GRID[:, :, 2][selected_boxes]\n        mu = BOXES.mean()\n        sigma_mu = mu\n        XBOX = (BOXES - mu) / sigma_mu\n        n_boxes = len(BOXES)\n        columns = [\n            Column(\n                data=BOXES.astype(np.float32),\n                name='Boxes',\n                description='Number of stars per grid box'),\n            Column(\n                data=XBOX.astype(np.float16),\n                name='Xbox',\n                description='(Boxes - mu) / Boxes.mean())'),\n            Column(\n                data=PHI.astype(np.float16),\n                name='Phi',\n                description='arctan(y - center / x - center)',\n                unit='radian'),\n            Column(\n                data=B_RADS.astype(np.uint16),\n                name='Rads',\n                description='Radius of box in Kpc',\n                unit='kiloparsec'),\n            Column(\n                data=AGE.astype(np.float16),\n                name='t_accretion',\n                description='Time since accretion Gyr',\n                unit='gigayear'),\n            Column(\n                data=x.astype(np.uint16),\n                name='x_int',\n                description='x indices on the grid',\n                unit='uint16'),\n            Column(\n                data=y.astype(np.uint16),\n                name='y_int',\n                description='y ints for merging table',\n                unit='uint16')]\n        temp_table = Table()\n        temp_table.add_columns(columns)\n        table = vstack([table, temp_table])\n    table.meta['radius_start'] = str(radius_start)\n    table.meta['radius_end'] = str(radius_end)\n    table.meta['log_n_stars_in_grid'] = str(np.log10(n_stars_in_grid))\n    table.write(\n        fh,\n        format='hdf5',\n        path='data',\n        overwrite=True,\n        serialize_meta=True)\n\n\ndef table_mergeMPI(halo):\n    grid_size = Config.get('grid_options', 'size')\n    table_dir = Config.get('PATH', 'table_dir')\n    print('rank', rank, ' loading satprop.ebf')\n    satprop = ebf.read(os.path.join(\n        Config.get('PATH', 'data_dir'),\n        'satprop.ebf'))\n    bin_table_fh = os.path.join(\n        table_dir,\n        'table_bin_output',\n        grid_size,\n        '4.0Mpc_h158_' + halo + '_table_bin_table.hdf5')\n    bin_table = Table.read(\n        bin_table_fh,\n        format='hdf5',\n        path='data')\n    bin_table.keep_columns(\n        ['x_int', 'y_int', 'Xbox',\n         't_accretion', 'Rads', 'Phi'])\n    stellar_table_fh = os.path.join(\n        table_dir,\n        'spinbin_output',\n        grid_size,\n        halo + '_4.0Mpc_h158_table.hdf5')\n    stellar_table = Table.read(\n        stellar_table_fh,\n        format='hdf5',\n        path='data')\n    d_keys = ['x_int', 'y_int', 'satids', 'feh', 'age', 'px', 'py']\n    stellar_table.keep_columns(d_keys)\n    print('removing bound sats')\n    satids = stellar_table.meta['satids']\n    for satid in satids:\n        if satprop['bsat'][satid]:\n            stellar_table.remove_rows(\n                np.nonzero(stellar_table['satids'] == satid))\n            print(' -> removing satid:', satid)\n    new_table = tjoin(\n        left=stellar_table,\n        right=bin_table,\n        join_type='right',\n        keys=['x_int', 'y_int'])\n    new_table_fh = os.path.join(\n        table_dir,\n        'merged_tables',\n        halo + '.hdf5')\n    new_table.write(\n        new_table_fh,\n        format='hdf5',\n        path='data',\n        compression=True,\n        overwrite=True,\n        serialize_meta=True)\n\n\nif __name__ == '__main__':\n\n    from mpi4py import MPI\n    from time import sleep\n    #  MPI values.\n    comm = MPI.COMM_WORLD\n    rank = comm.Get_rank()\n    mpi_size = comm.Get_size()\n    name = MPI.Get_processor_name()\n    sleep(rank * 0.25)\n\n    size = Config.get('grid_options', 'size')\n\n    grid_dir = os.path.join(Config.get('PATH', 'grid_dir'), str(size))\n\n    table_dir = os.path.join(\n        Config.get('PATH', 'table_dir'),\n        'table_bin_output', str(size))\n\n    if not os.path.isdir(table_dir):\n        os.mkdir(table_dir)\n\n    grid_files = [fh for fh in os.listdir(grid_dir) if fh.endswith('.npy')]\n    if len(grid_files) != mpi_size:\n        print(mpi_size, len(grid_dir))\n        exit()\n\n    table_binMPI(grid_files[rank])\n\n    from astropy.table import join as tjoin\n    import ebf\n    import sys\n\n    halos = Config.get('Default_halos', 'halos').split(',')\n\n    table_mergeMPI(halos[rank])\n",
+			"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/table_bin.py",
+			"file_size": 27724,
+			"file_write_time": 131484393344746493,
 			"settings":
 			{
-				"buffer_size": 19808,
+				"buffer_size": 27416,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "skysearcher/skysearcher.py",
+			"contents": "'''[summary]\n\n[description]\n\nAttributes\n----------\ntry: : {[type]}\n    [description]\nexcept ValueError, e: : {[type]}\n    [description]\nsys_config_fh : {[type]}\n    [description]\nSysConfig : {[type]}\n    [description]\nSysConfig.read(sys_config_fh) : {[type]}\n    [description]\nconfig_fh : {[type]}\n    [description]\nConfig : {[type]}\n    [description]\nConfig.read(config_fh) : {[type]}\n    [description]\nif __name__ : {[type]}\n    [description]\n'''\n\nfrom __future__ import absolute_import\nfrom __future__ import division\nfrom __future__ import print_function\n\nimport os\n\nimport time\n\nfrom numpy import asarray\nfrom numpy import float16\nfrom numpy import float32\nfrom numpy import float64\nfrom numpy import int16\nfrom numpy import int32\nfrom numpy import int64\nfrom numpy import save\nfrom numpy import sqrt\nfrom numpy import square\nfrom numpy import uint16\nfrom numpy import unique\n\ntry:\n    from .functions import load_data_arr\n    from .functions import load_ab_mags\n    from .functions import load_positions\n    from .functions import apparent_magnitude\n    from .functions import calculate_abs_mag\n    from .functions import load_satid\n    from .new_config import SYS_CFG_FNAME\n\nexcept ValueError, e:\n    from skysurvey.functions import load_data_arr\n    from skysurvey.functions import load_ab_mags\n    from skysurvey.functions import load_positions\n    from skysurvey.functions import apparent_magnitude\n    from skysurvey.functions import calculate_abs_mag\n    from skysurvey.functions import load_satid\n    from skysurvey.new_config import SYS_CFG_FNAME\n\nfrom c_functions import bin as bf\nfrom c_functions import find_dlims\nfrom c_functions import integerize\nfrom c_functions import rotate\nfrom c_functions import trippel_rotate\n\nfrom astropy.table import Column\nfrom astropy.table import Table\n\nimport ConfigParser\n\nimport skysurvey\n\nsys_config_fh = os.path.join(os.path.dirname(\n    os.path.realpath(skysurvey.__file__)), SYS_CFG_FNAME)\nSysConfig = ConfigParser.ConfigParser()\nSysConfig.read(sys_config_fh)\nconfig_fh = SysConfig.get('skysurvey_global_settings', 'config_fh')\nConfig = ConfigParser.ConfigParser()\nConfig.read(config_fh)\n\n\ndef window_size():\n\n    from ctypes import windll, create_string_buffer\n\n    # stdin handle is -10\n    # stdout handle is -11\n    # stderr handle is -12\n\n    h = windll.kernel32.GetStdHandle(-12)\n    csbi = create_string_buffer(22)\n    res = windll.kernel32.GetConsoleScreenBufferInfo(h, csbi)\n\n    if res:\n        import struct\n        (bufx, bufy,\n         curx, cury, wattr,\n         left, top, right, bottom,\n         maxx, maxy) = struct.unpack(\"hhhhHhhhhhh\", csbi.raw)\n        sizex = right - left + 1\n        sizey = bottom - top + 1\n    else:\n        # can't determine actual size - return default values\n        sizex, sizey = 80, 25\n\n    return sizex, sizey\n\n\ndef display(arr, to_print=False, log=False):\n    if log:\n\n        if not 'log10' in dir():\n            from numpy import log10\n        arr = log10(arr[arr != 0.0])\n    msg_0 = 'min:' + str(round(arr.min(), 2))\n    msg_1 = ' - mean:' + str(round(arr.mean(), 2))\n    msg_2 = ' - max:' + str(round(arr.max(), 2))\n    msg_3 = ' - std:' + str(round(arr.std(), 2))\n    msg_4 = ' - len:' + str(len(arr.flatten()))\n    msg = msg_0 + msg_1 + msg_2 + msg_3 + msg_4\n    if to_print:\n        print(msg)\n    else:\n        return str(msg)\n\n\ndef _spin(halo, _m_lims=None, _distance_mpc=None, _fname=None, \n          _filter_type=None, table=True):\n    if _m_lims == None:\n        mag_list = [float(lim) for name, lim in\n                    Config.items('Default_magnitude_limits')]\n        _m_lims = asarray(\n            mag_list,\n            dtype=float64)\n    if _distance_mpc == None:\n        _distance_mpc = Config.getfloat('Distance', 'd_mpc')\n    if _filter_type == None:\n        _filter_type = Config.get('Filter', 'filter_type')\n    ab_mag_arr = load_ab_mags(\n        halo,\n        f_type=_filter_type)\n    abs_mag_limit = calculate_abs_mag(\n        distance=_distance_mpc,\n        _f_type=_filter_type)\n    d_limits = find_dlims(\n        ab_mag_arr,\n        asarray([abs_mag_limit], dtype=float64))\n    app_mags = apparent_magnitude(ab_mag_arr, _distance_mpc)\n    r_px, r_py, r_pz = trippel_rotate(load_positions(halo, d_limits))\n    integer_x_arr, intiger_y_arr = integerize(r_px, r_py)\n    proj_rads = sqrt(square(r_px) + square(r_py))\n    satids = load_satid(halo, d_limits)\n    if table:\n        d_table = Table()\n        d_table.meta['spin_bin_creation_time'] = time.ctime()\n        d_table.meta['grid_fh'] = _fname\n        d_table.meta['halo'] = halo\n        d_table.meta['abm_lim'] = str(round(abs_mag_limit, 2))\n        d_table.meta['m_lims'] = _m_lims\n        d_table.meta['d_mpc'] = _distance_mpc\n        d_table.meta['f_type'] = _filter_type\n        d_table.meta['satids'] = unique(satids).tolist()\n        d_table.meta['sat0'] = str(satids.min())\n        d_table.meta['sat1'] = str(satids.max())\n        d_table.meta['n_sats'] = len(unique(satids))\n        d_table.add_columns([\n            Column(\n                data=ab_mag_arr[d_limits].astype(float16),\n                name='ab_mag_arr',\n                description=display(ab_mag_arr[d_limits]),\n                unit='ABmag'),\n            Column(\n                data=app_mags[d_limits].astype(\n                    float16),\n                name='app_mags',\n                description=display(app_mags[d_limits]),\n                unit='mag'),\n            Column(\n                data=r_px.astype(float16),\n                name='px',\n                description=display(r_px),\n                unit='kiloparsec'),\n            Column(\n                data=r_py.astype(float16),\n                name='py',\n                description=display(r_py),\n                unit='kiloparsec'),\n            Column(\n                data=integer_x_arr.astype(uint16),\n                name='x_int',\n                unit='int16'),\n            Column(\n                data=intiger_y_arr.astype(uint16),\n                name='y_int',\n                unit='int16'),\n            Column(\n                data=satids.astype(uint16),\n                name='satids',\n                description=display(satids),\n                unit='int16'),\n            Column(\n                data=load_data_arr(\n                    halo,\n                    'teff',\n                    d_limits).astype(float16),\n                name='teff',\n                unit='Kelvin'),\n            Column(\n                data=load_data_arr(\n                    halo,\n                    'feh',\n                    d_limits).astype(float16),\n                name='feh',\n                unit='dex'),\n            Column(\n                data=load_data_arr(\n                    halo,\n                    'age',\n                    d_limits).astype(float16),\n                name='age',\n                unit='Gyr'),\n            Column(\n                data=load_data_arr(\n                    halo,\n                    'alpha',\n                    d_limits).astype(float16),\n                name='alpha'),\n            Column(\n                data=load_data_arr(\n                    halo,\n                    'smass',\n                    d_limits).astype(float16),\n                name='smass',\n                unit='Msol'),\n            Column(\n                data=load_data_arr(\n                    halo,\n                    'mact',\n                    d_limits).astype(float16),\n                name='mact',\n                unit='Msol')])\n        table_save_path = os.path.join(\n            Config.get('PATH', 'table_dir'),\n            'spinbin_output',\n            Config.get('grid_options', 'size'))\n        if not os.path.isdir(table_save_path):\n            os.mkdir(table_save_path)\n        table_fh_prefix = halo + '_' + \\\n            str(_distance_mpc) + 'Mpc_' + _filter_type\n        table_fh = os.path.join(\n            table_save_path,\n            table_fh_prefix + '_table.hdf5')\n        d_table.meta['spinbin_output_fh'] = table_fh\n        d_table.write(\n            table_fh,\n            format='hdf5',\n            path='data',\n            compression=True,\n            overwrite=True,\n            serialize_meta=True)\n        d_table.pprint(\n            max_lines=100,\n            max_width=window_size()[0],\n            show_name=True,\n            show_unit=True,\n            show_dtype=True,\n            align='^')\n    return bf(\n        integer_x_arr,\n        intiger_y_arr,\n        ab_mag_arr,\n        app_mags,\n        proj_rads,\n        _m_lims,\n        satids)\n\n\ndef spinall(path=None, m_lims=None, d_mpc=None, f_type=None):\n\n    if path == None:\n        path = os.path.join(\n            Config.get('PATH', 'grid_dir'),\n            Config.get('grid_options', 'size'))\n    if m_lims == None:\n        m_lims = asarray([float(lim) for name, lim in Config.items(\n            'Default_magnitude_limits')], dtype=float64)\n    if d_mpc == None:\n        d_mpc = Config.getfloat('Distance', 'd_mpc')\n    if f_type == None:\n        f_type = Config.get('Filter', 'filter_type')\n\n    for halo in Config.get('Default_halos', 'halos').split(','):\n        filename = os.path.join(\n            path, halo + '_' + str(d_mpc) + 'Mpc_' + f_type + '_grid')\n        print('--> [ STARTING ' + halo + ' ]\\nspining and binning halo ' + halo)\n        save(filename, _spin(halo, _m_lims=m_lims, _fname=filename,\n                             _distance_mpc=d_mpc, _filter_type=f_type))\n        print(halo + ' saved : ' + filename +\n              '\\n---------------------------------\\n')\n\n\ndef spinallMPI(path=None, m_lims=None, d_mpc=None, f_type=None):\n    from mpi4py import MPI\n    #  MPI values.\n    comm = MPI.COMM_WORLD\n    rank = comm.Get_rank()\n    mpi_size = comm.Get_size()\n    name = MPI.Get_processor_name()\n    from time import sleep\n    sleep(rank * 0.5)\n    if path == None:\n        path = os.path.join(\n            Config.get('PATH', 'grid_dir'),\n            Config.get('grid_options', 'size'))\n    if m_lims == None:\n        m_lims = asarray([float(lim) for name, lim in Config.items(\n            'Default_magnitude_limits')], dtype=float64)\n    if d_mpc == None:\n        d_mpc = Config.getfloat('Distance', 'd_mpc')\n    if f_type == None:\n        f_type = Config.get('Filter', 'filter_type')\n\n    halos = Config.get('Default_halos', 'halos').split(',')\n    assert len(halos) == mpi_size\n\n    halo = halos[rank]\n    filename = os.path.join(\n        path, halo + '_' + str(d_mpc) + 'Mpc_' + f_type + '_grid')\n    print('--> [ STARTING ' + halo + ' ]\\nspining and binning halo ' + halo)\n    save(filename, _spin(halo, _m_lims=m_lims, _fname=filename,\n         _distance_mpc=d_mpc, _filter_type=f_type))\n\n\ndef spinone(halo, path=None, m_lims=None, d_mpc=None, f_type=None):\n\n    if path == None:\n        path = Config.get('PATH', 'grid_dir')\n    if m_lims == None:\n        m_lims = asarray([float(lim) for name, lim in Config.items(\n            'Default_magnitude_limits')], dtype=float64)\n    if d_mpc == None:\n        d_mpc = Config.getfloat('Distance', 'd_mpc')\n    if f_type == None:\n        f_type = Config.get('Filter', 'filter_type')\n\n    filename = os.path.join(\n        path, halo + '_' + str(d_mpc) + 'Mpc_' + f_type + '_grid')\n    print('spining and binning halo ' + halo)\n    save(filename, _spin(halo, _m_lims=m_lims,\n                         _distance_mpc=d_mpc, _filter_type=f_type))\n    print(halo + ' saved : ' + filename +\n          '\\n---------------------------------\\n')\n\n\ndef nospin_binall(path=None, m_lims=None, d_mpc=None, f_type=None, table='normal'):\n\n    if path == None:\n        path = os.path.join(\n            Config.get('PATH', 'grid_dir'),\n            Config.get('grid_options', 'size'))\n        if not os.path.isdir(path):\n            os.mkdir(path)\n\n    if m_lims == None:\n        m_lims = asarray(\n            [float(lim) for name, lim in\n             Config.items(\n                'Default_magnitude_limits')],\n            dtype=float64)\n\n    if d_mpc == None:\n        d_mpc = Config.getfloat('Distance', 'd_mpc')\n\n    if f_type == None:\n        f_type = Config.get('Filter', 'filter_type')\n\n    for halo in Config.get('Default_halos', 'halos').split(','):\n\n        filename = os.path.join(\n            path,\n            halo + '_' + str(d_mpc) + 'Mpc_' + f_type + '_grid')\n        print('filename:', filename)\n\n        print('prepairing arrays')\n        ab_mag_arr = load_ab_mags(halo)\n        abs_mag_limit = calculate_abs_mag(\n            distance=d_mpc,\n            _f_type=f_type)\n        d_limits = find_dlims(\n            ab_mag_arr,\n            asarray([abs_mag_limit], dtype=float64))\n        app_mags = apparent_magnitude(ab_mag_arr, d_mpc)\n        px, py, pz = load_positions(halo, d_limits)\n        integer_x_arr, intiger_y_arr = integerize(px, py)\n        proj_rads = sqrt(square(px) + square(py))\n        satids = load_satid(halo, d_limits)\n        save(filename, bf(\n            integer_x_arr,\n            intiger_y_arr,\n            ab_mag_arr,\n            app_mags,\n            proj_rads,\n            m_lims,\n            satids))\n\n        print(halo + ' saved : ' + filename +\n              '\\n---------------------------------\\n')\n\n        if table == 'normal':\n\n            print('starting table')\n            d_table = Table()\n            d_table.meta['spin_bin_creation_time'] = time.ctime()\n            d_table.meta['grid_fh'] = filename\n            d_table.meta['halo'] = halo\n            d_table.meta['abm_lim'] = str(round(abs_mag_limit, 2))\n            d_table.meta['m_lims'] = m_lims\n            d_table.meta['d_mpc'] = d_mpc\n            d_table.meta['f_type'] = f_type\n            d_table.meta['satids'] = unique(satids).tolist()\n            d_table.meta['sat0'] = str(satids.min())\n            d_table.meta['sat1'] = str(satids.max())\n            d_table.meta['n_sats'] = len(unique(satids))\n\n            print('table created')\n            for k in d_table.meta.keys():\n                print('  --> ', k, ':', d_table.meta[k])\n\n            print('loading column data')\n            d_table.add_columns([\n                Column(\n                    data=ab_mag_arr[d_limits].astype(float16),\n                    name='ab_mag_arr',\n                    description=display(ab_mag_arr[d_limits]),\n                    unit='ABmag'),\n                Column(\n                    data=app_mags[d_limits].astype(\n                        float16),\n                    name='app_mags',\n                    description=display(app_mags[d_limits]),\n                    unit='mag'),\n                Column(\n                    data=px.astype(float16),\n                    name='px',\n                    description=display(px),\n                    unit='kiloparsec'),\n                Column(\n                    data=py.astype(float16),\n                    name='py',\n                    description=display(py),\n                    unit='kiloparsec'),\n                Column(\n                    data=pz.astype(float16),\n                    name='pz',\n                    description=display(pz),\n                    unit='kiloparsec'),\n                Column(\n                    data=integer_x_arr.astype(uint16),\n                    name='x_int',\n                    unit='int16'),\n                Column(\n                    data=intiger_y_arr.astype(uint16),\n                    name='y_int',\n                    unit='int16'),\n                Column(\n                    data=proj_rads.astype(float16),\n                    name='r_proj',\n                    description=display(proj_rads),\n                    unit='kpc'),\n                Column(\n                    data=satids.astype(uint16),\n                    name='satids',\n                    description=display(satids),\n                    unit='int16'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'teff',\n                        d_limits).astype(float16),\n                    name='teff',\n                    unit='Kelvin'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'feh',\n                        d_limits).astype(float16),\n                    name='feh',\n                    unit='dex'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'age',\n                        d_limits).astype(float16),\n                    name='age',\n                    unit='Gyr'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'alpha',\n                        d_limits).astype(float16),\n                    name='alpha'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'smass',\n                        d_limits).astype(float16),\n                    name='smass',\n                    unit='Msol'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'mact',\n                        d_limits).astype(float16),\n                    name='mact',\n                    unit='Msol')])\n\n            print('column data loaded')\n            for k in d_table.keys():\n                print('  -->', k, ':', d_table[k].description)\n\n            table_save_path = os.path.join(\n                Config.get('PATH', 'table_dir'),\n                'spinbin_output',\n                Config.get('grid_options', 'size'))\n\n            print('save path :', table_save_path)\n            if not os.path.isdir(table_save_path):\n                print('making new dir:', table_save_path)\n                os.mkdir(table_save_path)\n                print('done')\n\n            table_fh_prefix = halo + '_' + str(d_mpc) + 'Mpc_' + f_type\n            table_fh = os.path.join(\n                table_save_path,\n                table_fh_prefix + '_table.hdf5')\n            print('table file handel:', table_fh)\n\n            d_table.meta['spinbin_output_fh'] = table_fh\n\n            print('writing table')\n            d_table.write(\n                table_fh,\n                format='hdf5',\n                path='data',\n                compression=True,\n                overwrite=True,\n                serialize_meta=True)\n\n            d_table.pprint(\n                max_lines=100,\n                max_width=window_size()[0],\n                show_name=True,\n                show_unit=True,\n                show_dtype=True,\n                align='^')\n            print('done')\n            print(d_table.info())\n\n        if table == 'lite':\n\n            print('starting table')\n            d_table = Table()\n            cmd_table = Table()\n            pos_table = Table()\n\n            pos_table.meta['halo'] = halo\n            pos_table.meta['abm_lim'] = str(round(abs_mag_limit, 2))\n            pos_table.meta['m_lims'] = [str(i) for i in m_lims.tolist()]\n            pos_table.meta['d_mpc'] = d_mpc\n            pos_table.meta['f_type'] = f_type\n            # d_table.meta['satids'] = unique(satids).tolist()\n            pos_table.meta['sat0'] = str(satids.min())\n            pos_table.meta['sat1'] = str(satids.max())\n            pos_table.meta['n_sats'] = len(unique(satids))\n\n            cmd_table.meta['halo'] = halo\n            cmd_table.meta['abm_lim'] = str(round(abs_mag_limit, 2))\n            cmd_table.meta['m_lims'] = [str(i) for i in m_lims.tolist()]\n            cmd_table.meta['d_mpc'] = d_mpc\n            cmd_table.meta['f_type'] = f_type\n            # d_table.meta['satids'] = unique(satids).tolist()\n            cmd_table.meta['sat0'] = str(satids.min())\n            cmd_table.meta['sat1'] = str(satids.max())\n            cmd_table.meta['n_sats'] = len(unique(satids))\n\n            # d_table.meta['spin_bin_creation_time'] = time.ctime()\n            # d_table.meta['grid_fh'] = filename\n            d_table.meta['halo'] = halo\n            d_table.meta['abm_lim'] = str(round(abs_mag_limit, 2))\n            d_table.meta['m_lims'] = [str(i) for i in m_lims.tolist()]\n            d_table.meta['d_mpc'] = d_mpc\n            d_table.meta['f_type'] = f_type\n            # d_table.meta['satids'] = unique(satids).tolist()\n            d_table.meta['sat0'] = str(satids.min())\n            d_table.meta['sat1'] = str(satids.max())\n            d_table.meta['n_sats'] = len(unique(satids))\n\n            print('table created')\n            for k in d_table.meta.keys():\n                print('  --> ', k, ':', d_table.meta[k])\n            print('loading column data')\n            # load_data_arr(halo_name, data_key, lim)\n\n            for filter_type, limit in Config.items('Filter_limits'):\n                mag_arr = load_ab_mags(halo, f_type=filter_type)\n                ap_mag_arr = apparent_magnitude(mag_arr, d_mpc)\n                cmd_table.add_column(\n                    Column(\n                        data=ap_mag_arr[d_limits].astype(float16),\n                        name='m_' + filter_type,\n                        unit='mag'))\n\n            pos_table.add_columns([\n                Column(\n                    data=px.astype(float16),\n                    name='py',\n                    description=display(px),\n                    unit='kiloparsec'),\n                Column(\n                    data=py.astype(float16),\n                    name='px',\n                    description=display(py),\n                    unit='kiloparsec')])\n\n            d_table.add_columns([\n                Column(\n                    data=integer_x_arr.astype(uint16),\n                    name='y_int',\n                    unit='int16'),\n                Column(\n                    data=intiger_y_arr.astype(uint16),\n                    name='x_int',\n                    unit='int16'),\n                Column(\n                    data=satids.astype(uint16),\n                    name='satids',\n                    description=display(satids),\n                    unit='int16'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'feh',\n                        d_limits).astype(float16),\n                    name='feh',\n                    unit='dex'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'age',\n                        d_limits).astype(float16),\n                    name='age',\n                    unit='Gyr'),\n                Column(\n                    data=load_data_arr(\n                        halo,\n                        'mact',\n                        d_limits).astype(float16),\n                    name='mact',\n                    unit='Msol')])\n            table_save_path = os.path.join(Config.get(\n                'PATH', 'table_dir'), 'spinbin_output')\n            if not os.path.isdir(table_save_path):\n                os.mkdir(table_save_path)\n\n            table_dir = os.path.join(table_save_path, str(\n                Config.get('grid_options', 'size')))\n            if not os.path.isdir(table_dir):\n                os.mkdir(table_dir)\n            table_fh = os.path.join(\n                table_save_path, halo + '_' + str(d_mpc) + 'Mpc_' + f_type + '_table.hdf5')\n            print('table file handel:', table_fh)\n            d_table.meta['spinbin_output_fh'] = table_fh\n            print('writing table')\n            d_table.write(table_fh, format='hdf5', path='data', compression=True,\n                          overwrite=True, serialize_meta=True)\n            cmd_table_fh = os.path.join(\n                table_save_path, halo + '_' + str(d_mpc) + 'Mpc_CMD_table.hdf5')\n            cmd_table.write(cmd_table_fh, format='hdf5', path='data',\n                            compression=True, overwrite=True, serialize_meta=True)\n            pos_table_fh = os.path.join(\n                table_save_path, halo + '_' + str(d_mpc) + 'Mpc_pxpy_table.hdf5')\n            pos_table.write(pos_table_fh, format='hdf5', path='data',\n                            compression=True, overwrite=True, serialize_meta=True)\n\n\nif __name__ == '__main__':\n\n    spinallMPI()\n",
+			"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/spinbin.py",
+			"file_size": 23876,
+			"file_write_time": 131484364206047433,
 			"settings":
 			{
-				"buffer_size": 11008,
+				"buffer_size": 24025,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
+			"settings":
+			{
+				"buffer_size": 16065,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/swc21/skysurvey/setup.cfg",
+			"settings":
+			{
+				"buffer_size": 1671,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "#! /usr/bin/env python\n'''\nWFIRST Infrared Nearby Galaxies Test Image Product Simulator.\nProduces input files for the WFIRTS STIPS simulator.\n'''\nimport time\nimport numpy as np\nfrom astropy import wcs\nfrom astropy.io import fits\nfrom astropy.io import ascii as astro_ascii\nfrom astropy.table import Table\n\nclass WingTips:\n\n    '''[summary]\n    \n    [description]\n    '''\n\n    def __init__(self, infile=[], center=[0, 0]):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        0] : {[type]}\n            [description]\n        infile : {list}, optional\n            [description] (the default is [], which [default_description])\n        center : {list}, optional\n            [description] (the default is [0, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        if len(infile) == 0:\n            self.tab = np.array([])\n        else:\n            if isinstance(infile, str):\n                infile = [infile]\n            self.tab = WingTips.read_stips(infile[0])\n            if len(infile) > 1:\n                for i in range(1, len(infile)):\n                    _tab = WingTips.read_stips(infile[i])\n                    self.tab = np.vstack((self.tab, _tab))\n            center = WingTips.get_center(self.tab[:, 0], self.tab[:, 1])\n        self.center = center\n        self.n = self.tab.shape[0]\n        self.infile = infile\n        return None\n\n    def strip_radec(self, hasID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _i = int(hasID)\n        self.tab = np.delete(self.tab, [_i, _i + 1], 1)\n        return None\n\n    def attach_radec(self, radec, hasID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        radec : {[type]}\n            [description]\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        \n        Raises\n        ------\n        ValueError\n            [description]\n        '''\n        if self.n != radec.shape[0]:\n            raise ValueError('Number of RA-DEC does not match sources')\n        _i = int(hasID)\n        self.tab = np.insert(self.tab, _i, radec.T, 1)\n        self.center = WingTips.get_center(radec[:, 0 + _i], radec[:, 1 + _i])\n        return None\n\n    def replace_radec(self, radec, hasID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        radec : {[type]}\n            [description]\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        self.strip_radec(hasID)\n        self.attach_radec(radec, hasID)\n        return None\n\n    def random_radec_for(self, other, shape=(4096, 4096), sample=False, n=0,\n                         hasID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        other : {[type]}\n            [description]\n        shape : {tuple}, optional\n            [description] (the default is (4096, 4096), which [default_description])\n        sample : {bool}, optional\n            [description] (the default is False, which [default_description])\n        n : {number}, optional\n            [description] (the default is 0, which [default_description])\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _i = int(hasID)\n        try:\n            if other.endswith('.fits'):\n                return WingTips.random_radec(self.n, imfile=other)\n        except AttributeError:\n            if ~sample:\n                return WingTips.random_radec(self.n, center=other.center)\n            elif not ~bool(n):\n                return WingTips.sample_radec(\n                    n=self.n,\n                    radec1=False,\n                    radec2=other.tab[:, _i:_i + 1])\n            else:\n                return WingTips.sample_radec(\n                    n=n,\n                    radec1=self.tab[:, _i:_i + 1],\n                    radec2=other.tab[:, _i:_i + 1])\n\n    def merge_with(self, other, hasRADEC=True, hasID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        other : {[type]}\n            [description]\n        hasRADEC : {bool}, optional\n            [description] (the default is True, which [default_description])\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        \n        Raises\n        ------\n        ValueError\n            [description]\n        '''\n        if self.tab.shape[1] != other.tab.shape[1]:\n            raise ValueError('Number of columns does not match',\n                             self.tab.shape[1],\n                             other.tab.shape[1])\n        self.tab = np.vstack((self.tab, other.tab))\n        self.n = self.tab.shape[0]\n        self.infile.append(other.infile)\n        _i = int(hasID)\n        if hasRADEC:\n            self.center = WingTips.get_center(\n                self.tab[:, 0 + _i],\n                self.tab[:, 1 + _i])\n        return None\n\n    def flux_to_Sb(self, hasRADEC=True, hasID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        hasRADEC : {bool}, optional\n            [description] (the default is True, which [default_description])\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _i = int(hasID)\n        if hasRADEC:\n            _i = _i + 2\n        _f = self.tab[:, _i].astype(float)\n        _r = self.tab[:, _i + 3].astype(float)\n        _a = self.tab[:, _i + 5].astype(float)\n        _s = (0.5 * _f) / (np.pi * _r**2 * _a)\n        self.tab = np.delete(self.tab, _i, 1)\n        self.tab = np.insert(self.tab, _i, _s.T, 1)\n        return None\n\n    def write_stips(self, outfile='temp.txt', hasID=False, hasCmnt=False,\n                    saveID=False, ipac=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        outfile : {str}, optional\n            [description] (the default is 'temp.txt', which [default_description])\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        hasCmnt : {bool}, optional\n            [description] (the default is False, which [default_description])\n        saveID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        ipac : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _tab = WingTips.get_tabular(self.tab, hasID, hasCmnt, saveID)\n        _nms = ('id',  'ra',    'dec',   'flux',  'type',\n                'n',   're',    'phi',   'ratio', 'notes')\n        _fmt = ('%10d', '%15.7f', '%15.7f', '%15.7f', '%8s',\n                '%10.3f', '%15.7f', '%15.7f', '%15.7f', '%8s')\n        _t = Table(_tab, names=_nms)\n        if ipac:\n            astro_ascii.write(_t, outfile, format='ipac',\n                              formats=dict(zip(_nms, _fmt)))\n        else:\n            astro_ascii.write(_t, outfile,\n                              format='fixed_width',\n                              delimiter='',\n                              formats=dict(zip(_nms, _fmt)))\n        return print('Wrote out %s \\n' % outfile)\n\n    @staticmethod\n    def from_scratch(flux, ra=[], dec=[], center=[], ID=[], Type=[], n=[],\n                     re=[], phi=[], ratio=[], notes=[],\n                     outfile=''):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        flux : {[type]}\n            [description]\n        ra : {list}, optional\n            [description] (the default is [], which [default_description])\n        dec : {list}, optional\n            [description] (the default is [], which [default_description])\n        center : {list}, optional\n            [description] (the default is [], which [default_description])\n        ID : {list}, optional\n            [description] (the default is [], which [default_description])\n        Type : {list}, optional\n            [description] (the default is [], which [default_description])\n        n : {list}, optional\n            [description] (the default is [], which [default_description])\n        re : {list}, optional\n            [description] (the default is [], which [default_description])\n        phi : {list}, optional\n            [description] (the default is [], which [default_description])\n        ratio : {list}, optional\n            [description] (the default is [], which [default_description])\n        notes : {list}, optional\n            [description] (the default is [], which [default_description])\n        outfile : {str}, optional\n            [description] (the default is '', which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _temp = WingTips()\n        _temp.n = len(flux)\n        _temp.infile = ['fromScratch']\n\n        if len(center) > 0:\n            _temp.center = center\n            if len(ra) == 0:\n                radec = _temp.random_radec_for(_temp)\n                ra, dec = radec[:, 0], radec[:, 1]\n        elif ((len(ra) == len(dec)) & (len(ra) > 0)):\n            _temp.center = WingTips.get_center(\n                np.array(ra),\n                np.array(dec))\n        else:\n            raise ValueError('Provide valid coordinate or center')\n\n        if ((len(Type) == 0) | (Type is 'point') | (Type is 'sersic')):\n            if ((len(Type) == 0) | (Type is 'point')):\n                Type = np.repeat(np.array(['point']), len(flux))\n                _ones = np.ones_like(flux)\n                n, re, phi, ratio = _ones, _ones, _ones, _ones\n            elif (Type == 'sersic'):\n                Type = np.repeat(np.array(['sersic']), len(flux))\n        elif (len(Type) == len(flux)):\n            Type = np.array(Type)\n\n        _tab = np.array([ra, dec, flux, Type, n, re, phi, ratio]).T\n\n        if (len(ID) == len(flux)):\n            _tab = np.hstack((np.array(ID, ndmin=2).T, _tab))\n        if (len(notes) == len(flux)):\n            _tab = np.hstack((_tab, np.array(notes, ndmin=2).T))\n\n        _temp.tab = np.array(_tab)\n\n        if outfile is '':\n            return _temp\n        else:\n            _temp.write_stips(outfile,\n                              hasID=bool(ID),\n                              hasCmnt=bool(notes),\n                              saveID=bool(ID))\n            return None\n\n    @staticmethod\n    def read_stips(infile, getRADEC=True, getID=False, getCmnt=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        infile : {[type]}\n            [description]\n        getRADEC : {bool}, optional\n            [description] (the default is True, which [default_description])\n        getID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        getCmnt : {bool}, optional\n            [description] (the default is False, which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _tab = []\n        _infile = astro_ascii.read(infile)\n        print('\\nRead in %s \\n' % infile)\n\n        if getID:\n            _tab.append(_infile['id'])\n        if getRADEC:\n            _tab.append(_infile['ra'])\n            _tab.append(_infile['dec'])\n\n        _tab.append(_infile['flux'])\n        _tab.append(_infile['type'])\n        _tab.append(_infile['n'])\n        _tab.append(_infile['re'])\n        _tab.append(_infile['phi'])\n        _tab.append(_infile['ratio'])\n\n        if getCmnt:\n            _tab.append(_infile['comment'])\n\n        return np.array(_tab).T\n\n    @staticmethod\n    def get_tabular(_tab, hasID=False, hasCmnt=False, saveID=False):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        _tab : {[type]}\n            [description]\n        hasID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        hasCmnt : {bool}, optional\n            [description] (the default is False, which [default_description])\n        saveID : {bool}, optional\n            [description] (the default is False, which [default_description])\n        '''\n        _i = int(hasID)\n        if ~saveID:\n            _n = _tab.shape[0]\n            _ID = np.array(np.linspace(1, _n, _n), ndmin=2).T\n            _tab = np.hstack((_ID, _tab[:, _i:]))\n        if ~hasCmnt:\n            _cmnt = np.array(\n                np.repeat(\n                    np.array(['comment']), _tab.shape[0],), ndmin=2).T\n            _tab = np.hstack((_tab, _cmnt))\n        return [_tab[:, 0].astype(float),\n                _tab[:, 1].astype(float),\n                _tab[:, 2].astype(float),\n                _tab[:, 3].astype(float),\n                _tab[:, 4],\n                _tab[:, 5].astype(float),\n                _tab[:, 6].astype(float),\n                _tab[:, 7].astype(float),\n                _tab[:, 8].astype(float),\n                _tab[:, 9]]\n\n    @staticmethod\n    def create_wcs(centers=[0, 0], crpix=[2048, 2048],\n                   cdelt=[-0.11 / 3600, 0.11 / 3600],\n                   cunit=['deg', 'deg'], ctype=['RA-TAN', 'DECTAN'],\n                   lonpole=180, latpole=24.333335, equinox=2000.0,\n                   radesys='ICRS'):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        0] : {[type]}\n            [description]\n        2048] : {[type]}\n            [description]\n        0.11 / 3600] : {[type]}\n            [description]\n        'deg'] : {[type]}\n            [description]\n        'DECTAN'] : {[type]}\n            [description]\n        centers : {list}, optional\n            [description] (the default is [0, which [default_description])\n        crpix : {list}, optional\n            [description] (the default is [2048, which [default_description])\n        cdelt : {list}, optional\n            [description] (the default is [-0.11 / 3600, which [default_description])\n        cunit : {list}, optional\n            [description] (the default is ['deg', which [default_description])\n        ctype : {list}, optional\n            [description] (the default is ['RA-TAN', which [default_description])\n        lonpole : {number}, optional\n            [description] (the default is 180, which [default_description])\n        latpole : {number}, optional\n            [description] (the default is 24.333335, which [default_description])\n        equinox : {number}, optional\n            [description] (the default is 2000.0, which [default_description])\n        radesys : {str}, optional\n            [description] (the default is 'ICRS', which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _w = wcs.WCS()\n        _w.wcs.cdelt = cdelt\n        _w.wcs.crpix = crpix\n        _w.wcs.crval = centers\n        _w.wcs.cunit = cunit\n        _w.wcs.ctype = ctype\n        _w.wcs.lonpole = lonpole\n        _w.wcs.latpole = latpole\n        _w.wcs.radesys = radesys\n        _w.wcs.equinox = equinox\n        return _w\n\n    @staticmethod\n    def read_wcs(imfile):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        imfile : {[type]}\n            [description]\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        print('Getting coordinates from %s \\n' % imfile)\n        return wcs.WCS(fits.open(imfile)[1].header)\n\n    @staticmethod\n    def random_radec(n=10, center=[0, 0], shape=(4096, 4096), imfile=''):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        0] : {[type]}\n            [description]\n        n : {number}, optional\n            [description] (the default is 10, which [default_description])\n        center : {list}, optional\n            [description] (the default is [0, which [default_description])\n        shape : {tuple}, optional\n            [description] (the default is (4096, 4096), which [default_description])\n        imfile : {str}, optional\n            [description] (the default is '', which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        _xy = np.random.rand(n, 2) * shape\n        if imfile is not '':\n            _w = WingTips.read_wcs(imfile)\n        else:\n            _w = WingTips.create_wcs(center)\n        return _w.wcs_pix2world(_xy, 1)\n\n    @staticmethod\n    def sample_radec(n=10, radec1=False, radec2=[]):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        n : {number}, optional\n            [description] (the default is 10, which [default_description])\n        radec1 : {bool}, optional\n            [description] (the default is False, which [default_description])\n        radec2 : {list}, optional\n            [description] (the default is [], which [default_description])\n        \n        Returns\n        -------\n        [type]\n            [description]\n        '''\n        in2 = np.random.randint(0, radec2.shape[0], n)\n        if ~radec1:\n            return radec2[in2, :]\n        else:\n            in1 = np.random.randint(0, radec1.shape[0], n)\n            radec1[in1, :] = radec2[in2, :]\n            return radec1\n\n    @staticmethod\n    def get_center(ra, dec):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        ra : {[type]}\n            [description]\n        dec : {[type]}\n            [description]\n        Returns\n        -------\n        list\n            [description]\n        '''\n        return [ra.astype(float).mean(), dec.astype(float).mean()]\n\n    @staticmethod\n    def get_counts(mag, ZP, dist=0, AB_Vega=0):\n        '''[summary]\n        \n        [description]\n        \n        Parameters\n        ----------\n        mag : {[type]}\n            [description]\n        ZP : {[type]}\n            [description]\n        dist : {number}, optional\n            [description] (the default is 0, which [default_description])\n        AB_Vega : {number}, optional\n            [description] (the default is 0, which [default_description])\n        \n        Returns\n        -------\n        number\n            [description]\n        '''\n        if bool(dist):\n            print('\\nDistance is d = %4.2f Mpc\\n' % dist)\n            u = 25 + 5 * np.log10(dist)\n            mag = mag + u\n        if bool(AB_Vega):\n            mag = mag + AB_Vega\n        return 10**((mag - ZP) / (-2.5))\n",
+			"file": "/C/Users/swc21/GitHub/starcat/starcat/rubab/For_Sol-20170826T210509Z-001/For_Sol/wingtips.py",
+			"file_size": 15545,
+			"file_write_time": 131483907817043678,
+			"settings":
+			{
+				"buffer_size": 19612,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "#! /usr/bin/env python\n'''\nRead in stellar catalogs from simulations with Absolute AB mags and\nbackground galaxy catalogs. Using the WingsTips lib, produce mixed list\nof objects including stars and appropriate sampling of background\ngalaxies in STIPS input format\n'''\n\nfrom wingtips import WingTips as stips\nfrom wingtips import time, np, ascii\n\nfiles = ['h15.shell.1Mpc.in', 'h15.shell.3Mpc.in',\n             'h15.shell.5Mpc.in', 'h15.shell.10Mpc.in']\nZP_AB = np.array([26.365, 26.357, 26.320, 26.367, 25.913])\nfilters = ['Z087', 'Y106', 'J129', 'H158', 'F184']\n\n\ndef make_stips():\n    '''\n    Returns:\n        NoneType\n    '''\n    # Step through files in \"files\".\n    for i, infile in enumerate(files):\n\n        # File handle prefix for later (starpre).\n        starpre = '_'.join(infile.split('.')[:-1])\n\n        # Extract distance Mpc from filename (dist).\n        dist = float(infile.split('.')[2][:-3])\n\n        # Read in the data file (data) and print.\n        data = ascii.read(infile)\n        print('\\nRead in %s \\n' % infile)\n\n        # Right ascension (RA) & declination (DEC).\n        RA = data['col1']\n        DEC = data['col2']\n\n        # Magnitude array (M).\n        M = np.array([\n            data['col3'], data['col4'],\n            data['col5'], data['col6'],\n            data['col7']]).T\n\n        # What is this doing?\n        temp = [\n            stips.from_scratch(\n                flux=stips.get_counts(\n                    M[:, j],\n                    ZP_AB[j],\n                    dist=dist),\n                ra=RA,\n                dec=DEC,\n                outfile=starpre + '_' + filt[0] + '.tbl')\n            for j, filt in enumerate(filters)]\n    return None\n\n\ndef mix_stips(_fltrs=filters, _fnames=files, _outprefix='Mixed'):\n    '''[summary]\n    \n    [description]\n    \n    Parameters\n    ----------\n    _fltrs : {[type]}, optional\n        [description] (the default is filters, which [default_description])\n    _fnames : {[type]}, optional\n        [description] (the default is files, which [default_description])\n    _outprefix : {str}, optional\n        [description] (the default is 'Mixed', which [default_description])\n    \n    Returns\n    -------\n    [type]\n        [description]\n    '''\n    # Make an empty list to stash galaxies into (galaxies).\n    galaxies = []\n\n    # Step through files in \"_fnames\".\n    for i, infile in enumerate(_fnames):\n\n        # File handle prefix for later (starpre).\n        starpre = '_'.join(infile.split('.')[:-1])\n\n        # New empty list (radec).\n        radec = []\n\n        # Step through filters \"_fltrs\".\n        for j, filt in enumerate(_fltrs):\n\n            stars = stips([starpre + '_' + filt[0] + '.tbl'])\n\n            # Is this the first infile?\n            if i == 0:\n                galaxies.append(stips([filt + '.txt']))\n                galaxies[j].flux_to_Sb()\n\n            if len(radec) == 0:\n                radec = galaxies[j].random_radec_for(stars)\n\n\n            galaxies[j].replace_radec(radec)\n\n\n            stars.merge_with(galaxies[j])\n\n            # File handle (outfile).\n            outfile = '_'.join((_outprefix, starpre, filt[0])) + '.tbl'\n\n            # Write stars to file.\n            stars.write_stips(outfile, ipac=True)\n\n            # Write new catalog header to file.\n            with open(outfile, 'r+') as f:\n                content = f.read()\n                f.seek(0, 0)\n                f.write(\n                    '\\\\type = internal' + '\\n' +\n                    '\\\\filter = ' + str(filt) + '\\n' +\n                    '\\\\center = (' + str(stars.center[0]) +\n                    '  ' + str(stars.center[1]) + ')\\n' + content)\n    return None\n\nif __name__ == '__main__':\n    tic = time.time()\n    assert 3 / 2 == 1.5, 'Not running Python3 may lead to wrong results'\n    make_stips()\n    mix_stips()\n    print('\\n\\nCompleted in %.3f seconds \\n' % (time.time() - tic))\n",
+			"file": "/C/Users/swc21/GitHub/starcat/starcat/rubab/For_Sol-20170826T210509Z-001/For_Sol/make_mix.py",
+			"file_size": 3605,
+			"file_write_time": 131483908422152474,
+			"settings":
+			{
+				"buffer_size": 3877,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -585,12 +663,12 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 490.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "inst",
 		"selected_items":
 		[
 			[
-				"insta",
+				"inst",
 				"Package Control: Install Package"
 			],
 			[
@@ -598,20 +676,20 @@
 				"Package Control: Remove Package"
 			],
 			[
-				"inst",
-				"Package Control: Install Package"
+				"rem",
+				"Package Control: Remove Package"
 			],
 			[
 				"ins",
 				"Package Control: Install Package"
 			],
 			[
-				"pack",
+				"insta",
 				"Package Control: Install Package"
 			],
 			[
-				"rem",
-				"Package Control: Remove Package"
+				"pack",
+				"Package Control: Install Package"
 			],
 			[
 				"python pep",
@@ -622,7 +700,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 626.0
+		"width": 456.0
 	},
 	"console":
 	{
@@ -646,14 +724,37 @@
 	"expanded_folders":
 	[
 		"/C/Users/swc21/GitHub",
-		"/C/Users/swc21/GitHub/filesystem",
 		"/C/Users/swc21/GitHub/skysearcher",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher",
-		"/C/Users/swc21/GitHub/skysurvey",
-		"/C/Users/swc21/GitHub/skysurvey/c_functions"
+		"/C/Users/swc21/GitHub/skysurvey/c_functions",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey",
+		"/C/Users/swc21/GitHub/starcat/starcat"
 	],
 	"file_history":
 	[
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Python Imports Sorter/Default (Windows).sublime-keymap",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/Python.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Python Imports Sorter/Default.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/python_imports_sorter.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Python Fix Imports/python_fiximports.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/python_fiximports.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/User/DocblockrPython.sublime-settings",
+		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/DocBlockr_Python/DocblockrPython.sublime-settings",
+		"/C/Users/swc21/skysurvey/setup.cfg",
+		"/C/Users/swc21/GitHub/starcat/starcat/starcat_terminal.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/mpi_search.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skyfinder.py",
+		"/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearcher.py",
+		"/C/Users/swc21/GitHub/starcat/README.md",
+		"/C/Users/swc21/GitHub/starcat/starcat/rubab/For_Sol-20170826T210509Z-001/For_Sol/make_mix.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/rubab/For_Sol-20170826T210509Z-001/For_Sol/wingtips.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/new_cfg.py",
+		"/C/Users/swc21/GitHub/skysearcher/skysearcher/rc.cfg",
+		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
+		"/C/Users/swc21/GitHub/starcat/starcat/gui_plotlib.py",
+		"/C/Users/swc21/GitHub/starcat/starcat/starcat_gui.py",
 		"/C/Users/swc21/GitHub/plottest.py",
 		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo08_logfile",
 		"/C/Users/swc21/GitHub/skysearcher/skysearch.sublime-project",
@@ -661,25 +762,15 @@
 		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo05_logfile",
 		"/C/Users/swc21/skysurvey/plots/groupfinder_testplots/halo07_logfile",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/spinbin.py",
-		"/C/Users/swc21/skysurvey/setup.cfg",
-		"/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/table_bin.py",
 		"/C/Users/swc21/GitHub/skysearcher/notes.txt",
-		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearcher.py",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearcher_scratchpad.ipynb",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher/__init__.py",
-		"/C/Users/swc21/GitHub/skysearcher/skysearcher/new_cfg.py",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher/skysearch_lib.py",
 		"/C/Users/swc21/GitHub/extra_snips.py",
-		"/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
-		"/C/Users/swc21/GitHub/skysearcher/skysearcher/rc.cfg",
 		"/C/Users/swc21/GitHub/skysearcher/skysearch_lib.py",
 		"/C/Users/swc21/GitHub/skysearcher/skysearcher.py",
-		"/C/Users/swc21/GitHub/starcat/starcat/gui_plotlib.py",
-		"/C/Users/swc21/GitHub/starcat/starcat/starcat_gui.py",
-		"/C/Users/swc21/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
 		"/C/Users/swc21/GitHub/filesystem/filesystem.py",
-		"/C/Users/swc21/GitHub/starcat/README.md",
 		"/C/Users/swc21/GitHub/starcat/data/readme_png/selectunits.png",
 		"/C/Users/swc21/GitHub/starcat/data/readme_png/makecats.png",
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/functions.py",
@@ -768,20 +859,7 @@
 		"/C/Users/swc21/GitHub/skysurvey/skysurvey/cython_extentions/__init__.py",
 		"/C/Users/swc21/GitHub/skysurvey/.gitattributes",
 		"/C/Users/swc21/GitHub/skysurvey/LICENSE",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/__init__.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/gridplot.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/mainarrayplot.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/makefilesystem.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/targetlist.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/c_functions.pyx",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/spinbin.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/functions.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/.gitignore",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/grid.py",
-		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/setup.py",
-		"/C/Users/swc21/tester.py",
-		"/G/my_python_packages/skysurvey/c_functions.pyx",
-		"/G/my_python_packages/skysurvey/skysurvey/gridplot.py"
+		"/C/Users/swc21/OneDrive/Documents/my_python_packages/skysurvey/skysurvey/__init__.py"
 	],
 	"find":
 	{
@@ -796,9 +874,98 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"angular_extent",
+			"#     ",
+			"#   ",
+			"#   #   ",
+			"#   ",
+			"#       ",
+			"#   ",
+			"xbox_min",
+			"#           ",
+			"#     ",
+			"     ",
+			"#   ",
+			"#       ",
+			"xbox_min",
+			"r_start",
+			"mu_idx",
+			"filename",
+			"shuffle",
+			"#",
+			"table",
+			"table_fh",
+			"#       ",
+			"#               ",
+			"#           ",
+			"#                   ",
+			"#               ",
+			"#    ",
+			"#                       ",
+			"                                ",
+			"                               ",
+			"                              ",
+			"                             ",
+			"                            ",
+			"                           ",
+			"                          ",
+			"                         ",
+			"                        ",
+			"                       ",
+			"                           ",
+			"                          ",
+			"                         ",
+			"                        ",
+			"                       ",
+			"except",
+			"ZeroDivisionError",
+			"_colors",
+			"NoneType",
+			"--",
+			"[description]",
+			"filternames",
+			"filenames",
+			"Table",
+			"====================================+====================================",
+			"    #",
+			"        # ",
+			"    # ",
+			"        #",
+			"                # ",
+			"config",
+			"msg_rcfile_select",
+			"msg_exit_wrongdir",
+			"save_record_table",
+			"record_table",
+			"                    # ",
+			"                        # ",
+			"                    # ",
+			"                # ",
+			"                        # ",
+			"                            # ",
+			"                        # ",
+			"                    #",
+			"                #",
+			"            #",
+			"        #",
+			"                        #",
+			"ascii",
+			"count_satids",
+			"grid",
+			"_points",
+			"_extent",
+			"segment",
+			"mu",
+			"alims",
+			"_grid",
+			"_grid_fh",
+			"r_1",
+			"r_0",
+			"grids",
+			"plot_set_units_arcmin",
 			"i",
 			"xbox_min_value",
 			"unit",
@@ -837,96 +1004,7 @@
 			"new_feature",
 			"feature_id",
 			"cycle",
-			"master_dict",
-			"grid",
-			"Grid",
-			"grid",
-			"Grid",
-			"grid",
-			"Grid",
-			"grid",
-			"PATH",
-			"Data",
-			"add",
-			"np",
-			"Column",
-			"_sleep",
-			"OrderedDict",
-			"message",
-			"ss_lib.",
-			"plots",
-			"accept_reject",
-			"search_extent",
-			"program_units",
-			"data",
-			"=",
-			"=========================================================================",
-			"_plot",
-			"_plot_halo",
-			"starcat",
-			"swallow",
-			"padding",
-			"dir",
-			"make_datawindow",
-			"make_plotwindow",
-			"cmd_table",
-			"pos_table",
-			"plot_set_ext",
-			"plot_set_radius",
-			"plot_set_dpi",
-			"plot_units",
-			"plot_known_units",
-			"plot_set_units",
-			"plot_show_colorbar",
-			"np",
-			"numpy",
-			"sys",
-			"pickle",
-			"plot_show_colorbar",
-			"plot_has_cb",
-			"plot_show_colorbar",
-			"my_mkdir",
-			"tkSimpleDialog",
-			"my_mkdir",
-			"row=",
-			"region_size",
-			".grid(",
-			"update_status_bar",
-			"regions",
-			"session.halo",
-			"load_halo",
-			"region",
-			"regions",
-			"grid",
-			"pack",
-			"grid()",
-			"pack()",
-			"grid()",
-			"pack()",
-			"dataplot",
-			"regions",
-			"bind",
-			"f_center",
-			"a_center",
-			"_feh",
-			"_age",
-			"gplt.plot_halo",
-			"plot",
-			"right_click",
-			"mouse_location",
-			"right_click",
-			"Button-3",
-			"plot_fh",
-			".grid()",
-			"print(space, ",
-			"main_menu",
-			"HELP",
-			"Image",
-			".GIF",
-			".png",
-			"# end of function ===============================================",
-			"# end of function",
-			"os.path.listdir"
+			"master_dict"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -934,6 +1012,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"# ",
+			"{NoneType}",
+			"",
+			"ss_lib.Table",
+			"_msg_exit_wrongdir",
+			"#                        ",
+			"ss_lib.r_start",
 			"align='^'",
 			"max_lines=100",
 			"tjoin",
@@ -993,12 +1078,12 @@
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": true,
-		"wrap": true
+		"wrap": false
 	},
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1007,15 +1092,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 881,
+						"buffer_size": 773,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								758,
-								758
+								770,
+								770
 							]
 						],
 						"settings":
@@ -1027,55 +1112,30 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 1,
-					"file": "/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15534,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13669,
-								13669
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Cython/Cython.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4290.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "skysearcher/skysearch_lib.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13716,
+						"buffer_size": 17167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9819,
-								9819
+								8005,
+								8005
 							]
 						],
 						"settings":
@@ -1093,18 +1153,98 @@
 								{
 									"characters": ".",
 									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
 								}
 							],
 							"git_gutter_is_enabled": false,
+							"spell_check": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2769.0,
+						"translation.y": 2123.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "skysearcher/mpi_search.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13036,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13036,
+								13036
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"spell_check": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4265.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1115,19 +1255,19 @@
 			[
 				{
 					"buffer": 3,
-					"file": "skysearcher/mpi_search.py",
+					"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/table_bin.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2778,
+						"buffer_size": 27416,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								983,
-								983
+								5089,
+								5089
 							]
 						],
 						"settings":
@@ -1141,18 +1281,128 @@
 								{
 									"characters": ".",
 									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
 								}
 							],
 							"git_gutter_is_enabled": false,
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1148.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/spinbin.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24025,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11491,
+								11491
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/swc21/GitHub/skysurvey/c_functions/c_functions.pyx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								646,
+								646
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Cython/Cython.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 252.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/swc21/skysurvey/setup.cfg",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								562,
+								562
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1162,20 +1412,67 @@
 			"sheets":
 			[
 				{
-					"buffer": 4,
-					"file": "/C/Users/swc21/GitHub/skysurvey/skysurvey/featur_finder.py",
+					"buffer": 7,
+					"file": "/C/Users/swc21/GitHub/starcat/starcat/rubab/For_Sol-20170826T210509Z-001/For_Sol/wingtips.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19808,
+						"buffer_size": 19612,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8920,
-								8920
+								330,
+								339
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"git_gutter_is_enabled": false,
+							"spell_check": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/swc21/GitHub/starcat/starcat/rubab/For_Sol-20170826T210509Z-001/For_Sol/make_mix.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1770,
+								1775
 							]
 						],
 						"settings":
@@ -1192,46 +1489,16 @@
 								}
 							],
 							"git_gutter_is_enabled": false,
+							"spell_check": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3159.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "skysearcher/skysearcher.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11008,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2468,
-								2468
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1239,7 +1506,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -1266,13 +1533,20 @@
 				0,
 				3,
 				1
+			],
+			[
+				3,
+				0,
+				4,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.375846097127,
-			0.803573461977,
+			0.194631500187,
+			0.552001496446,
+			0.822951739618,
 			1.0
 		],
 		"rows":
@@ -1302,7 +1576,7 @@
 	"project": "skysearch.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1332,7 +1606,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1340,7 +1614,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 236.0,
+	"side_bar_width": 250.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

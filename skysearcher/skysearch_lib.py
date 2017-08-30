@@ -1,39 +1,155 @@
-'''
-===============================================================================
-skysearcher v0.1.0
-August 2017
-Sol W. Courtney
-swc2124@columbia.edu
-Columbia University NYC, NY
-===============================================================================
-python skysearcher/skysearch_lib.py
-'''
-# does this need to be here?
-from __future__ import division, absolute_import, print_function
+'''[summary]
 
-import os
+[description]
+
+Attributes
+----------
+_table_columns : {list}
+    [description]
+_badwords : {list}
+    [description]
+_colors : {[type]}
+    [description]
+_colors : {[type]}
+    [description]
+_colors : {[type]}
+    [description]
+_colors : {[type]}
+    [description]
+_msg_exit_wrongdir : {tuple}
+    [description]
+_msg_rcfile_select : {tuple}
+    [description]
+_msg_rcfile_select_line_small : {str}
+    [description]
+_msg_rcfile_select_line_big : {str}
+    [description]
+_msg_rcfile_select_rcfile_choice_error : {tuple}
+    [description]
+_config : {[type]}
+    [description]
+_config.read(sortout_rcfile()) : {[type]}
+    [description]
+data_dir : {[type]}
+    [description]
+grid_dir : {[type]}
+    [description]
+table_dir : {[type]}
+    [description]
+plot_dir : {[type]}
+    [description]
+t_frmt : {[type]}
+    [description]
+h5_pth : {[type]}
+    [description]
+tbl_ext : {[type]}
+    [description]
+r_start : {[type]}
+    [description]
+r_stop : {[type]}
+    [description]
+r_step : {[type]}
+    [description]
+r_scale : {[type]}
+    [description]
+deg_0 : {[type]}
+    [description]
+deg_1 : {[type]}
+    [description]
+min_seg_size : {[type]}
+    [description]
+_dir_list : {list}
+    [description]
+'''
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 import ConfigParser
+import os
+import pickle
+import sys
+
+from random import shuffle
 
 import numpy as np
+
 from astropy.table import Table
+from matplotlib import colors as mcolors
+from matplotlib import pyplot as plt
 
 
 # =============================================================================
 # =============================================================================
+
+_table_columns = [
+    ('radius', 'i'),
+    ('r0', 'f'),
+    ('r1', 'f'),
+
+
+    ('halo', 'i'),
+
+    ('xbox_cut', 'f'),
+    ('_xbox_fixed', 'f'),
+    ('_xbox_mu', 'f'),
+    ('Log10(mu)', 'f'),
+
+    ('xbox_min', 'f'),
+    ('xbox_mean', 'f'),
+    ('xbox_max', 'f'),
+
+    ('deg0', 'f'),
+    ('deg1', 'f'),
+    ('extent', 'f'),
+    ('n_segments', 'i'),
+    ('arc_len', 'f'),
+
+    ('sat_purity', 'f'),
+    ('domsat', 'i'),
+    ('domsat_mass', 'f'),
+
+    ('Log10(n_stars)', 'f'),
+
+    ('n_boxes', 'i'),
+
+    ('rank', 'i')]
+
+_badwords = ['brown', 'light', 'grey', 'gray', 'white', 'ivory',
+             'beige', 'yellow', 'lime', 'gold', 'salmon', 'khaki',
+             'pale', 'olive', 'pink', 'rose', 'silver', 'peach',
+             'sea', 'linen', 'coral', 'fuchsia', 'sky', 'tan',
+             'snow', 'lemon', 'old', 'mint', 'cream', 'bisque',
+             'papaya']
+
+
+def _make_colors(_clrs=mcolors.cnames.keys(), _bdwrds=_badwords):
+    for _i, _name in enumerate(_clrs):
+        for _bad_word in _bdwrds:
+            if _bad_word in _name:
+                del _clrs[_i]
+                break
+    shuffle(_clrs)
+    shuffle(_clrs)
+    return _clrs
+
+_colors = _make_colors()
+_colors = _make_colors(_colors)
+_colors = _make_colors(_colors)
+_colors = _make_colors(_colors)
 
 # print messages
-msg_exit_wrongdir = (
+_msg_exit_wrongdir = (
     'Please change to the correct directory before starting'
     'cd skysearcher/skysearcher'
     'Thank you :)')
 
 # select new configuration file msg prompt
-msg_rcfile_select = (
+_msg_rcfile_select = (
     'select from the following existing configuration files:')
-msg_rcfile_select_line_small = '-' * len(msg_rcfile_select)
-msg_rcfile_select_line_big = '=' * len(msg_rcfile_select)
-msg_rcfile_select_rcfile_choice_error = (
+_msg_rcfile_select_line_small = '-' * len(_msg_rcfile_select)
+_msg_rcfile_select_line_big = '=' * len(_msg_rcfile_select)
+_msg_rcfile_select_rcfile_choice_error = (
     'We are making you a new rc file because you choose wrong.')
 
 # =============================================================================
@@ -42,7 +158,7 @@ msg_rcfile_select_rcfile_choice_error = (
 
 def sortout_rcfile():
 
-    # configuration file settings
+    #   configuration file settings
     rcfile_ext = os.path.extsep + 'cfg'
     new_rc_fh = 'rc' + rcfile_ext
 
@@ -50,7 +166,7 @@ def sortout_rcfile():
     #                               USER SETTINGS
     # ====================================+====================================
     # <Make sure we're in skysearcher/skysearcher & save path variables>
-    # ------------------------------------------------------------------
+    # --------------------------------------------------------------------
     # Get a string value for the path to the current directory
     # (curdir_path).
     curdir_path = os.path.abspath(os.path.curdir)
@@ -67,10 +183,10 @@ def sortout_rcfile():
     # if not, then ask user to quit and start again from the proper
     # directory skysearcher/skysearcher.
     if not curdir_name == pardir_name:
-        os.sys.exit(msg_exit_wrongdir)
+        os.sys.exit(_msg_exit_wrongdir)
 
     # <get configuration file either made or located and then loaded>
-    # ------------------------------------------------------------------
+    # --------------------------------------------------------------------
     # Determine if there exists a configuration file by making a list
     # of filenames for all the files in the current directory
     # (curdir_files).
@@ -89,9 +205,9 @@ def sortout_rcfile():
         # If there is:
         if len(rc_files) > 1:
             # Print the top of the prompt
-            print(msg_rcfile_select_line_big)
-            print(msg_rcfile_select)
-            print(msg_rcfile_select_line_small, '\n')
+            print(_msg_rcfile_select_line_big)
+            print(_msg_rcfile_select)
+            print(_msg_rcfile_select_line_small, '\n')
             # Print out available options.
             for i, rc_filename in enumerate(rc_files):
                 print('     [', i, ']   ', rc_filename)
@@ -104,24 +220,21 @@ def sortout_rcfile():
                 # Finish prompt.
                 # Make a new configuration file and clean up.
                 import new_cfg
-                print(msg_rcfile_select_rcfile_choice_error)
+                print(_msg_rcfile_select_rcfile_choice_error)
                 rc_fh = new_cfg.new_rc(new_rc_fh)
             finally:
                 # Finish prompt and cleanup.
-                print(msg_rcfile_select_line_big)
-
+                print(_msg_rcfile_select_line_big)
         # If there is only one:
         else:
             # Take the only name in the list.
             rc_fh = rc_files.pop()
-
     # If there is not:
     else:
         # Use the configuration file generator function new_cfg.new_rc()
         # and clean up.
         import new_cfg
         rc_fh = new_cfg.new_rc(new_rc_fh)
-
     return rc_fh
 
 # =============================================================================
@@ -129,75 +242,40 @@ def sortout_rcfile():
 
 # <configuration file values>
 # Make a new configuration file parser object (config).
-config = ConfigParser.ConfigParser()
+_config = ConfigParser.ConfigParser()
 
 # Read in rc.file and unpack all values.
-config.read(sortout_rcfile())
-
-# Data
-data_cut = config.getint('Data', 'data_cut')
-halo = config.get('Data', 'halo')
-d_mpc = config.getfloat('Data', 'd_mpc')
-filter_type = config.get('Data', 'filter_type')
+_config.read(sortout_rcfile())
 
 # PATH
-curdir_path = config.get('PATH', 'curdir_path')
-curdir_name = config.get('PATH', 'curdir_name')
-pardir_path = config.get('PATH', 'pardir_path')
-pardir_name = config.get('PATH', 'pardir_name')
-data_dir = config.get('PATH', 'data_dir')
-grid_dir = config.get('PATH', 'grid_dir')
-table_dir = config.get('PATH', 'table_dir')
-plot_dir = config.get('PATH', 'plot_dir')
-
-t_format = config.get('PATH', 'table_format')
-hdf5_pth = config.get('PATH', 'table_hdf5_path')
-
-# Program Units
-units_radius = config.get('Program Units', 'units_radius')
-units_annulus = config.get('Program Units', 'units_annulus')
+data_dir = _config.get('PATH', 'data_dir')
+grid_dir = _config.get('PATH', 'grid_dir')
+table_dir = _config.get('PATH', 'table_dir')
+plot_dir = _config.get('PATH', 'plot_dir')
+t_frmt = _config.get('PATH', 'table_format')
+h5_pth = _config.get('PATH', 'table_hdf5_path')
+tbl_ext = _config.get('PATH', 'table_ext')
 
 # Search Extent
-r_start = config.getint('Search Extent', 'r_start')
-r_stop = config.getint('Search Extent', 'r_stop')
-annulus_scale = config.getfloat('Search Extent', 'annulus_scale')
-annulus_phi_step = config.getfloat('Search Extent', 'annulus_phi_step')
-xbox_min = config.getfloat('Search Extent', 'xbox_min')
+r_start = _config.getint('Search Extent', 'r_start')
+r_stop = _config.getint('Search Extent', 'r_stop')
+r_step = _config.getint('Search Extent', 'r_step')
+r_scale = _config.getfloat('Search Extent', 'annulus_scale')
+deg_0 = _config.getfloat('Search Extent', 'a0')
+deg_1 = _config.getfloat('Search Extent', 'a1')
+#deg_step = _config.getfloat('Search Extent', 'annulus_phi_step')
+min_seg_size = _config.getint('Search Extent', 'min_seg_size')
+xbox_min_mu = _config.getint('Search Extent', 'xbox_min_mu')
+xbox_min_fixed = _config.getint('Search Extent', 'xbox_min_fixed')
 
-# Accept Reject
-min_boxes = config.getint('Accept Reject', 'min_boxes')
-
-# Plots
-full_projection = config.getboolean('Plots', 'full_projection')
-heatmap = config.getboolean('Plots', 'heatmap')
-regions_together = config.getboolean('Plots', 'regions_together')
-
-
-# Grid file name without full PATH (grid_file_name).
-grid_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
-    'PATH', 'grid_file_designator')]) + config.get('PATH', 'grid_ext')
-
-
-# Grid file handle (full Path) (grid_fh).
-grid_fh = os.path.join(config.get('PATH', 'grid_dir'), grid_file_name)
-
-# Table file name without full PATH (table_file_name).
-table_file_name = '_'.join([config.get('PATH', 'fh_prefix'), config.get(
-    'PATH', 'table_file_designator')]) + config.get('PATH', 'table_ext')
-
-
-# Table file handle (full Path) (table_fh).
-table_fh = os.path.join(config.get('PATH', 'table_dir'), table_file_name)
-
-dir_list = [data_dir, grid_dir, table_dir, plot_dir]
-
+_dir_list = [data_dir, grid_dir, table_dir, plot_dir]
 
 # =============================================================================
 # =============================================================================
 # Functions bellow require definitions above.
 
 
-def sortout_directories(directory_list=dir_list):
+def sortout_directories(directory_list=_dir_list):
     '''
     Helper function to quickly check that all directories are in place.
 
@@ -224,7 +302,7 @@ def sortout_directories(directory_list=dir_list):
                 failed_list.append(directory)
     # If there were any fails.
     if len(failed_list):
-        # Print out each directory name.
+                # Print out each directory name.
         for name in failed_list:
             print(name, 'failed to make directory')
         # return False
@@ -233,186 +311,255 @@ def sortout_directories(directory_list=dir_list):
     return True
 
 
-def load_halo(
-        g_fh=grid_fh,
-        t_fh=table_fh,
-        frmt=t_format,
-        h5_pth=hdf5_pth):
-    '''
-    This loads both a grid and table for the halo in the configuration
-    file. Just for easy loading, returns both grid and table.
-
-    Keyword Arguments:
-        g_fh {str} -- grid file handle (default: {grid_fh})
-        t_fh {str} -- table file handle (default: {table_fh})
-        frmt {str} -- table format (default: {t_format})
-        hdf5_pth {str} -- table hdf5 data path (default: {hdf5_pth})
-
-    Returns:
-        np.ndarray, astropy.table.Table -- grid, table
-    '''
-    return np.load(g_fh).T, Table.read(t_fh, format=frmt, path=hdf5_pth)
-
 # =============================================================================
 # =============================================================================
 
+def message(_table, _halo, _radius, _xbmin, _mu, _r0, _r1):
+    '''Simple helper function for clean stdout.
 
-def regions_mpi(rank=0, size=1, r_0=r_start, r_1=r_stop, r_step=1,
-                r_scale=annulus_scale, deg_0=-np.pi, deg_1=np.pi,
-                deg_step=annulus_phi_step):
+    Used by skysearcher for consistent output.
+
+    Arguments:
+        _table {astropy.table.Table} -- astropy table object
+        _halo {str} -- name of the halo i.e. "halo02"
+        _radius {int} -- radial value in Kpc
+        _xbmin {float} -- the minimum xbox value
+        _mu {float} -- the average xbox for the radius
+        _r0 {float} -- inner radial value Kpc
+        _r1 {float} -- outer radial value Kpc
     '''
-
-    [description]
-
-    Keyword Arguments:
-        rank {number} -- [description] (default: {0})
-        size {number} -- [description] (default: {1})
-        r_0 {number} -- [description] (default: {10})
-        r_1 {number} -- [description] (default: {275})
-        r_step {number} -- [description] (default: {1})
-        r_scale {number} -- [description] (default: {0.1})
-        deg_0 {number} -- [description] (default: {-180.0})
-        deg_1 {number} -- [description] (default: {180.0})
-        deg_step {number} -- [description] (default: {1.0})
-
-    Returns:
-        [type] -- [description]
-    '''
-    worklist = []
-    t_rads = (r_1 - r_0) / r_step
-    my_bit = int(t_rads / size)
-    my_starting_point = int(my_bit * rank)
-    for radius in range(my_starting_point, my_bit, r_step):
-
-        region = radius * r_scale
-        r_in = radius - region
-        r_out = radius + region
-        #r_in = radius
-        #r_out = radius + r_step
-
-        for annular_segment in np.linspace(
-                deg_0,
-                deg_1,
-                deg_step,
-                dtype=np.float16):
-
-            worklist.append([r_in, r_out, deg_0, deg_1])
-
-    return worklist
+    if os.name == 'nt':
+        clr_cmd = 'cls'
+    else:
+        clr_cmd = 'clear'
+    os.system(clr_cmd)
+    r = str(_radius)
+    msg0 = _halo + '    -   radius: ' + r + ' Kpc   -'
+    msg00 = 'r0:' + str(_r0) + '  r1:' + str(_r1) + '   -'
+    msg1 = 'xbox_min: ' + str(round(_xbmin, 3)) + '     -'
+    msg2 = 'mu: ' + str(round(_mu, 3)) + ' strs/kpc^2   -'
+    print(msg0 + msg1 + msg2)
+    if len(_table):
+        _table.pprint(max_lines=500, max_width=200, align='^')
 
 
-def record_table():
-    # make an output table
-    output_colums = ['radius', 'r0', 'r1', 'halo', 'xbox_cut',
-                     'xbox_min', 'xbox_mean', 'xbox_max',
-                     'run_length', 'sat_purity', 'n_stars',
-                     'n_boxes', 'name0', 'name1', 'name2']
-    output_dtyps = ['f', 'f', 'f', 'S10', 'f',
-                    'f', 'f', 'f',
-                    'i', 'f', 'i', 'i',
-                    'f', 'f', 'f']
-    return Table(names=output_colums, dtype=output_dtyps)
+def xbox(_grid, _idx, _mu):
+    return (_grid[:, :, 0][_idx] / _mu) - 1.0
 
 
-def fix_rslice(grid, r=4):
+def get_idx(_grid, _d0, _d1, _ridx):
+    seg_idx = np.nonzero(
+        np.logical_and(
+            np.logical_and(
+                _grid[:, :, 5] >= _d0,
+                _grid[:, :, 5] < _d1),
+            _ridx))
+    return seg_idx
+
+
+def grid_list():
+    return [(fh.split('_')[0], os.path.join(grid_dir, fh))
+            for fh in os.listdir(grid_dir)
+            if fh.endswith('npy')]
+
+
+def load_grid(_grid_fh):
+    return fix_rslice(np.load(_grid_fh))
+
+
+def mu_idx(_grid, r0, r1):
+    _grid_idx = np.logical_and(
+        _grid[:, :, 4] >= r0,
+        _grid[:, :, 4] < r1)
+
+    return _grid[:, :, 0][np.nonzero(_grid_idx)].mean(), _grid_idx
+
+
+def record_table(_dict=_table_columns):
+    output_colums = []
+    output_dtyps = []
+    for _name, _dtyp in _table_columns:
+        output_colums.append(_name)
+        output_dtyps.append(_dtyp)
+    r_tbl = Table(names=output_colums, dtype=output_dtyps)
+    r_tbl.meta['r_start'] = r_start
+    r_tbl.meta['r_stop'] = r_stop
+    r_tbl.meta['r_step'] = r_step
+    r_tbl.meta['r_scale'] = r_scale
+    r_tbl.meta['deg_0'] = deg_0
+    r_tbl.meta['deg_1'] = deg_1
+    r_tbl.meta['min_seg_size'] = min_seg_size
+    return r_tbl
+
+
+def radii():
+    _radii_list = []
+    for r in range(r_start, r_stop, r_step):
+        annulus_scale = r * r_scale
+        #annulus_scale = r_step / 2.0
+        if (2.0 * annulus_scale) < r_step:
+            annulus_scale = 1.0
+        _radii_list.append((r, r - annulus_scale, r + annulus_scale))
+    return np.ascontiguousarray(_radii_list)
+
+
+def annuli(_r):
+    annuli_list = []
+    _arr, _step = np.linspace(
+        deg_0,
+        deg_1,
+        4 * _r,
+        endpoint=False,
+        retstep=True)
+    for _sgmt in _arr:
+        annuli_list.append((_sgmt, _sgmt + _step))
+    return np.ascontiguousarray(annuli_list), _step
+
+
+def fix_rslice(_grid_):
     phi_slice = np.zeros((601, 601, 1))
-    grid = np.concatenate((grid, phi_slice), axis=2)
-
-    center = 300
-    grid = grid
-    for i in range(grid.shape[0]):
-        for q in range(grid.shape[1]):
+    _grid_ = np.concatenate((_grid_, phi_slice), axis=2)
+    center = 300.0
+    for i in range(_grid_.shape[0]):
+        for q in range(_grid_.shape[1]):
             value = np.sqrt(
                 np.square(i - center) + np.square(q - center))
-            try:
-                grid[i, q, r] = value
-                grid[i, q, 5] = np.arctan2(i - 300, q - 300)
-            except IndexError as e:
-                pass
-
-    grid[:, :, 5] = np.rad2deg(grid[:, :, 5], grid[:, :, 5]) + 180.0
-    return grid
+            _grid_[i, q, 4] = value
+            _grid_[i, q, 5] = np.arctan2(q - center, i - center)
+    return _grid_
 
 
-def mpi_run():
+def dom_satid(_dict):
+    best_sat = (0, 0)  # (nstars, id)
+    total_strs = sum(_dict.values())
+    if not total_strs:
+        return False, False
+    for _id in _dict.keys():
+        if _dict[_id] > best_sat[0]:
+            best_sat = (_dict[_id], _id)
 
-    from mpi4py import MPI
+    try:
+        return best_sat[1], best_sat[0] / (1e0 * total_strs)
+    except ZeroDivisionError as e:
+        sys.stdout.write(e[0] + '\n')
+        return False, False
 
-    comm = MPI.COMM_WORLD
-    rank = comm.Get_rank()
-    size = comm.Get_size()
-    name = MPI.Get_processor_name()
 
-    grid, table = load_halo
+def satid_setup(_halo):
+    table_fh = os.path.join(table_dir, _halo + tbl_ext)
+    _tbl = Table.read(table_fh, format=t_frmt, path=h5_pth)
+    keeps = ['satids', 'Rads', 'Phi']
+    _tbl.keep_columns(keeps)
+    return _tbl.meta['satids'], _tbl
 
-    for r_in, r_out, deg_0, deg_1 in regions_mpi(rank=0, size=1):
 
-        grid_idx = np.nonzero(
+def count_strs(_dict, _region, _table):
+    r_start, r_stop, _deg0, _deg1 = _region
+    _lims = np.nonzero(
+        np.logical_and(
             np.logical_and(
-                grid[:, :, 4] >= r_in,
-                grid[:, :, 4] < r_out))
-
-        mu = grid[:, :, 0][grid_idx].mean()
-        xbox_min = mu * 0.0005
-
-        one_before = False
-        run_length = 0
-
-        min_xbox = []
-        max_xbox = []
-        mean_xbox = []
-
-        alims = np.nonzero(
+                _table['Phi'] >= _deg0,
+                _table['Phi'] < _deg1),
             np.logical_and(
-                np.logical_and(
-                    grid[:, :, 5] >= deg0,
-                    grid[:, :, 5] < deg1),
-                np.logical_and(
-                    grid[:, :, 4] >= r_strt,
-                    grid[:, :, 4] < r_stop)))
+                _table['Rads'] >= r_start,
+                _table['Rads'] < r_stop)))
+    sats = _table['satids'][_lims].tolist()
+    for _satid in _dict.keys():
+        _dict[_satid] += sats.count(_satid)
+    _table.remove_rows(_lims)
+    return _dict
 
-        xbox = ((grid[:, :, 0][alims] - mu) / mu)
 
-        if xbox.mean() > xbox_min:
+def new_sat_stars(_id_lst):
+    fresh_dict = {}
+    for _id in _id_lst:
+        fresh_dict[_id] = 0
+    return fresh_dict
 
-            if not one_before:
 
-                run_length = 0
+def update_plot(_ax, _position, _halo, _dom_satid):
+    #   plt.bar(left, height, width, bottom, hold=None, data=None)
+    theta0, r_extent, angular_extent, r_start = _position
+    # Plot the regions area.
+    _bump = 0.5 * angular_extent
+    theta0 += _bump
+    _ax.bar(theta0, r_extent,
+            angular_extent, r_start,
+            color=_colors[_dom_satid],
+            alpha=.2)
+    # Update/save the figure.
+    fig = _ax.get_figure()
+    plot_fh = os.path.join(plot_dir, _halo + '_dataplot.png')
+    fig.savefig(plot_fh)
 
-            run_length += 1
-            one_before = True
-            min_xbox.append(xbox.min())
-            mean_xbox.append(xbox.mean())
-            max_xbox.append(xbox.max())
 
-        else:
+def save_plot(_ax, _halo):
+    fig = _ax.get_figure()
+    plot_fh = os.path.join(plot_dir, _halo + '_dataplot.png')
+    fig.savefig(plot_fh)
 
-            if one_before:
 
-                row = [r,
-                       r_strt,
-                       r_stop,
-                       grids[grid_number].split('_')[0],
-                       xbox_min,
-                       round(np.asarray(min_xbox).min(), 4),
-                       round(np.asarray(mean_xbox).mean(), 4),
-                       round(np.asarray(max_xbox).max(), 4),
-                       run_length,
-                       0.0,
-                       grid[:, :, 0][alims].sum(),
-                       len(alims[0]),
-                       0.0,
-                       0.0,
-                       0.0]
+def plot_full_halo(_halo, _d_cut=10):
+    fig = plt.figure(figsize=(20, 20))
+    ax1 = fig.add_subplot(111, projection='polar')
+    ax1.set_title(_halo)
+    table_fh = os.path.join(table_dir, _halo + tbl_ext)
+    table = Table.read(table_fh, format=t_frmt, path=h5_pth)
+    ax1.scatter(table['Phi'][::10], table['Rads'][::10],
+                s=10,
+                alpha=.075,
+                marker='.',
+                cmap=plt.cm.Paired,
+                c=table['Xbox'][::10],
+                vmin=0.0,
+                vmax=12.0)
+    ax1.set_thetagrids(np.linspace(0.0, 360.0, 32)[:-1])
+    ax1.set_theta_direction(-1)
+    ax1.set_theta_zero_location("N")
+    ax1.set_ylim([0, 300])
+    plot_fh = os.path.join(plot_dir, _halo + '_fullplot.png')
+    fig.savefig(plot_fh)
+    plt.close()
 
-                record_table.add_row(row)
 
-            one_before = False
-            run_length = 0
-        m0 = '\n' + r + ' Kpc   '
-        m1 = str(deg0) + ' deg  '
-        m2 = '  '
-        m3 = str(one_before) + ' '
-        m4 = str(run_length) + ' '
-        sys.stdout.write(m0 + m1 + m2 + m3 + m4)
-        sys.stdout.flush()
+def get_data_plot(_halo):
+    fig = plt.figure(figsize=(20, 20))
+    ax1 = fig.add_subplot(111, projection='polar')
+    ax1.set_title(_halo)
+    ax1.set_thetagrids(np.linspace(0.0, 360.0, 32)[:-1])
+    ax1.set_theta_direction(-1)
+    ax1.set_theta_zero_location("N")
+    ax1.set_ylim([0, 300])
+    return ax1
+
+def log_satstars(_dict, _halo, _r, _dom_satid):
+    space = 8
+    fh = ('_').join([
+        _halo,
+        str(int(_r)) + 'kpc',
+        'sat' + str(_dom_satid)
+        ]) + '.txt'
+    satid_log_fh = os.path.join(data_dir, 'satid_logs', fh)
+    t_stars = sum(_dict.values())
+    if not t_stars:
+        return
+    with open(satid_log_fh, 'w') as satid_log:
+        satid_log.write( 'satid   ' + 'n_stars ' + 'percent\n')
+        for key in _dict.keys():
+            satid = str(key)
+            n_stars = str(_dict[key])
+            percent = str(round(1e2 *(_dict[key] / t_stars), 2)) + ' %'
+            for i in range(space - len(satid)):
+                satid += ' '
+            for i in range((space) - len(n_stars)):
+                n_stars += ' '
+            for i in range(space - len(percent)):
+                percent += ' '
+            satid_log.write( satid + n_stars + percent + '\n')
+
+def mass_book():
+    m_arr = np.load(os.path.join(data_dir, 'satmass_array.npy'))
+    _mdict = {}
+    for sat in m_arr:
+        _mdict[int(sat[0]) - 1] =  round(sat[1], 3)
+    return _mdict

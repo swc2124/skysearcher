@@ -24,7 +24,7 @@ rc.cfg values --> <<ss_lib.variable_value>>
 
 from __future__ import division, absolute_import, print_function
 
-import skysearch_lib as ss_lib
+#
 
 # Make sure all the directories are in place.
 ss_lib.sortout_directories()
