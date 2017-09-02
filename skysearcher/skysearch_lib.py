@@ -1,66 +1,9 @@
-'''[summary]
+# -*- coding: utf-8 -*-
+# @Author: sol courtney
+# @Date:   2017-08-23 13:47:59
+# @Last Modified by:   swc21
+# @Last Modified time: 2017-08-29 23:30:02
 
-[description]
-
-Attributes
-----------
-_table_columns : {list}
-    [description]
-_badwords : {list}
-    [description]
-_colors : {[type]}
-    [description]
-_colors : {[type]}
-    [description]
-_colors : {[type]}
-    [description]
-_colors : {[type]}
-    [description]
-_msg_exit_wrongdir : {tuple}
-    [description]
-_msg_rcfile_select : {tuple}
-    [description]
-_msg_rcfile_select_line_small : {str}
-    [description]
-_msg_rcfile_select_line_big : {str}
-    [description]
-_msg_rcfile_select_rcfile_choice_error : {tuple}
-    [description]
-_config : {[type]}
-    [description]
-_config.read(sortout_rcfile()) : {[type]}
-    [description]
-data_dir : {[type]}
-    [description]
-grid_dir : {[type]}
-    [description]
-table_dir : {[type]}
-    [description]
-plot_dir : {[type]}
-    [description]
-t_frmt : {[type]}
-    [description]
-h5_pth : {[type]}
-    [description]
-tbl_ext : {[type]}
-    [description]
-r_start : {[type]}
-    [description]
-r_stop : {[type]}
-    [description]
-r_step : {[type]}
-    [description]
-r_scale : {[type]}
-    [description]
-deg_0 : {[type]}
-    [description]
-deg_1 : {[type]}
-    [description]
-min_seg_size : {[type]}
-    [description]
-_dir_list : {list}
-    [description]
-'''
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -73,6 +16,8 @@ import sys
 from random import shuffle
 
 import numpy as np
+
+from numba import jit
 
 from astropy.table import Table
 from matplotlib import colors as mcolors
@@ -105,9 +50,10 @@ _table_columns = [
     ('n_segments', 'i'),
     ('arc_len', 'f'),
 
-    ('sat_purity', 'f'),
-    ('domsat', 'i'),
+    ('domsat_purity', 'f'),
+    ('domsat_id', 'i'),
     ('domsat_mass', 'f'),
+    ('domsat_atime', 'f'),
 
     ('Log10(n_stars)', 'f'),
 
@@ -248,34 +194,34 @@ _config = ConfigParser.ConfigParser()
 _config.read(sortout_rcfile())
 
 # PATH
-data_dir = _config.get('PATH', 'data_dir')
-grid_dir = _config.get('PATH', 'grid_dir')
-table_dir = _config.get('PATH', 'table_dir')
-plot_dir = _config.get('PATH', 'plot_dir')
-t_frmt = _config.get('PATH', 'table_format')
-h5_pth = _config.get('PATH', 'table_hdf5_path')
-tbl_ext = _config.get('PATH', 'table_ext')
+DATA_DIR = _config.get('PATH', 'data_dir')
+GRID_DIR = _config.get('PATH', 'GRID_DIR')
+TABLE_DIR = _config.get('PATH', 'table_dir')
+PLOT_DIR = _config.get('PATH', 'plot_dir')
+T_FRMT = _config.get('PATH', 'table_format')
+H5_PTH = _config.get('PATH', 'table_hdf5_path')
+TBL_EXT = _config.get('PATH', 'table_ext')
 
 # Search Extent
-r_start = _config.getint('Search Extent', 'r_start')
-r_stop = _config.getint('Search Extent', 'r_stop')
-r_step = _config.getint('Search Extent', 'r_step')
-r_scale = _config.getfloat('Search Extent', 'annulus_scale')
-deg_0 = _config.getfloat('Search Extent', 'a0')
-deg_1 = _config.getfloat('Search Extent', 'a1')
+R_START = _config.getint('Search Extent', 'r_start')
+R_STOP = _config.getint('Search Extent', 'r_stop')
+R_STEP = _config.getint('Search Extent', 'r_step')
+R_SCALE = _config.getfloat('Search Extent', 'annulus_scale')
+DEG_0 = _config.getfloat('Search Extent', 'a0')
+DEG_1 = _config.getfloat('Search Extent', 'a1')
 #deg_step = _config.getfloat('Search Extent', 'annulus_phi_step')
-min_seg_size = _config.getint('Search Extent', 'min_seg_size')
-xbox_min_mu = _config.getint('Search Extent', 'xbox_min_mu')
-xbox_min_fixed = _config.getint('Search Extent', 'xbox_min_fixed')
+MIN_SEG_SIZE = _config.getint('Search Extent', 'min_seg_size')
+XBOX_MIN_MU = _config.getint('Search Extent', 'xbox_min_mu')
+XBOX_MIN_FIXED = _config.getint('Search Extent', 'xbox_min_fixed')
 
-_dir_list = [data_dir, grid_dir, table_dir, plot_dir]
+DIR_LIST = [DATA_DIR, GRID_DIR, TABLE_DIR, PLOT_DIR]
 
 # =============================================================================
 # =============================================================================
 # Functions bellow require definitions above.
 
 
-def sortout_directories(directory_list=_dir_list):
+def sortout_directories(directory_list=DIR_LIST):
     '''
     Helper function to quickly check that all directories are in place.
 
@@ -342,72 +288,71 @@ def message(_table, _halo, _radius, _xbmin, _mu, _r0, _r1):
     if len(_table):
         _table.pprint(max_lines=500, max_width=200, align='^')
 
-
+@jit(cache=True)
 def xbox(_grid, _idx, _mu):
     return (_grid[:, :, 0][_idx] / _mu) - 1.0
 
-
+@jit(cache=True)
 def get_idx(_grid, _d0, _d1, _ridx):
-    seg_idx = np.nonzero(
+    seg_idx_ = np.nonzero(
         np.logical_and(
             np.logical_and(
                 _grid[:, :, 5] >= _d0,
                 _grid[:, :, 5] < _d1),
             _ridx))
-    return seg_idx
+    return seg_idx_
 
-
+#@jit(cache=True)
 def grid_list():
-    return [(fh.split('_')[0], os.path.join(grid_dir, fh))
-            for fh in os.listdir(grid_dir)
+    return [(fh.split('_')[0], os.path.join(GRID_DIR, fh))
+            for fh in os.listdir(GRID_DIR)
             if fh.endswith('npy')]
 
-
+#@jit(cache=True)
 def load_grid(_grid_fh):
     return fix_rslice(np.load(_grid_fh))
 
-
+@jit(cache=True)
 def mu_idx(_grid, r0, r1):
-    _grid_idx = np.logical_and(
+    grid_idx_ = np.logical_and(
         _grid[:, :, 4] >= r0,
         _grid[:, :, 4] < r1)
+    return _grid[:, :, 0][np.nonzero(grid_idx_)].mean(), grid_idx_
 
-    return _grid[:, :, 0][np.nonzero(_grid_idx)].mean(), _grid_idx
+#@jit(cache=True)
+def record_table(_names=_table_columns):
+    output_colums_ = []
+    output_dtyps_ = []
+    for name_, dtyp_ in _names:
+        output_colums_.append(name_)
+        output_dtyps_.append(dtyp_)
+    r_tbl_ = Table(names=output_colums_, dtype=output_dtyps_)
+    r_tbl_.meta['r_start'] = R_START
+    r_tbl_.meta['r_stop'] = R_STOP
+    r_tbl_.meta['r_step'] = R_STEP
+    r_tbl_.meta['r_scale'] = R_SCALE
+    r_tbl_.meta['deg_0'] = DEG_0
+    r_tbl_.meta['deg_1'] = DEG_1
+    r_tbl_.meta['min_seg_size'] = MIN_SEG_SIZE
+    return r_tbl_
 
-
-def record_table(_dict=_table_columns):
-    output_colums = []
-    output_dtyps = []
-    for _name, _dtyp in _table_columns:
-        output_colums.append(_name)
-        output_dtyps.append(_dtyp)
-    r_tbl = Table(names=output_colums, dtype=output_dtyps)
-    r_tbl.meta['r_start'] = r_start
-    r_tbl.meta['r_stop'] = r_stop
-    r_tbl.meta['r_step'] = r_step
-    r_tbl.meta['r_scale'] = r_scale
-    r_tbl.meta['deg_0'] = deg_0
-    r_tbl.meta['deg_1'] = deg_1
-    r_tbl.meta['min_seg_size'] = min_seg_size
-    return r_tbl
-
-
+#@jit(cache=True)
 def radii():
-    _radii_list = []
-    for r in range(r_start, r_stop, r_step):
-        annulus_scale = r * r_scale
-        #annulus_scale = r_step / 2.0
-        if (2.0 * annulus_scale) < r_step:
-            annulus_scale = 1.0
-        _radii_list.append((r, r - annulus_scale, r + annulus_scale))
-    return np.ascontiguousarray(_radii_list)
+    radii_list_ = []
+    for r in range(R_START, R_STOP, R_STEP):
+        annulus_scale_ = r * R_SCALE
+        #annulus_scale = R_STEP / 2.0
+        if (2.0 * annulus_scale_) < R_STEP:
+            annulus_scale_ = 1.0
+        radii_list_.append((r, r - annulus_scale_, r + annulus_scale_))
+    return np.ascontiguousarray(radii_list_)
 
-
+#@jit(cache=True)
 def annuli(_r):
     annuli_list = []
     _arr, _step = np.linspace(
-        deg_0,
-        deg_1,
+        DEG_0,
+        DEG_1,
         4 * _r,
         endpoint=False,
         retstep=True)
@@ -415,7 +360,7 @@ def annuli(_r):
         annuli_list.append((_sgmt, _sgmt + _step))
     return np.ascontiguousarray(annuli_list), _step
 
-
+@jit(cache=True)
 def fix_rslice(_grid_):
     phi_slice = np.zeros((601, 601, 1))
     _grid_ = np.concatenate((_grid_, phi_slice), axis=2)
@@ -428,83 +373,82 @@ def fix_rslice(_grid_):
             _grid_[i, q, 5] = np.arctan2(q - center, i - center)
     return _grid_
 
-
+#@jit(cache=True)
 def dom_satid(_dict):
     best_sat = (0, 0)  # (nstars, id)
-    total_strs = sum(_dict.values())
+    total_strs = np.sum(_dict.values())
     if not total_strs:
         return False, False
     for _id in _dict.keys():
         if _dict[_id] > best_sat[0]:
             best_sat = (_dict[_id], _id)
-
     try:
-        return best_sat[1], best_sat[0] / (1e0 * total_strs)
+        return int(best_sat[1]), best_sat[0] / (1e0 * total_strs)
     except ZeroDivisionError as e:
         sys.stdout.write(e[0] + '\n')
         return False, False
 
-
+#@jit(cache=True)
 def satid_setup(_halo):
-    table_fh = os.path.join(table_dir, _halo + tbl_ext)
-    _tbl = Table.read(table_fh, format=t_frmt, path=h5_pth)
+    table_fh = os.path.join(TABLE_DIR, _halo + TBL_EXT)
+    _tbl = Table.read(table_fh, format=T_FRMT, path=H5_PTH)
     keeps = ['satids', 'Rads', 'Phi']
     _tbl.keep_columns(keeps)
     return _tbl.meta['satids'], _tbl
 
-
+#@jit(cache=True)
 def count_strs(_dict, _region, _table):
-    r_start, r_stop, _deg0, _deg1 = _region
+    R_START, R_STOP, _deg0, _deg1 = _region
     _lims = np.nonzero(
         np.logical_and(
             np.logical_and(
                 _table['Phi'] >= _deg0,
                 _table['Phi'] < _deg1),
             np.logical_and(
-                _table['Rads'] >= r_start,
-                _table['Rads'] < r_stop)))
+                _table['Rads'] >= R_START,
+                _table['Rads'] < R_STOP)))
     sats = _table['satids'][_lims].tolist()
     for _satid in _dict.keys():
         _dict[_satid] += sats.count(_satid)
     _table.remove_rows(_lims)
     return _dict
 
-
+#@jit
 def new_sat_stars(_id_lst):
     fresh_dict = {}
     for _id in _id_lst:
         fresh_dict[_id] = 0
     return fresh_dict
 
-
+#@jit(cache=True)
 def update_plot(_ax, _position, _halo, _dom_satid):
     #   plt.bar(left, height, width, bottom, hold=None, data=None)
-    theta0, r_extent, angular_extent, r_start = _position
+    theta0, r_extent, angular_extent, R_START = _position
     # Plot the regions area.
     _bump = 0.5 * angular_extent
     theta0 += _bump
     _ax.bar(theta0, r_extent,
-            angular_extent, r_start,
+            angular_extent, R_START,
             color=_colors[_dom_satid],
             alpha=.2)
     # Update/save the figure.
     fig = _ax.get_figure()
-    plot_fh = os.path.join(plot_dir, _halo + '_dataplot.png')
+    plot_fh = os.path.join(PLOT_DIR, _halo + '_dataplot.png')
     fig.savefig(plot_fh)
 
-
+#@jit(cache=True)
 def save_plot(_ax, _halo):
     fig = _ax.get_figure()
-    plot_fh = os.path.join(plot_dir, _halo + '_dataplot.png')
+    plot_fh = os.path.join(PLOT_DIR, _halo + '_dataplot.png')
     fig.savefig(plot_fh)
 
-
+#@jit(cache=True)
 def plot_full_halo(_halo, _d_cut=10):
     fig = plt.figure(figsize=(20, 20))
     ax1 = fig.add_subplot(111, projection='polar')
     ax1.set_title(_halo)
-    table_fh = os.path.join(table_dir, _halo + tbl_ext)
-    table = Table.read(table_fh, format=t_frmt, path=h5_pth)
+    table_fh = os.path.join(TABLE_DIR, _halo + TBL_EXT)
+    table = Table.read(table_fh, format=T_FRMT, path=H5_PTH)
     ax1.scatter(table['Phi'][::10], table['Rads'][::10],
                 s=10,
                 alpha=.075,
@@ -517,11 +461,11 @@ def plot_full_halo(_halo, _d_cut=10):
     ax1.set_theta_direction(-1)
     ax1.set_theta_zero_location("N")
     ax1.set_ylim([0, 300])
-    plot_fh = os.path.join(plot_dir, _halo + '_fullplot.png')
+    plot_fh = os.path.join(PLOT_DIR, _halo + '_fullplot.png')
     fig.savefig(plot_fh)
     plt.close()
 
-
+#@jit(cache=False)
 def get_data_plot(_halo):
     fig = plt.figure(figsize=(20, 20))
     ax1 = fig.add_subplot(111, projection='polar')
@@ -531,7 +475,7 @@ def get_data_plot(_halo):
     ax1.set_theta_zero_location("N")
     ax1.set_ylim([0, 300])
     return ax1
-
+#@jit
 def log_satstars(_dict, _halo, _r, _dom_satid):
     space = 8
     fh = ('_').join([
@@ -539,7 +483,7 @@ def log_satstars(_dict, _halo, _r, _dom_satid):
         str(int(_r)) + 'kpc',
         'sat' + str(_dom_satid)
         ]) + '.txt'
-    satid_log_fh = os.path.join(data_dir, 'satid_logs', fh)
+    satid_log_fh = os.path.join(DATA_DIR, 'satid_logs', fh)
     t_stars = sum(_dict.values())
     if not t_stars:
         return
@@ -556,9 +500,9 @@ def log_satstars(_dict, _halo, _r, _dom_satid):
             for i in range(space - len(percent)):
                 percent += ' '
             satid_log.write( satid + n_stars + percent + '\n')
-
+#@jit
 def mass_book():
-    m_arr = np.load(os.path.join(data_dir, 'satmass_array.npy'))
+    m_arr = np.load(os.path.join(DATA_DIR, 'satmass_array.npy'))
     _mdict = {}
     for sat in m_arr:
         _mdict[int(sat[0]) - 1] =  round(sat[1], 3)

@@ -1,79 +1,23 @@
-'''[summary]
 
-[description]
-
-Attributes
-----------
-comm : {[type]}
-    [description]
-rank : {[type]}
-    [description]
-size : {[type]}
-    [description]
-name : {[type]}
-    [description]
-sleep(rank * 0.25) : {[type]}
-    [description]
-stdout.write(' '.join([str(rank), str(name), str(size)])) : {[type]}
-    [description]
-stdout.flush() : {[type]}
-    [description]
-m_book : {[type]}
-    [description]
-tic : {[type]}
-    [description]
-dom_sat : {[type]}
-    [description]
-sat_fraction : {number}
-    [description]
-sleep(0.15) : {[type]}
-    [description]
-grids : {[type]}
-    [description]
-sleep(0.15) : {[type]}
-    [description]
-r_table : {[type]}
-    [description]
-r_table.meta['fh'] : {[type]}
-    [description]
-sleep(0.15) : {[type]}
-    [description]
-radii : {[type]}
-    [description]
-sleep(0.15) : {[type]}
-    [description]
-work_index : {[type]}
-    [description]
-stdout.write(str(rank)  + ' - idx [' + ' '.join( : {[type]}
-    [description]
-stdout.flush() : {[type]}
-    [description]
-n_jobs : {[type]}
-    [description]
-sleep(0.15) : {[type]}
-    [description]
-try: : {[type]}
-    [description]
-except KeyboardInterrupt as e: : {[type]}
-    [description]
-'''
+from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import os
 
-from random import shuffle
-from sys import stdout
 from time import sleep
 from time import time
-
-import numpy as np
 
 from mpi4py import MPI
 
 import skysearch_lib as ss_lib
 
-#  MPI values.
+from skysearch_lib import np
+from skysearch_lib import os
+
+
+stdout = os.sys.stdout
+
+# C:\Users\swc21\GitHub\skysearcher\skysearcher\mpi_search.py
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
@@ -85,8 +29,9 @@ stdout.write(' '.join([str(rank), str(name), str(size)]))
 stdout.flush()
 
 #  Sat mass dict (m_book).
-m_book = ss_lib.mass_book()
-# np.load('../data/satmass_array.npy')
+m_book = np.load('../data/satmass_array.npy')
+t_book = np.load('../data/satage_array.npy')
+#
 
 #  Start time (tic).
 tic = time()
@@ -98,22 +43,19 @@ sat_fraction = 0.001
 #  Load a list of halo names & grid file paths.
 sleep(0.15)
 grids = ss_lib.grid_list()
-# shuffle(grids)
-# shuffle(grids)
-# shuffle(grids)
 
 #  Load the record table (r_table).
 sleep(0.15)
 r_table = ss_lib.record_table()
 
 #  File naming regime.
-r_table.meta['fh'] = os.path.join(
-    ss_lib.data_dir,
-    'tables',
-    'groupfinder',
-    'mpi',
-    str(rank) + '.hdf5')
-
+r_table.meta['fh'] = os.path.join(ss_lib.DATA_DIR,
+                                  'tables',
+                                  'groupfinder',
+                                  'mpi',
+                                  str(rank) + '.hdf5')
+r_table.meta['xbox_min_fixed'] = ss_lib.XBOX_MIN_FIXED
+r_table.meta['xbox_min_mu'] = ss_lib.XBOX_MIN_MU
 #  Load list of radii (radii).
 #  i.e radii[x] = (r, r_start, r_stop)
 sleep(rank * 0.15)
@@ -122,15 +64,12 @@ radii = ss_lib.radii()
 #  Designate work for rank (work_index).
 sleep(0.15)
 work_index = range(rank, len(radii), size)
-stdout.write(str(rank) + ' [ idx ] [' + ' '.join(
-    [str(i) for i in work_index]
-) + ']')
+stdout.write(str(rank) + ' [ idx ] [' +
+             ' '.join([str(i) for i in work_index]) + ']')
 stdout.flush()
 n_jobs = len(work_index)
 
-
 sleep(0.15)
-
 
 def save_record_table(_table=r_table, _rnk=rank):
     '''Helper function to safely write table to disc.
@@ -233,8 +172,8 @@ try:
                 # Is the local mean above xbox_min?
                 _xmean = xbox.mean()
 
-                _xbox_mu = ss_lib.xbox_min_mu / np.sqrt(mu)
-                _xbox_fixed = ss_lib.xbox_min_fixed
+                _xbox_mu = ss_lib.XBOX_MIN_MU / np.sqrt(mu)
+                _xbox_fixed = ss_lib.XBOX_MIN_FIXED
 
                 xbox_min = min([_xbox_mu, _xbox_fixed])
                 if _xmean >= xbox_min:
@@ -299,7 +238,7 @@ try:
 
                     # If a feature is ending,
                     # do this:
-                    if one_before and run_length >= ss_lib.min_seg_size:
+                    if one_before and run_length >= ss_lib.MIN_SEG_SIZE:
 
                         # The feature's angular extent (angular_extent).
                         angular_extent = _deg0 - starting_deg
@@ -314,10 +253,10 @@ try:
                             halo_num = int(halo[-2:])
 
                             # Mass of parent satellite (mass).
-                            mass = m_book[dom_sat]
+                            mass = m_book[dom_sat - 1]
 
                             # Accretion time of parent satellite (atime).
-                            # atime = atime_book[dom_sat]
+                            atime = t_book[dom_sat - 1]
 
                             # A new row for the r_table (row).
                             # Each feature is a row in the table.
@@ -325,7 +264,9 @@ try:
                                 r,
                                 r_start,
                                 r_stop,
+
                                 halo_num,
+
                                 xbox_min,
                                 _xbox_fixed,
                                 _xbox_mu,
@@ -333,22 +274,27 @@ try:
                                 np.asarray(xbmin).min(),
                                 np.asarray(xbmean).mean(),
                                 np.asarray(xbmax).max(),
+
                                 starting_deg,
                                 _deg0,
                                 angular_extent,
                                 run_length,
                                 annuli_step,
+
                                 sat_frc,
                                 dom_sat,
                                 mass,
+                                atime,
+
                                 np.log10(n_stars),
                                 n_boxes,
+
                                 rank
                             ]
                             r_table.add_row(row)
 
                             # Write a log file for the stars in dom_sat.
-                            ss_lib.log_satstars(sat_stars, halo, r, dom_sat)
+                            # ss_lib.log_satstars(sat_stars, halo, r, dom_sat)
 
                             # Add the segment area to the data_plot & save.
                             # ---------------------------------------------
