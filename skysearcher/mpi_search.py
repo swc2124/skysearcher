@@ -1,122 +1,102 @@
-
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
-
-from time import sleep
-from time import time
-
-from mpi4py import MPI
-
-import skysearch_lib as ss_lib
-
 from skysearch_lib import np
 from skysearch_lib import os
+from skysearch_lib import pause
+from skysearch_lib import rank
+from skysearch_lib import size
+from skysearch_lib import name
+from skysearch_lib import grid_list
+from skysearch_lib import kpc_to_arcmin
+from skysearch_lib import record_table
+from skysearch_lib import radii
+from skysearch_lib import save_record_table
+from skysearch_lib import satid_setup
+from skysearch_lib import load_grid
+from skysearch_lib import time
+from skysearch_lib import mu_idx
+from skysearch_lib import get_annuli
+from skysearch_lib import get_idx
+from skysearch_lib import get_xbox
+from skysearch_lib import new_sat_stars
+from skysearch_lib import count_strs
+from skysearch_lib import dom_satid
 
 
-stdout = os.sys.stdout
+from skysearch_lib import XBOX_CUT
+from skysearch_lib import N_SKIPS
+from skysearch_lib import MIN_LOG_NSTARS
+from skysearch_lib import MIN_N_SEGMENTS
+from skysearch_lib import SAVE_INTERVAL
 
-# C:\Users\swc21\GitHub\skysearcher\skysearcher\mpi_search.py
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
-size = comm.Get_size()
-name = MPI.Get_processor_name()
+from skysearch_lib import stdout
 
-#  Stall processes.
-sleep(rank * 0.25)
-stdout.write(' '.join([str(rank), str(name), str(size)]))
-stdout.flush()
 
 #  Sat mass dict (m_book).
+#  Sat acc_time (t_book).
 m_book = np.load('../data/satmass_array.npy')
 t_book = np.load('../data/satage_array.npy')
-#
-
-#  Start time (tic).
-tic = time()
 
 #  Misc values.
-dom_sat = None
-sat_fraction = 0.001
+domsat_id = None
+n_skips = 0
+log_n_stars_max = [0]
+
+#  Stall processes.
+pause()
+stdout.write(' '.join([
+    'rank', 
+    str(rank), 
+    str(name), 
+    str(size)]))
+stdout.flush()
+
 
 #  Load a list of halo names & grid file paths.
-sleep(0.15)
-grids = ss_lib.grid_list()
+pause()
+grids = grid_list()
+
+# Read Mpc distance (d_mpc) from grid files.
+dmpc_str = grids[0][1].split(os.path.sep)[-1].split('_')[1]
+d_mpc = float(dmpc_str.replace('Mpc', ''))
+
+# Make the mod for the distance.
+mod = kpc_to_arcmin(d_mpc=d_mpc)
 
 #  Load the record table (r_table).
-sleep(0.15)
-r_table = ss_lib.record_table()
+pause()
+r_table = record_table()
 
-#  File naming regime.
-r_table.meta['fh'] = os.path.join(ss_lib.DATA_DIR,
-                                  'tables',
-                                  'groupfinder',
-                                  'mpi',
-                                  str(rank) + '.hdf5')
-r_table.meta['xbox_min_fixed'] = ss_lib.XBOX_MIN_FIXED
-r_table.meta['xbox_min_mu'] = ss_lib.XBOX_MIN_MU
 #  Load list of radii (radii).
 #  i.e radii[x] = (r, r_start, r_stop)
-sleep(rank * 0.15)
-radii = ss_lib.radii()
+pause()
+radii = radii()
 
 #  Designate work for rank (work_index).
-sleep(0.15)
+pause()
 work_index = range(rank, len(radii), size)
-stdout.write(str(rank) + ' [ idx ] [' +
-             ' '.join([str(i) for i in work_index]) + ']')
+stdout.write('rank ' + str(rank) +  ' [ idx ] [' +
+             ' '.join([str(i) for i in work_index]) + ']\n')
 stdout.flush()
-n_jobs = len(work_index)
 
-sleep(0.15)
-
-def save_record_table(_table=r_table, _rnk=rank):
-    '''Helper function to safely write table to disc.
-
-    Arguments:
-        _table {dict} -- This is the record_table
-    '''
-    try:
-        # Write the table to disc.
-        _table.write(_table.meta['fh'],
-                     format='hdf5',
-                     path='data',
-                     overwrite=True,
-                     append=True)
-        stdout.write('rank ' + str(_rnk) + ' [ SAVED ]\n')
-        stdout.flush()
-    except IOError as e:
-        # Try again in a second.
-        stdout.write('[ ' + str(_rnk) + ' ] [ ERROR ] ' + e[0] + '\n')
-        sleep(1)
-        save_record_table()
+save_record_table(_table=r_table)
 
 try:
 
+    # Total run time(tic).
+    tic = time()
+
     for halo, grid_fh in grids:
-
-        #halo, grid_fh = grids[-2]
-
-        #halo, grid_fh = grids[-2]
-        stdout.write('rank ' + str(rank) + ' -> ' + grid_fh + '\n')
-        stdout.flush()
 
         # Get a list of satids and a table for counting
         # satids per region (satid_list) (satid_table).
-        satid_list, satid_table = ss_lib.satid_setup(halo)
-
-        # Plot a full polar projection of the halo
-        # for reference.
-        # ss_lib.plot_full_halo(halo)
-
-        # make an empty plot to add segments to (data_plot).
-        # data_plot = ss_lib.get_data_plot(halo)
+        satid_list, satid_table = satid_setup(halo)
 
         # Get the data grid for this halo (grid).
-        grid = ss_lib.load_grid(grid_fh)
-        stdout.write('rank ' + str(rank) + ' [ LOADED ]\n')
+        grid = load_grid(grid_fh)
+        stdout.write('rank ' + str(rank) +  ' [ LOADED ] ' + halo + '\n')
         stdout.flush()
+
+        # Adjust nstars for units and distance.
+        grid[:, :, 0] /= mod
 
         # Step through the radii (r_start, r_stop).
         for job_id, _i in enumerate(work_index):
@@ -130,21 +110,32 @@ try:
             r, r_start, r_stop = radii[_i]
 
             # get the mu for this annulus (mu).
-            mu, r_idx = ss_lib.mu_idx(grid, r_start, r_stop)
+            mu, r_idx = mu_idx(grid, r_start, r_stop)
+
+            # The number of boxes in the annulus (log_n_boxes_in_ann).
+            # log_n_boxes_in_ann = np.log10(len(np.nonzero(r_idx)[0]))
+
+            # The number of stars in this annulus (log_n_stars_in_ann)
+            # log_n_stars_in_ann = np.log10(grid[:, :, 0][r_idx].sum())
 
             # Boolean value to indicate the existence of
             # a immediately previous accepted segment(one_before).
             one_before = False
 
-            # An integer value for the number of consecutively
-            # accepted regions (run_length).
-            run_length = 0
-
             # Load array of annuli segments and
             # step value (annuli) & (annuli_step).
             # i.e. annuli_step = float
             # i.e. annuli[x] = (deg_0, deg_1)
-            annuli, annuli_step = ss_lib.annuli(r)
+            annuli, annuli_step = get_annuli(r)
+
+            # Number of empty segments (n_mt_seg).
+            n_mt_seg = 0
+
+            # Number of increasing segments (n_seg_increase).
+            # Number of decreasing segments (n_seg_decrease).
+            n_seg_increase = 0
+            n_seg_decrease = 0
+            last_nstars = 0
 
             # Step through the annulus (-pi, pi].
             # _deg0 = starting point.
@@ -153,188 +144,205 @@ try:
 
                 # The grid index for grid spaces within
                 # this segment (idx).
-                idx = ss_lib.get_idx(grid, _deg0, _deg1, r_idx)
+                idx = get_idx(grid, _deg0, _deg1, r_idx)
 
-                if not len(idx[0]):
-                    one_before = False
+                # The number of grid boxes this segment covers (n_boxes_tot).
+                n_boxes_in_seg = len(idx[0])
+
+                # If there are none, then continue.
+                if not n_boxes_in_seg:
+                    '''
+                    stdout.write(
+                        'rank ' 
+                        + str(rank) 
+                        +  ' [ EMPTY SEGMENT ] ' 
+                        + halo 
+                        + ' radius: ' + str(r) + ' Kpc'
+                        + ' phi: ' + str(_deg0)
+                        + '\n')
+                    stdout.flush()
+                    '''
+                    n_mt_seg += 1
                     continue
 
                 # The array of grid spaces from this segment's
                 # contrast density value (xbox).
-                xbox = ss_lib.xbox(grid, idx, mu)
-                # xbox = (grid[:, :, 0][idx] - mu) / mu
+                xbox = get_xbox(grid, idx, mu)
+
+                # Number of stars here (n_stars_here).
+                n_stars_here = grid[:, :, 0][idx].sum()
+
+                if n_stars_here >= last_nstars:
+                    n_seg_increase += 1
+                else:
+                    n_seg_decrease += 1
+
+                last_nstars = n_stars_here
 
                 # ------------------------------------------------------
                 #        Does this segment qualify to be a feature?
                 # ------------------------------------------------------
-                # If it does,
-                # do this:
-                # Is the local mean above xbox_min?
-                _xmean = xbox.mean()
+                # Is the local min above xbox_cut?
 
-                _xbox_mu = ss_lib.XBOX_MIN_MU / np.sqrt(mu)
-                _xbox_fixed = ss_lib.XBOX_MIN_FIXED
-
-                xbox_min = min([_xbox_mu, _xbox_fixed])
-                if _xmean >= xbox_min:
-
-                    # Put all region info into a list (r_info).
-                    r_info = [r_start, r_stop, _deg0, _deg1]
-
-                    # Make a new feature.        <--
+                # If yes:
+                if (
+                    xbox.min() >= XBOX_CUT
+                    and n_seg_increase >= n_seg_decrease
+                    and np.log10(n_stars_here) >= MIN_LOG_NSTARS):
+                    
+                    # If this is a new feature...
                     if not one_before:
 
-                        # open a list for the min, mean, max values
-                        # for this feature (xbmin, xbmean, xbmax).
-                        xbmin = []
-                        xbmean = []
+                        # open a list for the max values
+                        # for this feature (xbmax).
                         xbmax = []
+
+                        # open a list for max Log10(n_stars) (n_stars_max).
+                        log_n_stars_max = []
 
                         # Start a dictionary for counting stars
                         # per satid (sat_stars).
-                        sat_stars = ss_lib.new_sat_stars(satid_list)
+                        sat_stars = new_sat_stars(satid_list)
 
-                        # Reset grid space count (n_stars).
+                        # Set grid space count (n_stars).
                         n_boxes = 0
 
-                        # Reset star count (n_stars).
+                        # Set star count (n_stars).
                         n_stars = 0
 
-                        # Reset the run length (run_length) to 0.
-                        run_length = 0
+                        # Set the run length (n_segments) to 0.
+                        n_segments = 0
 
                         # Remember the starting angular
                         # value (starting_deg).
                         starting_deg = _deg0
 
+                        # Set allowed segment skips (n_skips).
+                        n_skips = N_SKIPS
+
+                    # Do this for every accepted segment:
+
+                    # Put all region info into a list (r_info).
+                    r_info = [r_start, r_stop, _deg0, _deg1]
+                    
                     # Add this features min, mean and max
-                    # to the existing lists.
-                    xbmin.append(xbox.min())
-                    xbmean.append(_xmean)
+                    # to the existing lists. 
                     xbmax.append(xbox.max())
 
                     # Count stars per sat.
-                    sat_stars = ss_lib.count_strs(
+                    sat_stars = count_strs(
                         sat_stars,
                         r_info,
                         satid_table)
 
                     # Add boxes to total boxes.
-                    n_boxes += len(idx[0])
+                    n_boxes += n_boxes_in_seg
 
                     # Add stars to total stars for feature.
-                    n_stars += grid[:, :, 0][idx].sum()
+                    n_stars += n_stars_here
+
+                    # Add n_stars to list for later.
+                    log_n_stars_max.append(np.log10(n_stars_here))
 
                     # Increase run length (run_length) by 1.
-                    run_length += 1
+                    n_segments += 1
 
                     # Remember that there is a feature
                     # currently being processed (one_before).
                     one_before = True
 
-                # If it does not,
-                # do this:
+
+                # If no:
                 else:
 
-                    # If a feature is ending,
-                    # do this:
-                    if one_before and run_length >= ss_lib.MIN_SEG_SIZE:
+                    # Use allowed segment skips:
+                    if n_skips >= 1:
+                        n_skips -= 1
+                        n_segments += 1
+                        one_before = True
 
-                        # The feature's angular extent (angular_extent).
-                        angular_extent = _deg0 - starting_deg
+                    else:
+                        
+                        # If this is the end of a segment:
+                        if (
+                            one_before
+                            and n_segments >= MIN_N_SEGMENTS):
 
-                        # The dominate satellite number (dom_sat).
-                        # dom_sats's % of all stars (n_stars).
-                        dom_sat, sat_frc = ss_lib.dom_satid(sat_stars)
+                            # The feature's angular extent (angular_extent).
+                            angular_extent = _deg0 - starting_deg
 
-                        if dom_sat:
+                            # The dominate satellite number (domsat_id).
+                            # domsats's % of all stars (domsat_purity).
+                            domsat_id, domsat_purity = dom_satid(sat_stars)
 
                             # An integer value for each halo (halo_num).
                             halo_num = int(halo[-2:])
 
                             # Mass of parent satellite (mass).
-                            mass = m_book[dom_sat - 1]
+                            mass = m_book[domsat_id - 1]
 
                             # Accretion time of parent satellite (atime).
-                            atime = t_book[dom_sat - 1]
+                            atime = t_book[domsat_id - 1]
 
                             # A new row for the r_table (row).
                             # Each feature is a row in the table.
                             row = [
-                                r,
-                                r_start,
-                                r_stop,
 
+                                # Halo.
                                 halo_num,
 
-                                xbox_min,
-                                _xbox_fixed,
-                                _xbox_mu,
-                                np.log10(mu),
-                                np.asarray(xbmin).min(),
-                                np.asarray(xbmean).mean(),
-                                np.asarray(xbmax).max(),
-
-                                starting_deg,
-                                _deg0,
-                                angular_extent,
-                                run_length,
+                                # Annulus location values.
+                                r, 
+                                r_start, 
+                                r_stop, 
                                 annuli_step,
+                                # n_mt_seg,
 
-                                sat_frc,
-                                dom_sat,
+                                # Annulus content values.
+                                # log_n_boxes_in_ann,
+                                # log_n_stars_in_ann,
+                                np.log10(mu),
+
+                                # Feature content values.
+                                max(xbmax),
+                                max(log_n_stars_max),
+                                domsat_purity,
+                                domsat_id,
                                 mass,
                                 atime,
 
-                                np.log10(n_stars),
-                                n_boxes,
+                                # Feature location values.
+                                starting_deg,
+                                # _deg0,
+                                angular_extent,
+                                # n_segments,
+                                # n_boxes,
 
-                                rank
-                            ]
+                                # rank
+                                ]
+
                             r_table.add_row(row)
 
-                            # Write a log file for the stars in dom_sat.
-                            # ss_lib.log_satstars(sat_stars, halo, r, dom_sat)
-
-                            # Add the segment area to the data_plot & save.
-                            # ---------------------------------------------
-                            # Left most point (theta0).
-                            # or: _deg1 - (0.5 * angular_extent)
-                            # theta0 = starting_deg
-
-                            # The angular extent (angular_extent).
-                            # angular_extent = angular_extent
-
-                            # The starting radius value (r_start).
-                            # r_start = r_start
-
-                            # The radial extent (r_extent).
-                            # r_extent = r_stop - r_start
-
-                            # A list of location information needed
-                            # to plot (_pts).
-                            # _pts = [theta0, r_extent,
-                            # angular_extent, r_start]
-                            # ss_lib.update_plot(data_plot, _pts, halo, dom_sat)
-
-                            # Clean up.
-                            halo_num = None
-                            mass = None
-                            del row
+                            # Save point if added a new row.
+                            if len(r_table) % SAVE_INTERVAL == 0:
+                                save_record_table(_table=r_table)
 
                         # Clean up.
-                        angular_extent = None
-                        dom_sat = None
-                        sat_frc = None
+                        halo_num = None
+                        mass = None
+                        atime = None
+                        angular_extent = 0
+                        domsat_id = None
+                        domsat_purity = None
 
                         # Reset grid space count (n_stars).
-                        n_boxes = None
+                        n_boxes = 0
 
                         # Reset n_stars to 0.
-                        n_stars = None
+                        n_stars = 0
 
                         # Reset run length to 0.
-                        run_length = None
+                        n_segments = 0
 
                         # Remember that there's no previous segment
                         one_before = False
@@ -342,25 +350,29 @@ try:
                         # Reset starting_deg.
                         starting_deg = None
 
-            if rank == 0:
-                # Terminal progress message.
-                line = ('halo' + halo[-2:] + ' - ' +
-                        str(r) + ' Kpc - ' +
-                        str(round((time() - a_tic), 1)) + ' secs')
-                stdout.write(line + '\n')
-                stdout.flush()
+                        n_seg_increase = 0
+                        n_seg_decrease = 0
+                        last_nstars = 0
 
-            # Save table.
-            if job_id in range(0, n_jobs, 10):
-                save_record_table()
-        #break
+            # Terminal progress message.
+            line = ('rank ' + str(rank) +   ' : halo' + halo[-2:] + ' - ' +
+                    str(r) + ' Kpc - ' +
+                    str(round((time() - a_tic), 1)) + ' secs')
+            stdout.write(line + '\n')
+            stdout.flush()
 
-    # Save table.
-    save_record_table()
-    msg = ('rank ' + str(rank) + ' [ FINISHED ] [ ' +
+        # Halo save point.
+        save_record_table(_table=r_table)
+
+    # Final save point.
+    save_record_table(_table=r_table)
+
+    # Exit message.
+    msg = ('rank ' + str(rank) +    ' [ FINISHED ] [ ' +
            str(round((time() - tic) / 60.0, 1)) + ' minutes ]\n')
     stdout.write(msg)
     stdout.flush()
+    exit(0)
 
 except KeyboardInterrupt as e:
     print(e)

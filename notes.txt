@@ -5,3 +5,19 @@ fix table meta data in spinbin.
 Make sure the tables have a column for "degrees."
     min = 0.0
     max = 360.0
+
+================
+November 28 2017
+================
+
+If you’re looking for things to do between now and 29th
+
+	1) Add these to the document where you’re describing your work.
+		- make some summary statements of trends you see for general properties of features found in ranges (say) 0-50, 50-100, 100-200 kpc
+		- then say benefits and flaws of what you can learn from features
+
+	2) Also add some plots and description of your feature finder earlier in the document
+	
+	3) Then go on to start asking the question - can we relate the properties of the features to the satellites from which they came (e.g. mass and accretion time)?General 
+			- e.g. scale or nstars vs mass???? - might have to be in small radius range
+			- (something you’ve been talking about for a while): color vs mass and/or age (maybe color of brightest stars???)
