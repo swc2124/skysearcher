@@ -21,7 +21,7 @@ def newcfg():
     from .new_cfg import new_rc
 
     parser = argparse.ArgumentParser(prog="new_conf.py",
-                                     description="MPI executable function")
+         description="MPI executable function")
     parser.add_argument("-f", "--filename",
                         type=str,
                         default="rc",

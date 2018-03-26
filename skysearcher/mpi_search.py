@@ -46,30 +46,20 @@ def main():
     domsat_id = None
     n_skips = 0
     log_n_stars_max = [0]
+    region_dict = {}
 
     # Stall processes.
     if MPI_RANK == 0:
-        STDOUT.write("\n")
         clear_tables(_target_dir=MPI_TABLE_DIR)
-        STDOUT.write("cleared\n\n")
-        STDOUT.flush()
+
 
     # Print initial banner message.
     COMM.Barrier()
     pause()
-    STDOUT.write(" ".join([
-        "rank",
-        str(MPI_RANK),
-        str(MPI_PROC_NAME),
-        str(MPI_SIZE)]) + "\n")
-    STDOUT.flush()
 
     # Load a list of halo names & grid file paths.
     COMM.Barrier()
     pause()
-    if MPI_RANK == 0:
-        STDOUT.write("\n")
-        STDOUT.flush()
 
     # Load file handles for numpy data arrays.
     grids = grid_list()
@@ -95,54 +85,43 @@ def main():
     # Designate work for MPI_RANK (work_index).
     COMM.Barrier()
     pause()
-    if MPI_RANK == 0:
-        STDOUT.write("\n")
-        STDOUT.flush()
     work_index = range(MPI_RANK, len(_radii), MPI_SIZE)
-    
+
     # Make print statements.
     COMM.Barrier()
     pause()
-    sec = "    "
-    jlist = []
-    for wk in " ".join([str(i) for i in work_index]):
-        sec += wk
-        if len(sec) >= 78:
-            jlist.append(sec)
-            sec = "    "
-    msg = "rank " + str(MPI_RANK)
-
-    # Print work list to STDOUT.
-    COMM.Barrier()
-    pause()
-    pause()
-    STDOUT.write(msg + "\n")
-    STDOUT.write("-" * len(msg) + "\n")
-    for ln in jlist:
-        STDOUT.write(ln + "\n")
-        STDOUT.flush()
-    STDOUT.flush()
-
-    # Save record hdf5 table.
-    COMM.Barrier()
-    pause()
-    if MPI_RANK == 0:
-        STDOUT.write("\n")
-        STDOUT.flush()
-    save_record_table(_table=r_table)
 
     # Flush Stdout buffer.
     COMM.Barrier()
     pause()
-    if MPI_RANK == 0:
-        STDOUT.write("\n")
-        STDOUT.flush()
-
 
     # Total run time(tic).
     tic = time()
 
+    # Human readable time.
+    now = datetime.datetime.now()
+    
+
+    # Dictionary for printable information(run_dict).
+    run_dict = {
+        "MPI_RANK": MPI_RANK,
+        "MPI_PROC_NAME": MPI_PROC_NAME,
+        "START_TIME": now.strftime("%I:%M:%S %p - %A %B %d %Y"),
+        "d_mpc": d_mpc,
+        "mod": mod
+    }
+    
+    # Save record hdf5 table.
+    COMM.Barrier()
+    pause()
+    save_record_table(_table=r_table)
+    report(_type="save", _info=run_dict)
+
     for halo, grid_fh in grids:
+
+        h_tic = time()
+
+        run_dict["halo"] = halo
 
         # Get a list of satids and a table for counting
         # satids per region (satid_list) (satid_table).
@@ -152,9 +131,7 @@ def main():
         grid = load_grid(grid_fh)
 
         # Print "starting halo" message.
-        STDOUT.write("rank " + str(MPI_RANK) +
-                     " [ LOADED ] " + halo + "\n")
-        STDOUT.flush()
+        report(_type="starting halo", _info=run_dict)
 
         # Adjust nstars for units and distance.
         grid[:, :, 1] /= mod
@@ -174,6 +151,10 @@ def main():
             # r_start = starting radius (always < r)
             # r_stop = ending radius (always > r)
             r, r_start, r_stop = _radii[job_id]
+
+            run_dict["r"] = r
+            run_dict["r_start"] = r_start
+            run_dict["r_stop"] = r_stop
 
             # This is so we don't need to index the whole table every
             # loop of the following for loop (local_satid_table).
@@ -317,7 +298,7 @@ def main():
                     n_boxes += n_boxes_in_seg
 
                     # Add stars to total stars for feature.
-                    n_stars += n_stars_here
+                    n_stars += int(n_stars_here)
 
                     # Add n_stars to list for later.
                     log_n_stars_max.append(np.log10(n_stars_here))
@@ -341,28 +322,53 @@ def main():
                     else:
 
                         # If this is the end of a segment:
-                        if (one_before and n_segments >= MIN_N_SEGMENTS):
+                        if (one_before 
+                            and n_segments >= MIN_N_SEGMENTS
+                            and sum(sat_stars.values())):
+
+
+                            region_dict = {
+                                "MPI_RANK": MPI_RANK
+                            }
+
+                            region_dict["r_start"] = r_start
+                            region_dict["r_stop"] = r_stop
+                            region_dict["annuli_step"] = annuli_step
+                            region_dict["log(mu_2)"] = np.log10(mu_2)
+                            region_dict["max xbox"] = max(xbmax)
+                            region_dict["max log(nstr)"] = max(log_n_stars_max)
+                            region_dict["n_stars"] = int(n_stars)
+                            region_dict["n_segments"] = n_segments
+                            region_dict["n_seg_increase"] = n_seg_increase
+                            region_dict["n_seg_decrease"] = n_seg_decrease
+
+                            # The dominate satellite number (domsat_id).
+                            # domsats"s % of all stars (domsat_purity).
+                            region_dict = dom_satid(sat_stars, region_dict)
+
 
                             # The feature"s angular extent
                             # (angular_extent).
                             angular_extent = _deg0 - starting_deg
-
-                            # The dominate satellite number (domsat_id).
-                            # domsats"s % of all stars (domsat_purity).
-                            _va = dom_satid(sat_stars)
-                            domsat_id, domsat_purity, standout, nsats = _va
+                            region_dict["starting deg"] = starting_deg
+                            region_dict["angular extent"] = angular_extent
 
                             # An integer value for each halo (halo_num).
                             halo_num = int(halo[-2:])
+                            # region_dict["halo_num"] = halo_num
+                            region_dict["halo"] = halo
 
                             # Mass of parent satellite (mass).
-                            mass = m_book[domsat_id]
+                            mass = m_book[region_dict["domsat_id"]]
+                            region_dict["mass"] = mass
 
                             # Accretion time of parent satellite (atime).
-                            atime = t_book[domsat_id]
+                            atime = t_book[region_dict["domsat_id"]]
+                            region_dict["atime"] = atime
 
                             # Circle factor (jcirc).
-                            jcirc = j_book[domsat_id]
+                            jcirc = j_book[region_dict["domsat_id"]]
+                            region_dict["jcirc"] = jcirc
 
                             # A new row for the r_table (row).
                             # Each feature is a row in the table.
@@ -386,10 +392,10 @@ def main():
                                 # Feature content values.
                                 max(xbmax),
                                 max(log_n_stars_max),
-                                domsat_purity,
-                                domsat_id,
-                                standout,
-                                nsats,
+                                region_dict["domsat_purity"],
+                                region_dict["domsat_id"],
+                                region_dict["standout"],
+                                region_dict["n_sats_end"],
                                 mass,
                                 atime,
                                 jcirc,
@@ -411,14 +417,18 @@ def main():
                             # Save point if added a new row.
                             if len(r_table) % SAVE_INTERVAL == 0:
                                 save_record_table(_table=r_table)
+                                report(_type="save", _info=run_dict)
+
+
+                            if MPI_RANK%3==0:
+                                report(_type="new region", _info=region_dict)
+                            del region_dict
 
                         # Clean up.
                         halo_num = None
                         mass = None
                         atime = None
                         angular_extent = 0
-                        domsat_id = None
-                        domsat_purity = None
 
                         # Reset grid space count (n_stars).
                         n_boxes = 0
@@ -438,24 +448,26 @@ def main():
                         n_seg_decrease = 0
                         last_nstars = 0
 
+
+
             # Terminal progress message.
-            line = ("rank " + str(MPI_RANK) + " : halo" + halo[-2:] + " - " +
-                    str(round(r, 1)) + " Kpc : --> " +
-                    str(round((time() - a_tic), 1)) + " secs")
-            STDOUT.write(line + "\n")
-            STDOUT.flush()
+            run_dict["annulus time"] = round((time() - a_tic))
+            report(_type='end annulus', _info=run_dict)
 
         # Halo save point.
         save_record_table(_table=r_table)
+        report(_type="save", _info=run_dict)
+        run_dict["halo time"] = round((time() - h_tic) / 60, 1)
+        report(_type='end halo', _info=run_dict)
+
 
     # Final save point.
     save_record_table(_table=r_table)
+    report(_type="save", _info=run_dict)
 
     # Exit message.
-    msg = ("rank " + str(MPI_RANK) + " [ FINISHED ] [ " +
-           str(round((time() - tic) / 60.0, 1)) + " minutes ]\n")
-    STDOUT.write(msg)
-    STDOUT.flush()
+    run_dict["program time"] = round((time() - tic) / 60, 1)
+    report(_type='exit', _info=run_dict)
     exit(0)
 
 

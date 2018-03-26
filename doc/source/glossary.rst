@@ -7,6 +7,61 @@
 **Glossary**
 ============
 
+.. glossary::
+
+	rank
+		Need to define.
+	
+	r_table
+		Need to define.
+
+	satid_table
+		Need to define.
+
+	satid_list
+		Need to define.
+	
+	mu
+		Need to define.
+	
+	r_idx
+		Need to define.
+	
+	mu
+		Need to define.
+	
+	annuli
+		Need to define.
+	
+	annuli_step
+		Need to define.
+	
+	idx
+		Need to define.
+
+	satid
+		Need to define.
+
+	satids
+		Need to define.
+	
+	domsat_purity
+		Need to define.
+	
+	_domsat_id
+		Need to define.
+	
+	_domsat_per
+		Need to define.
+	
+	_standout
+		Need to define.
+	
+	n_sats
+		Need to define.
+
+
+
 .. <BASIC TERMS> 2018-03-24 ##################################################
 .. glossary::
 

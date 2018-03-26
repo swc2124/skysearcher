@@ -68,9 +68,11 @@ D_MPC : float
 
 import configparser
 import os
+import copy
 
 from time import sleep
 from time import time
+import datetime
 
 import numpy as np
 
@@ -91,7 +93,7 @@ __all__ = [
     "TABLE_COLUMNS", "DATA_DIR", "TABLE_DIR", "PLOT_DIR", "MIN_LOG_NSTARS",
     "START_TIME", "GRID_DIR", "R_START", "R_STOP", "R_STEP", "N_SKIPS",
     "MIN_N_SEGMENTS", "SAVE_INTERVAL", "XBOX_CUT", "MPI_TABLE_DIR",
-    "R_SCALE", "ANNULUS_PHI_STEP",
+    "R_SCALE", "ANNULUS_PHI_STEP", "report", "datetime"
 ]
 
 COMM = MPI.COMM_WORLD
@@ -100,91 +102,6 @@ MPI_SIZE = COMM.Get_size()
 MPI_PROC_NAME = MPI.Get_processor_name()
 START_TIME = time()
 STDOUT = os.sys.stdout
-
-# <configuration file values>
-# Make a new configuration file parser object (config).
-_CONFIG = configparser.ConfigParser()
-
-# Read in rc.file and unpack all values.
-_CONFIG.read(sortout_rcfile())
-DATA_DIR = _CONFIG.get("PATH", "data_dir")
-TABLE_DIR = _CONFIG.get("PATH", "table_dir")
-PLOT_DIR = _CONFIG.get("PATH", "plot_dir")
-GRID_DIR = _CONFIG.get("PATH", "grid_dir")
-MPI_TABLE_DIR = _CONFIG.get("PATH", "mpi_table_dir")
-GRID_EXT = _CONFIG.get("PATH", "grid_ext")
-TABLE_EXT = _CONFIG.get("PATH", "table_ext")
-TABLE_FORMAT = _CONFIG.get("PATH", "table_format")
-TABLE_HDF5_PATH = _CONFIG.get("PATH", "table_hdf5_path")
-R_START = _CONFIG.getint("Search Extent", "r_start")
-R_STOP = _CONFIG.getint("Search Extent", "r_stop")
-R_STEP = _CONFIG.getint("Search Extent", "r_step")
-R_SCALE = _CONFIG.getfloat("Search Extent", "annulus_scale")
-ANNULUS_PHI_STEP = _CONFIG.getint("Search Extent", "annulus_phi_step")
-_ANNULUS_PHI_STEP = None
-XBOX_CUT = _CONFIG.getfloat("Accept Reject", "xbox_cut")
-MIN_LOG_NSTARS = _CONFIG.getfloat("Accept Reject", "min_log_nstars")
-MIN_N_SEGMENTS = _CONFIG.getint("Accept Reject", "min_n_segments")
-N_SKIPS = _CONFIG.getint("Accept Reject", "n_skips")
-SAVE_INTERVAL = _CONFIG.getint("Run Time", "save_interval")
-D_MPC = _CONFIG.getfloat("Data", "d_mpc")
-TABLE_COLUMNS = [
-
-    # Halo.
-    ("halo", "i"),
-
-    # Annulus location values.
-    ("radius", "i"),
-    ("r0", "f"),
-    ("r1", "f"),
-    ("annuli_step", "f"),
-    # ("n_empty_segments", "i"),
-
-    # Annulus content values.
-    # ("log_n_boxes_in_ann", "i"),
-    # ("log_n_stars_in_ann", "i"),
-    ("Log10(mu)", "f"),
-
-    # Feature content values.
-    ("xbox_max", "f"),
-    ("Log10(n_stars_max)", "f"),
-    ("domsat_purity", "f"),
-    ("domsat_id", "i"),
-    ("domsat_sig", "f"),
-    ("nsats", "f"),
-    ("domsat_mass", "f"),
-    ("domsat_atime", "f"),
-    ("domsat_j", "f"),
-
-    # Feature location values.
-    ("deg0", "f"),
-    # ("deg1", "f"),
-    ("extent", "f"),
-    # ("n_segments", "i"),
-    # ("n_boxes", "i"),
-
-    # ("MPI_RANK", "i")
-    ]
-BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
-
-
-def ct(text, colour=WHITE):
-    return "\x1b[1;%dm" % (30 + colour) + text + "\x1b[0m"
-
-
-def render_and_pad(reqd_width, components, sep="/"):
-    temp = []
-    actual_width = 0
-    for fmt_code, text in components:
-        actual_width += len(text)
-        strg = "\x1b[1;%dm" % (30 + fmt_code) + text + "\x1b[m"
-        temp.append(strg)
-    if temp:
-        actual_width += len(temp) - 1
-    npad = reqd_width - actual_width
-    assert npad >= 0
-    return sep.join(temp) + " " * npad
-
 
 def sortout_rcfile(name="rc", ext="cfg"):
     """
@@ -281,6 +198,92 @@ def sortout_rcfile(name="rc", ext="cfg"):
     print(os.path.abspath(rc_fh))
 
     return rc_fh
+# <configuration file values>
+# Make a new configuration file parser object (config).
+_CONFIG = configparser.ConfigParser()
+
+# Read in rc.file and unpack all values.
+_CONFIG.read(sortout_rcfile())
+DATA_DIR = _CONFIG.get("PATH", "data_dir")
+TABLE_DIR = _CONFIG.get("PATH", "table_dir")
+PLOT_DIR = _CONFIG.get("PATH", "plot_dir")
+GRID_DIR = _CONFIG.get("PATH", "grid_dir")
+MPI_TABLE_DIR = _CONFIG.get("PATH", "mpi_table_dir")
+GRID_EXT = _CONFIG.get("PATH", "grid_ext")
+TABLE_EXT = _CONFIG.get("PATH", "table_ext")
+TABLE_FORMAT = _CONFIG.get("PATH", "table_format")
+TABLE_HDF5_PATH = _CONFIG.get("PATH", "table_hdf5_path")
+R_START = _CONFIG.getint("Search Extent", "r_start")
+R_STOP = _CONFIG.getint("Search Extent", "r_stop")
+R_STEP = _CONFIG.getint("Search Extent", "r_step")
+R_SCALE = _CONFIG.getfloat("Search Extent", "annulus_scale")
+ANNULUS_PHI_STEP = _CONFIG.getint("Search Extent", "annulus_phi_step")
+_ANNULUS_PHI_STEP = None
+XBOX_CUT = _CONFIG.getfloat("Accept Reject", "xbox_cut")
+MIN_LOG_NSTARS = _CONFIG.getfloat("Accept Reject", "min_log_nstars")
+MIN_N_SEGMENTS = _CONFIG.getint("Accept Reject", "min_n_segments")
+N_SKIPS = _CONFIG.getint("Accept Reject", "n_skips")
+SAVE_INTERVAL = _CONFIG.getint("Run Time", "save_interval")
+D_MPC = _CONFIG.getfloat("Data", "d_mpc")
+TABLE_COLUMNS = [
+
+    # Halo.
+    ("halo", "i"),
+
+    # Annulus location values.
+    ("radius", "i"),
+    ("r0", "f"),
+    ("r1", "f"),
+    ("annuli_step", "f"),
+    # ("n_empty_segments", "i"),
+
+    # Annulus content values.
+    # ("log_n_boxes_in_ann", "i"),
+    # ("log_n_stars_in_ann", "i"),
+    ("Log10(mu)", "f"),
+
+    # Feature content values.
+    ("xbox_max", "f"),
+    ("Log10(n_stars_max)", "f"),
+    ("domsat_purity", "f"),
+    ("domsat_id", "i"),
+    ("domsat_sig", "f"),
+    ("nsats", "f"),
+    ("domsat_mass", "f"),
+    ("domsat_atime", "f"),
+    ("domsat_j", "f"),
+
+    # Feature location values.
+    ("deg0", "f"),
+    # ("deg1", "f"),
+    ("extent", "f"),
+    # ("n_segments", "i"),
+    # ("n_boxes", "i"),
+
+    # ("MPI_RANK", "i")
+]
+
+
+BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
+
+
+def ct(text, colour=WHITE):
+    return "\x1b[1;%dm" % (30 + colour) + text + "\x1b[0m"
+
+
+def render_and_pad(reqd_width, components, sep=""):
+    temp = []
+    actual_width = 0
+    for fmt_code, text in components:
+        actual_width += len(text)
+        strg = "\x1b[1;%dm" % (30 + fmt_code) + text + "\x1b[m"
+        temp.append(strg)
+    if temp:
+        actual_width += len(temp) - 1
+    npad = reqd_width - actual_width
+    if npad < 0:
+        npad = 0
+    return sep.join(temp) + " " * npad
 
 
 def clear_tables(_target_dir):
@@ -327,9 +330,9 @@ def clear_tables(_target_dir):
                 if not os.path.isdir(itm[1]):
                     os.mkdir(itm[1])
     except IOError as err:
-        raise IOError(err)
+        print(err)
     except TypeError as err:
-        raise TypeError(err)
+        print(err)
 
 
 def pause(rnk=MPI_RANK):
@@ -483,9 +486,7 @@ def radii():
     radii_list_ = []
     for r in list(range(R_START, R_STOP, R_STEP)):
         annulus_scale_ = R_SCALE * r
-        if r >= 75:
-            annulus_scale_ *= 0.6
-            # pass
+        annulus_scale_ *= (1.25 - (r / R_STOP)) # 0.6
         radii_list_.append((r, r - annulus_scale_, r + annulus_scale_))
         """
         start = r * np.tan(45)
@@ -533,12 +534,6 @@ def save_record_table(_table, _rnk=MPI_RANK):
         # raise TypeError()
     except OSError:
         print(ct("[ MPI_RANK : " + str(MPI_RANK) + " FAILED TO SAVE ]", RED))
-    else:
-        c1 = ct("[", GREEN)
-        c2 = ct("]", GREEN)
-        print(c1, ct(
-            "MPI_RANK", WHITE), ct(
-            str(_rnk), YELLOW), c2, c1, ct("SAVED", MAGENTA), c2)
 
 
 def fix_rslice(_grid, _dtype=np.float32):
@@ -667,7 +662,8 @@ def load_grid(_grid_fh):
 
 def satid_setup(_halo, attempts=0):
     """
-    Get a list of :term:`satid`s and a table for counting satids per region (:term:`satid_list`) (:term:`satid_table`).
+    Get a list of :term:`satid`'s and a table for counting satids
+    per region (:term:`satid_list`) (:term:`satid_table`).
 
     Parameters
     ----------
@@ -916,7 +912,7 @@ def mu_idx2(_grid, _r_indx, d0, d1):
 
     """
     # TODO add this to rc.cfg file.
-    space = np.pi / 4.0
+    space = np.pi / 5.0
     _d0 = d0 - space
     _d1 = d1 + space
     if _d0 < -np.pi:
@@ -1181,12 +1177,12 @@ def new_sat_stars(_id_lst):
     Parameters
     ----------
     _id_lst : list
-        List of :term:`satids` for this :term:`halo`
+        List of :term:`satid`'s' for this :term:`halo`
 
     Returns
     -------
     dict
-        Dictionary with :term:`satid`s for keys and corresponding number of stars for each :term:`satid` counted. 
+        Dictionary with :term:`satid`'s for keys and corresponding number of stars for each :term:`satid` counted. 
 
     Example
     -------
@@ -1206,6 +1202,84 @@ def new_sat_stars(_id_lst):
         fresh_dict[_id] = 0
     return fresh_dict
 
+def getTerminalSize():
+    import platform
+    current_os = platform.system()
+    tuple_xy=None
+    if current_os == 'Windows':
+        tuple_xy = _getTerminalSize_windows()
+        if tuple_xy is None:
+            tuple_xy = _getTerminalSize_tput()
+          # needed for window's python in cygwin's xterm!
+    if current_os == 'Linux' or current_os == 'Darwin' or  current_os.startswith('CYGWIN'):
+        tuple_xy = _getTerminalSize_linux()
+    if tuple_xy is None:
+        print("default")
+        tuple_xy = (80, 25)      # default value
+    return tuple_xy
+
+def _getTerminalSize_windows():
+    res=None
+    try:
+        from ctypes import windll, create_string_buffer
+
+        # stdin handle is -10
+        # stdout handle is -11
+        # stderr handle is -12
+
+        h = windll.kernel32.GetStdHandle(-12)
+        csbi = create_string_buffer(22)
+        res = windll.kernel32.GetConsoleScreenBufferInfo(h, csbi)
+    except:
+        return None
+    if res:
+        import struct
+        (bufx, bufy, curx, cury, wattr,
+         left, top, right, bottom, maxx, maxy) = struct.unpack("hhhhHhhhhhh", csbi.raw)
+        sizex = right - left + 1
+        sizey = bottom - top + 1
+        return sizex, sizey
+    else:
+        return None
+
+def _getTerminalSize_tput():
+    # get terminal width
+    # src: http://stackoverflow.com/questions/263890/how-do-i-find-the-width-height-of-a-terminal-window
+    try:
+        import subprocess
+        proc=subprocess.Popen(["tput", "cols"],stdin=subprocess.PIPE,stdout=subprocess.PIPE)
+        output=proc.communicate(input=None)
+        cols=int(output[0])
+        proc=subprocess.Popen(["tput", "lines"],stdin=subprocess.PIPE,stdout=subprocess.PIPE)
+        output=proc.communicate(input=None)
+        rows=int(output[0])
+        return (cols,rows)
+    except:
+        return None
+
+
+def _getTerminalSize_linux():
+    def ioctl_GWINSZ(fd):
+        try:
+            import fcntl, termios, struct, os
+            cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,'1234'))
+        except:
+            return None
+        return cr
+    cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
+    if not cr:
+        try:
+            fd = os.open(os.ctermid(), os.O_RDONLY)
+            cr = ioctl_GWINSZ(fd)
+            os.close(fd)
+        except:
+            pass
+    if not cr:
+        try:
+            cr = (env['LINES'], env['COLUMNS'])
+        except:
+            return None
+    return int(cr[1]), int(cr[0])
 
 @jit(cache=True)
 def count_strs(_dict, _region, _table):
@@ -1245,7 +1319,7 @@ def count_strs(_dict, _region, _table):
     return _dict
 
 
-def dom_satid(_dict, rtn=False):
+def dom_satid(input_dict, _dict, rtn=False):
     """
     The dominate satellite number (:term:`domsat_id`).  Domsats's % of all
     stars (:term:`domsat_purity`).
@@ -1260,8 +1334,7 @@ def dom_satid(_dict, rtn=False):
     tuple
         (_domsat_id, _domsat_per, _standout, n_sats)
         :term:`_domsat_id` : Dominate satellite id.
-        :term:`_domsat_per` : Percentage that the _domsat_id represents
-                              from all satid's.
+        :term:`_domsat_per` : Percentage that the _domsat_id represents from all satid's.
         :term:`_standout` : _domsat_per / 0.01
         :term:`n_sats` : Number of staid's present.
 
@@ -1269,36 +1342,31 @@ def dom_satid(_dict, rtn=False):
     -------
         >>> domsat_id, domsat_purity, standout, nsats = dom_satid(sat_stars)
     """
-    return_dict = {}
-    
-    best_sat = (0, 0)  # (nstars, id)
-    second_best = (0, 0)
+    best_sat = (1, 0)  # (nstars, id)
+    second_best = (1, 0)
     n_sats = 0
-    
-    if not np.sum(list(_dict.values())):
-        return 0, 0.0, 0.0, 0
-    
-    for _id in list(_dict.keys()):
-        if _dict[_id]:
-            n_sats += 1
-        if _dict[_id] > best_sat[0]:
-            second_best = best_sat
-            best_sat = (_dict[_id], _id)
-    return_dict["input_sats"] = _dict
-    return_dict["best_sat"] = best_sat
-    return_dict["second_best"] = second_best
-    return_dict["n_sats_start"] = n_sats
-    
-    mean = np.mean([i for i in _dict.values() if i >= 1.0])
-    return_dict["mean"] = mean
-    
-    for key in list(_dict.keys()):
-        if _dict[key] < mean:
-            del _dict[key]
 
-    return_dict["n_sats_end"] = len(list(_dict.values()))
-    return_dict["output_sats"] = _dict
-    
+    for _id in list(input_dict.keys()):
+        if input_dict[_id]:
+            n_sats += 1
+        if input_dict[_id] > best_sat[0]:
+            second_best = best_sat
+            best_sat = (input_dict[_id], _id)
+    _dict["input_sats"] = input_dict.copy()
+    _dict["best_sat"] = best_sat
+    _dict["second_best"] = second_best
+    _dict["n_sats_start"] = n_sats
+
+    mean = np.mean([i for i in list(input_dict.values()) if i >= 1.0])
+    _dict["mean"] = mean
+
+    for key in list(input_dict.keys()):
+        if input_dict[key] < mean:
+            del input_dict[key]
+
+    _dict["n_sats_end"] = len(input_dict)
+    _dict["output_sats"] = input_dict.copy()
+
     """
     if len(list(_dict.values())) > 20:
         dom_satid(_dict, rtn=True)
@@ -1306,57 +1374,405 @@ def dom_satid(_dict, rtn=False):
         return
     """
 
-    total_strs = np.sum(list(_dict.values()))
+    total_strs = np.sum(list(input_dict.values()))
     _domsat_id = int(best_sat[1])
     _domsat_per = best_sat[0] / float(total_strs)
-    return_dict["total_strs"] = total_strs
-    return_dict["_domsat_id"] = _domsat_id
-    return_dict["_domsat_per"] = _domsat_per
+    _dict["dsat-nstars"] = total_strs
+    _dict["domsat_id"] = _domsat_id
+    _dict["domsat_purity"] = _domsat_per
 
     if second_best[0] > 0:
         _standout = _domsat_per / (second_best[0] / float(total_strs))
     else:
         _standout = _domsat_per / 0.01
-    return_dict["_standout"] = _standout
+    _dict["standout"] = _standout
 
-    return return_dict
+    return _dict
 
-def report():
+def br(_str, _sclr=CYAN, _bclr=GREEN):
+
+    return ct("[ ", _bclr) + ct(_str, _sclr) + ct(" ]", _bclr)
+
+def prnk(_rnk, _mode="normal"):
+    
+    if _mode == "normal":
+
+        p0 = ""
+        p1 = ct("[ ", GREEN)
+        p2 = ct("MPI_RANK ", CYAN)
+        p3 = ct(str(_rnk), MAGENTA)
+        p4 = ct(" ]", GREEN)
+
+        return p0 + p1 + p2 + p3 + p4
+
+def report(_type, _info):
     """
     _dict = sorted(_dict, key=_dict.__getitem__, reverse=True)
+    if _type == "starting halo":
+    STDOUT.write("rank " + str(MPI_RANK) +
+    " [ LOADED ] " + halo + "\\n")
+    STDOUT.flush()
+    if _type == "end annulus":
+    line = ("rank " + str(MPI_RANK) + " : halo" + halo[-2:] + " - " +
+    str(round(r, 1)) + " Kpc : --> " +
+    str(round((time() - a_tic), 1)) + " secs")
+    STDOUT.write(line + "\\n")
+    STDOUT.flush
+    if _type == "end halo":
+    if _type == "exit":
+    msg = ("rank " + str(MPI_RANK) + " [ FINISHED ] [ " +
+    str(round((time() - tic) / 60.0, 1)) + " minutes ]\\n")
+    STDOUT.write(msg)
+    STDOUT.flush()
+    --> TIME
     """
-    boxsize = 65
-    print("\n\n" + ct("  [ ", YELLOW) + ct("MPI_RANK ", MAGENTA) + ct(
-        str(MPI_RANK), RED) + ct(" ]", YELLOW) + "      " + ct(
-        "  [ ", YELLOW) + ct("REGION", CYAN) + ct(" ]", YELLOW))
 
-    print(ct("=" * boxsize, WHITE))
+    boxsize, boxheight = getTerminalSize()
+    begin_line = ct("| ", WHITE)
+    sep_1 = " : "
+    sep_2 = " - "
+    end_line = ct(" |", WHITE)
+    base_len = 10
 
-    lines = [
-        ["|", " best_sat      ", ": ", str(best_sat) + " - (nstars , id)"],
-        ["|", " second_best   ", ": ", str(second_best) + " - (nstars , id)"],
-        ["|", " total_strs    ", ": ", str(total_strs)],
-        ["|", " _domsat_id    ", ": ", str(_domsat_id)],
-        ["|", " _domsat_per   ", ": ", str(round(_domsat_per, 2))],
-        ["|", " _standout     ", ": ", str(round(_standout, 2))],
-        ["|", " n_sats start  ", ": ", str(n_sats)],
-        ["|", " n_sats end    ", ": ", str(len(list(_dict.values())))]]
+    def headder(_spc=False, _styl="=", _clr=WHITE):
+        if _spc:
+            _h1 = "\n\n"
+        else:
+            _h1 = ""
+        _h2 = ct(_styl * boxsize, _clr)
+        print(_h1 + _h2)
+        STDOUT.flush()
 
-    values = [WHITE, GREEN, YELLOW, CYAN]
-    for _ln in lines:
-        # render_and_pad(reqd_width, components, sep="/")
-        print(render_and_pad(
-            boxsize + 1, zip(values, _ln), sep=""), ct("|", WHITE))
+    def divider(_clr=WHITE):
+        _size = boxsize - 4
+        _1 = ct("| ", _clr)
+        _2 = ct("-" * _size, _clr)
+        _3 = ct(" |", _clr)
+        print(_1 + _2 + _3)
+        STDOUT.flush()
 
-    print(ct("|", WHITE) + ct(
-        str("-" * (boxsize - 2)), WHITE) + ct("|", WHITE))
+    def emptyline(_clr=WHITE):
+        _size = boxsize - 4
+        _1 = ct("| ", _clr)
+        _2 = " " * _size
+        _3 = ct(" |", _clr)
+        print(_1 + _2 + _3)
+        STDOUT.flush()
 
-    strdict = str(_dict).split(",")
-    chunks = [strdict[x:x + 5] for x in range(0, len(strdict), 5)]
+    # Convert all values to strings.
+    for key in list(_info.keys()):
+        _dtyp = type(_info[key])
+        if _dtyp == str:
+            continue
+        elif _dtyp in [float, np.float64, np.float32]:
+            _info[key] = str(round(_info[key], 2))
+        elif _dtyp in [int, dict, tuple, np.int64]:
+            _info[key] = str(_info[key])
+        else:
+            print(ct(_dtyp, RED))
+            print(ct(_info[key], RED))
+            _info[key] = str(_info[key])
 
-    for ln in chunks:
-        _line = ",".join(ln)
-        print(ct("| ", WHITE), render_and_pad(
-            boxsize - 5, [(MAGENTA, _line)], sep=""), ct("|", WHITE))
+    if _type == "new region":
 
-    print(ct("=" * boxsize, WHITE), "\n")
+        # Keys to ignore.
+        printed = [
+            "input_sats",
+            "output_sats",
+            "halo_num",
+            "MPI_RANK",
+            "halo"
+        ]
+
+        # Value descriptions.
+        defs = {
+            "best_sat": "(nstars, satid)",
+            "second_best": "(nstars, satid)",
+            "n_sats_start": "number of satids before removing < mean",
+            "mean": "The mean number of stars per nonzero satid",
+            "n_sats_end": "number of satids after removing < mean",
+            "dsat-nstars": "total number of stars for all satids",
+            "domsat_id": "satid of dominate sat",
+            "domsat_purity" :"% (nstars / dsat-nstars)",
+            "standout": "% ( domsat_purity / (second_best n_stars / dsat-nstars) )",
+            "r_start": "starting radius Kpc",
+            "r_stop": "ending radius Kpc",
+            "annuli_step": "angular step in Radians",
+            "log(mu_2)": "mean number of stars in annulus sub section",
+            "max xbox": "max of the max xbox values",
+            "max log(nstr)": "max of the log(n_stars)",
+            "n_stars": "total stars in region",
+            "n_segments": "number of search segments in region",
+            "n_seg_increase": "",
+            "n_seg_decrease": "",
+            "starting deg": "Radians",
+            "angular extent": "Radians",
+            "halo": "",
+            "mass": "M_sun",
+            "atime": "GigaYr",
+            "jcirc": ""
+        }
+
+        # Find column spacing.
+        key_lnth = 0
+        value_lnth = 0
+        for key, value in _info.items():
+            if key in printed:
+                continue 
+            if len(key) > key_lnth:
+                key_lnth = len(key)
+
+            if len(value) > value_lnth:
+                value_lnth = len(value)
+        
+        base_len += value_lnth + key_lnth
+
+
+        # Top of box.
+        os.system("clear")
+        STDOUT.flush()
+        headder()
+        divider()
+
+        # Header message.
+        _spc = " - "
+        _now = datetime.datetime.now()
+        _vals = [GREEN, BLUE, RED, YELLOW, GREEN]
+        _h1 = _info["halo"].title() + _spc
+        _h2 = _type.title() + _spc
+        _h3 = _now.strftime("%I:%M:%S %p - %A")
+        _h4 = ["[ ", _h1, _h2, _h3, " ]"]
+        _size = boxsize - 13 - len(_info["MPI_RANK"])
+        _1 = begin_line
+        _2 = render_and_pad(_size, zip(_vals, _h4))
+        _3 = prnk(_info["MPI_RANK"])
+        _4 = end_line
+        print(_1 + _2 + _3 + _4)
+        STDOUT.flush()
+
+        # Top section of box.
+        # Divider.
+        divider()
+
+        # Main contents.
+        values = [WHITE, GREEN, YELLOW, CYAN, YELLOW, BLUE]
+        for key in list(_info.keys()):
+            if key in printed:
+                continue
+
+            key_space = key_lnth - len(key)
+            value_space = value_lnth - len(_info[key])
+            _l1 = begin_line
+            _l2 = key + " " * key_space
+            _l3 = sep_1
+            _l4 = _info[key] + " " * value_space
+            _l5 = sep_2
+            _l6 = defs[key]
+            _ln = [_l1, _l2, _l3, _l4, _l5, _l6]
+            _size = boxsize  + 14
+            _line = zip(values, _ln)
+            _1 = render_and_pad(_size, _line)
+            _2 = end_line
+            print(_1 + _2)
+            STDOUT.flush()
+
+        # Midsection of box.
+        # Divider.
+        divider()
+
+        # Break up satid counts.
+        strdict = _info["output_sats"].split(",")
+        _minsz = 5
+        for x in strdict:
+            if len(x) > _minsz:
+                _minsz = len(x)
+        csize = boxsize // _minsz
+        chunks = [strdict[x:x + csize + 4] for x in range(0, len(strdict), csize + 4)]
+
+        # Main content.
+        for ln in chunks:
+            _line = ",".join(ln)
+            _size = boxsize - 4
+            _1 = begin_line
+            _2 = render_and_pad(_size, [(MAGENTA, _line)])
+            _3 = end_line
+            print(_1 + _2 + _3)
+            STDOUT.flush()
+
+        # Midsection of box.
+        # Divider.
+        divider()
+
+        # Break up satid counts.
+        strdict = _info["input_sats"].split(",")
+        chunks = [strdict[x:x + csize] for x in range(0, len(strdict), csize)]
+
+        # Main content.
+        for ln in chunks:
+            _line = ",".join(ln)
+            _size = boxsize - 4
+            _1 = begin_line
+            _2 = render_and_pad(_size, [(BLUE, _line)])
+            _3 = end_line
+            print(_1 + _2 + _3)
+            STDOUT.flush()
+
+        # Bottom of box.
+        headder()
+
+    if _type == "save":
+        _color = GREEN
+        _vals = [RED, MAGENTA, RED]
+        # headder(_styl="-", _clr=_color)
+        _l1 = "\t [ "
+        _l2 = "SAVING TABLE"
+        _l3 = " ]"
+        _ln = [_l1, _l2, _l3]
+        _size = boxsize - 15 - len(_info["MPI_RANK"])
+        _line = zip(_vals, _ln)
+        _1 = "" # ct("| ", _color)
+        _2 = prnk(_info["MPI_RANK"])
+        _3 = render_and_pad(_size, _line)
+        _4 = "" # ct(" |", _color)
+        print(_1 + _2 + _3 + _4) 
+        # headder(_styl="-", _clr=_color)
+        STDOUT.flush()
+
+    if _type == "starting halo":
+        _color = BLACK
+        _vals = [YELLOW, BLUE, YELLOW]
+
+        _l1 = "\t [ "
+        _l2 = "STARTING " + _info["halo"].upper()
+        _l3 = " ]"
+        _ln = [_l1, _l2, _l3]
+        _size = boxsize - 15 - len(_info["MPI_RANK"])
+        _line = zip(_vals, _ln)
+        _1 = "" # ct("| ", _color)
+        _2 = prnk(_info["MPI_RANK"])
+        _3 = render_and_pad(_size, _line)
+        _4 = "" # ct(" |", _color)
+        # headder(_clr=_color)
+        # emptyline(_clr=_color)
+        print(_1 + _2 + _3 + _4)
+        # emptyline(_clr=_color) 
+        # headder(_clr=_color)
+        STDOUT.flush()
+
+    if _type == "end annulus":
+        _color = BLUE
+        _vals = [GREEN, CYAN, GREEN]
+
+        _l1 = "\t [ "
+        _l2 = "FINISHED ANNULUS : \t" + _info["annulus time"] + " seconds"
+        _l3 = " ]"
+        _ln = [_l1, _l2, _l3]
+        _size = boxsize - 15 - len(_info["MPI_RANK"])
+        _line = zip(_vals, _ln)
+        _1 = "" # ct("| ", _color)
+        _2 = prnk(_info["MPI_RANK"])
+        _3 = render_and_pad(_size, _line)
+        _4 = "" # ct(" |", _color)
+        # headder(_styl="-", _clr=_color)
+        # emptyline(_clr=_color)
+        print(_1 + _2 + _3 + _4)
+        # emptyline(_clr=_color)
+        # headder(_styl="-", _clr=_color)
+        STDOUT.flush()
+
+    if _type == "end halo":
+        _color = MAGENTA
+        _vals = [MAGENTA, YELLOW, MAGENTA]
+        _l1 = "\t [ "
+        _l2 = "FINISHED " + _info["halo"].upper() + " : \t" + _info["halo time"] + " minutes"
+        _l3 = " ]"
+        _ln = [_l1, _l2, _l3]
+        _size = boxsize - 15 - len(_info["MPI_RANK"])
+        _line = zip(_vals, _ln)
+        _1 = "" # ct("| ", _color)
+        _2 = prnk(_info["MPI_RANK"])
+        _3 = render_and_pad(_size, _line)
+        _4 = "" # ct(" |", _color)
+        # headder(_styl="-", _clr=_color)
+        # emptyline(_clr=_color)
+        print(_1 + _2 + _3 + _4)
+        # emptyline(_clr=_color)
+        # headder(_styl="-", _clr=_color)
+        STDOUT.flush()
+
+    if _type == "exit":
+        _color = BLACK
+        _vals = [RED, RED, RED]
+        _l1 = "\t [ "
+        _l2 = "FINISHED PROGRAM: \t" + _info["program time"] + " minutes"
+        _l3 = " ]"
+        _ln = [_l1, _l2, _l3]
+        _size = boxsize - 15 - len(_info["MPI_RANK"])
+        _line = zip(_vals, _ln)
+        _1 = "" # ct("| ", _color)
+        _2 = prnk(_info["MPI_RANK"])
+        _3 = render_and_pad(_size, _line)
+        _4 = "" # ct("") |", _color)
+        # headder(_clr=_color)
+        # emptyline(_clr=_color)
+        print(_1 + _2 + _3 + _4)
+        # emptyline(_clr=_color)
+        # headder(_clr=_color)
+        STDOUT.flush()
+
+    if _type == "error":
+
+        # Find column spacing.
+        key_lnth = 0
+        value_lnth = 0
+        for key, value in _info.items():
+            if len(key) > key_lnth:
+                key_lnth = len(key)
+
+            if len(value) > value_lnth:
+                value_lnth = len(value)
+
+        _color = BLACK
+        _vals = [YELLOW, RED, YELLOW]
+        headder(_styl="-", _clr=_color)
+        _l1 = " [ "
+        _l2 = "ERROR"
+        _l3 = " ]"
+        _ln = [_l1, _l2, _l3]
+        _size = boxsize - 15 - len(_info["MPI_RANK"])
+        _line = zip(_vals, _ln)
+        _1 = ct("| ", _color)
+        _2 = prnk(_info["MPI_RANK"])
+        _3 = render_and_pad(_size, _line)
+        _4 = ct(" |", _color)
+        print(_1 + _2 + _3 + _4) 
+        
+        # Main contents.
+        values = [_color, RED, YELLOW, RED]
+        for key in list(_info.keys()):
+
+            key_space = key_lnth - len(key)
+            value_space = value_lnth - len(_info[key])
+            _l1 = ct("| ", _color)
+            _l2 = key + " " * key_space
+            _l3 = sep_1
+            _l4 = _info[key] + " " * value_space
+            _ln = [_l1, _l2, _l3, _l4]
+            _size = boxsize  + 14
+            _line = zip(values, _ln)
+            
+            _1 = render_and_pad(_size, _line)
+            _2 = ct(" |", _color)
+            print(_1 + _2)
+            STDOUT.flush()        
+
+        headder(_styl="-", _clr=_color)
+        STDOUT.flush()
+
+    STDOUT.flush()
+
+
+if __name__ == "__main__":
+
+    now = datetime.datetime.now()
+    print(br(now.strftime("%I:%M:%S %p - %A %B %d %Y")))
