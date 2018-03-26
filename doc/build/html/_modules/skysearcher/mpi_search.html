@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>skysearcher.mpi_search &mdash; skysearcher version 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="skysearcher version 0.0.1" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> skysearcher
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/gettingstarted/gettingstarted.html"><strong>Getting started</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/gettingstarted/systemcompatibility.html">Sysem compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/gettingstarted/download.html">Download skysearcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/gettingstarted/filesystem.html">The file system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/gettingstarted/install.html">Install skysearcher</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/gettingstarted/install.html#using-pip">Using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/gettingstarted/install.html#using-setup-py">Using setup.py</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration file</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/configurationfile/configfile.html"><strong>Configuration file</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/configurationfile/newconfigfile.html">Making a new configuration file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/configurationfile/parameters.html">Configuration parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/configurationfile/parameters.html#path">PATH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/configurationfile/parameters.html#search-extent">Search Extent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/configurationfile/parameters.html#accept-reject">Accept Reject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/configurationfile/parameters.html#run-time">Run Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/configurationfile/parameters.html#data">DATA</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Commandline tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/commandline/commandline.html"><strong>Command line tools</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/commandline/newcfg.html">skysearcher-newcfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/commandline/run.html">skysearcher-run</a></li>
+</ul>
+<p class="caption"><span class="caption-text">The search algorithm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/searchalgorithm/searchalgorithm.html"><strong>The search algorithm</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/searchalgorithm/searchalgorithm.html#for-each-halo-file">For each halo file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_static/searchalgorithm/searchalgorithm.html#for-each-radius-assigned-to-this-process">For each radius assigned to this process</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_static/functions/functions.html"><strong>Functions</strong></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html"><strong>Glossary</strong></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">skysearcher</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>skysearcher.mpi_search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for skysearcher.mpi_search</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+
+<span class="sd">&quot;&quot;&quot;This is the main parallel skysearcher program.</span>
+
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+<span class="sd">    &gt;&gt;&gt; mpiexec -nproc -machinefile python mpi_search.py</span>
+
+<span class="sd">    -nproc {int} -- number of processes</span>
+<span class="sd">    -machinefile {file} -- list of hosts each on a new line</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../_static/functions/functions.html#skysearcher.mpi_search.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This is the main parallel skysearcher program.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">        &gt;&gt;&gt; mpiexec -n &lt;nproc&gt; -machinefile &lt;mf&gt; python mpi_search.py</span>
+
+<span class="sd">        -nproc {int} -- number of processes</span>
+<span class="sd">        -machinefile {file} -- list of hosts each on a new line</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Load statice satillite data arrays.</span>
+    <span class="c1"># Sat mass (m_book).</span>
+    <span class="c1"># Sat acc_time (t_book).</span>
+    <span class="c1"># Sat jcirc (j_book).</span>
+    <span class="n">m_book</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s2">&quot;satmass_array.npy&quot;</span><span class="p">))</span>
+    <span class="n">t_book</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s2">&quot;satage_array.npy&quot;</span><span class="p">))</span>
+    <span class="n">j_book</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s2">&quot;satj_array.npy&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Misc values.</span>
+    <span class="n">domsat_id</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">n_skips</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">log_n_stars_max</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">region_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Stall processes.</span>
+    <span class="k">if</span> <span class="n">MPI_RANK</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">clear_tables</span><span class="p">(</span><span class="n">_target_dir</span><span class="o">=</span><span class="n">MPI_TABLE_DIR</span><span class="p">)</span>
+
+
+    <span class="c1"># Print initial banner message.</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+
+    <span class="c1"># Load a list of halo names &amp; grid file paths.</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+
+    <span class="c1"># Load file handles for numpy data arrays.</span>
+    <span class="n">grids</span> <span class="o">=</span> <span class="n">grid_list</span><span class="p">()</span>
+
+    <span class="c1"># Read Mpc distance (d_mpc) from grid files.</span>
+    <span class="n">dmpc_str</span> <span class="o">=</span> <span class="n">grids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">d_mpc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dmpc_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Mpc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Make the mod for the distance.</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">kpc_to_arcmin</span><span class="p">(</span><span class="n">d_mpc</span><span class="o">=</span><span class="n">d_mpc</span><span class="p">)</span>
+
+    <span class="c1"># Load the record table (r_table).</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+    <span class="n">r_table</span> <span class="o">=</span> <span class="n">record_table</span><span class="p">(</span><span class="n">_names</span><span class="o">=</span><span class="n">TABLE_COLUMNS</span><span class="p">)</span>
+
+    <span class="c1"># Load list of radii (radii).</span>
+    <span class="c1"># i.e radii[x] = (r, r_start, r_stop)</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+    <span class="n">_radii</span> <span class="o">=</span> <span class="n">radii</span><span class="p">()</span>
+
+    <span class="c1"># Designate work for MPI_RANK (work_index).</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+    <span class="n">work_index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">MPI_RANK</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">_radii</span><span class="p">),</span> <span class="n">MPI_SIZE</span><span class="p">)</span>
+
+    <span class="c1"># Make print statements.</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+
+    <span class="c1"># Flush Stdout buffer.</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+
+    <span class="c1"># Total run time(tic).</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="c1"># Human readable time.</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    
+
+    <span class="c1"># Dictionary for printable information(run_dict).</span>
+    <span class="n">run_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;MPI_RANK&quot;</span><span class="p">:</span> <span class="n">MPI_RANK</span><span class="p">,</span>
+        <span class="s2">&quot;MPI_PROC_NAME&quot;</span><span class="p">:</span> <span class="n">MPI_PROC_NAME</span><span class="p">,</span>
+        <span class="s2">&quot;START_TIME&quot;</span><span class="p">:</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%I:%M:%S %p - %A %B </span><span class="si">%d</span><span class="s2"> %Y&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;d_mpc&quot;</span><span class="p">:</span> <span class="n">d_mpc</span><span class="p">,</span>
+        <span class="s2">&quot;mod&quot;</span><span class="p">:</span> <span class="n">mod</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Save record hdf5 table.</span>
+    <span class="n">COMM</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="n">pause</span><span class="p">()</span>
+    <span class="n">save_record_table</span><span class="p">(</span><span class="n">_table</span><span class="o">=</span><span class="n">r_table</span><span class="p">)</span>
+    <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">halo</span><span class="p">,</span> <span class="n">grid_fh</span> <span class="ow">in</span> <span class="n">grids</span><span class="p">:</span>
+
+        <span class="n">h_tic</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+        <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;halo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">halo</span>
+
+        <span class="c1"># Get a list of satids and a table for counting</span>
+        <span class="c1"># satids per region (satid_list) (satid_table).</span>
+        <span class="n">satid_list</span><span class="p">,</span> <span class="n">satid_table</span> <span class="o">=</span> <span class="n">satid_setup</span><span class="p">(</span><span class="n">halo</span><span class="p">)</span>
+
+        <span class="c1"># Get the data grid for this halo (grid).</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">load_grid</span><span class="p">(</span><span class="n">grid_fh</span><span class="p">)</span>
+
+        <span class="c1"># Print &quot;starting halo&quot; message.</span>
+        <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s2">&quot;starting halo&quot;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+
+        <span class="c1"># Adjust nstars for units and distance.</span>
+        <span class="n">grid</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/=</span> <span class="n">mod</span>
+
+        <span class="c1"># &lt;commented out&gt;</span>
+        <span class="c1"># Kernel function</span>
+        <span class="c1"># grid[:, :, 1] = gaussian_filter(grid[:,:,0],</span>
+        <span class="c1"># sigma=0.8, mode=&quot;constant&quot;, cval=0, order=0)</span>
+
+        <span class="c1"># Step through the radii (r_start, r_stop).</span>
+        <span class="k">for</span> <span class="n">job_id</span> <span class="ow">in</span> <span class="n">work_index</span><span class="p">:</span>
+
+            <span class="c1"># Start time (a_tic).</span>
+            <span class="n">a_tic</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+            <span class="c1"># r = radius in Kpc</span>
+            <span class="c1"># r_start = starting radius (always &lt; r)</span>
+            <span class="c1"># r_stop = ending radius (always &gt; r)</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">r_start</span><span class="p">,</span> <span class="n">r_stop</span> <span class="o">=</span> <span class="n">_radii</span><span class="p">[</span><span class="n">job_id</span><span class="p">]</span>
+
+            <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
+            <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;r_start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_start</span>
+            <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;r_stop&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_stop</span>
+
+            <span class="c1"># This is so we don&#39;t need to index the whole table every</span>
+            <span class="c1"># loop of the following for loop (local_satid_table).</span>
+            <span class="n">local_satid_table</span> <span class="o">=</span> <span class="n">satid_table</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
+                <span class="n">satid_table</span><span class="p">[</span><span class="s2">&quot;Rads&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">r_start</span><span class="p">,</span>
+                <span class="n">satid_table</span><span class="p">[</span><span class="s2">&quot;Rads&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">r_stop</span><span class="p">)]</span>
+
+            <span class="c1"># Get the mu for this annulus (mu).</span>
+            <span class="n">mu</span><span class="p">,</span> <span class="n">r_idx</span> <span class="o">=</span> <span class="n">mu_idx</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">r_start</span><span class="p">,</span> <span class="n">r_stop</span><span class="p">)</span>
+
+            <span class="c1"># &lt;commented out&gt;</span>
+            <span class="c1"># The number of boxes in the annulus (log_n_boxes_in_ann).</span>
+            <span class="c1"># log_n_boxes_in_ann = np.log10(len(np.nonzero(r_idx)[0]))</span>
+
+            <span class="c1"># &lt;commented out&gt;</span>
+            <span class="c1"># The number of stars in this annulus (log_n_stars_in_ann)</span>
+            <span class="c1"># log_n_stars_in_ann = np.log10(grid[:, :, 1][r_idx].sum())</span>
+
+            <span class="c1"># Boolean value to indicate the existence of</span>
+            <span class="c1"># a immediately previous accepted segment(one_before).</span>
+            <span class="n">one_before</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Load array of annuli segments and</span>
+            <span class="c1"># step value (annuli) &amp; (annuli_step).</span>
+            <span class="c1"># i.e. annuli_step = float</span>
+            <span class="c1"># i.e. annuli[x] = (deg_0, deg_1)</span>
+            <span class="n">annuli</span><span class="p">,</span> <span class="n">annuli_step</span> <span class="o">=</span> <span class="n">get_annuli</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+            <span class="c1"># Number of empty segments (n_mt_seg).</span>
+            <span class="n">n_mt_seg</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Number of increasing segments (n_seg_increase).</span>
+            <span class="c1"># Number of decreasing segments (n_seg_decrease).</span>
+            <span class="n">n_seg_increase</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">n_seg_decrease</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">last_nstars</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Step through the annulus (-pi, pi].</span>
+            <span class="c1"># _deg0 = starting point.</span>
+            <span class="c1"># _deg1 = ending point</span>
+            <span class="k">for</span> <span class="n">_deg0</span><span class="p">,</span> <span class="n">_deg1</span> <span class="ow">in</span> <span class="n">annuli</span><span class="p">:</span>
+
+                <span class="c1"># Get the mu and indices&#39;s for this sub-annulus-section</span>
+                <span class="c1"># (mu, r_idx2).</span>
+                <span class="n">mu_2</span><span class="p">,</span> <span class="n">r_idx2</span> <span class="o">=</span> <span class="n">mu_idx2</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">r_idx</span><span class="p">,</span> <span class="n">_deg0</span><span class="p">,</span> <span class="n">_deg1</span><span class="p">)</span>
+
+                <span class="c1"># The grid index for grid spaces within</span>
+                <span class="c1"># this segment (idx).</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">get_idx</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">_deg0</span><span class="p">,</span> <span class="n">_deg1</span><span class="p">,</span> <span class="n">r_idx2</span><span class="p">)</span>
+
+                <span class="c1"># The number of grid boxes this segment covers</span>
+                <span class="c1"># (n_boxes_tot).</span>
+                <span class="n">n_boxes_in_seg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+                <span class="c1"># If there are none, then continue.</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">n_boxes_in_seg</span><span class="p">:</span>
+                    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                    STDOUT.write(</span>
+<span class="sd">                        &quot;rank &quot;</span>
+<span class="sd">                        + str(MPI_RANK)</span>
+<span class="sd">                        +  &quot; [ EMPTY SEGMENT ] &quot;</span>
+<span class="sd">                        + halo</span>
+<span class="sd">                        + &quot; radius: &quot; + str(r) + &quot; Kpc&quot;</span>
+<span class="sd">                        + &quot; phi: &quot; + str(_deg0)</span>
+<span class="sd">                        + &quot;\n&quot;)</span>
+<span class="sd">                    STDOUT.flush()</span>
+<span class="sd">                    &quot;&quot;&quot;</span>
+                    <span class="n">n_mt_seg</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># The array of grid spaces from this segment&quot;s</span>
+                <span class="c1"># contrast density value (xbox).</span>
+                <span class="n">xbox</span> <span class="o">=</span> <span class="n">get_xbox</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">)</span>
+
+                <span class="c1"># Number of stars here (n_stars_here).</span>
+                <span class="n">n_stars_here</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+                <span class="c1"># TODO</span>
+                <span class="c1"># What is this doing?</span>
+                <span class="k">if</span> <span class="n">n_stars_here</span> <span class="o">&gt;=</span> <span class="n">last_nstars</span><span class="p">:</span>
+                    <span class="n">n_seg_increase</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">n_seg_decrease</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">last_nstars</span> <span class="o">=</span> <span class="n">n_stars_here</span>
+
+                <span class="c1"># ------------------------------------------------------</span>
+                <span class="c1">#        Does this segment qualify to be a feature?</span>
+                <span class="c1"># ------------------------------------------------------</span>
+                <span class="c1"># Is the local min above xbox_cut?</span>
+                <span class="c1"># If yes:</span>
+                <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">xbox</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">XBOX_CUT</span>
+                        <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">n_stars_here</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">MIN_LOG_NSTARS</span><span class="p">):</span>
+
+                    <span class="c1"># If this is a new feature...</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">one_before</span><span class="p">:</span>
+
+                        <span class="c1"># open a list for the max values</span>
+                        <span class="c1"># for this feature (xbmax).</span>
+                        <span class="n">xbmax</span> <span class="o">=</span> <span class="p">[]</span>
+
+                        <span class="c1"># open a list for max Log10(n_stars) (n_stars_max).</span>
+                        <span class="n">log_n_stars_max</span> <span class="o">=</span> <span class="p">[]</span>
+
+                        <span class="c1"># Start a dictionary for counting stars</span>
+                        <span class="c1"># per satid (sat_stars).</span>
+                        <span class="n">sat_stars</span> <span class="o">=</span> <span class="n">new_sat_stars</span><span class="p">(</span><span class="n">satid_list</span><span class="p">)</span>
+
+                        <span class="c1"># Set grid space count (n_stars).</span>
+                        <span class="n">n_boxes</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Set star count (n_stars).</span>
+                        <span class="n">n_stars</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Set the run length (n_segments) to 0.</span>
+                        <span class="n">n_segments</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Remember the starting angular</span>
+                        <span class="c1"># value (starting_deg).</span>
+                        <span class="n">starting_deg</span> <span class="o">=</span> <span class="n">_deg0</span>
+
+                        <span class="c1"># Set allowed segment skips (n_skips).</span>
+                        <span class="n">n_skips</span> <span class="o">=</span> <span class="n">N_SKIPS</span>
+
+                    <span class="c1"># Do this for every accepted segment:</span>
+                    <span class="c1"># -----------------------------------</span>
+                    <span class="c1"># Put all region info into a list (r_info).</span>
+                    <span class="n">r_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start</span><span class="p">,</span> <span class="n">r_stop</span><span class="p">,</span> <span class="n">_deg0</span><span class="p">,</span> <span class="n">_deg1</span><span class="p">]</span>
+
+                    <span class="c1"># Add this features min, mean and max</span>
+                    <span class="c1"># to the existing lists.</span>
+                    <span class="n">xbmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xbox</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+                    <span class="c1"># Count stars per sat.</span>
+                    <span class="n">sat_stars</span> <span class="o">=</span> <span class="n">count_strs</span><span class="p">(</span>
+                        <span class="n">sat_stars</span><span class="p">,</span>
+                        <span class="n">r_info</span><span class="p">,</span>
+                        <span class="n">local_satid_table</span><span class="p">)</span>
+
+                    <span class="c1"># Add boxes to total boxes.</span>
+                    <span class="n">n_boxes</span> <span class="o">+=</span> <span class="n">n_boxes_in_seg</span>
+
+                    <span class="c1"># Add stars to total stars for feature.</span>
+                    <span class="n">n_stars</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_stars_here</span><span class="p">)</span>
+
+                    <span class="c1"># Add n_stars to list for later.</span>
+                    <span class="n">log_n_stars_max</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">n_stars_here</span><span class="p">))</span>
+
+                    <span class="c1"># Increase run length (run_length) by 1.</span>
+                    <span class="n">n_segments</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                    <span class="c1"># Remember that there is a feature</span>
+                    <span class="c1"># currently being processed (one_before).</span>
+                    <span class="n">one_before</span> <span class="o">=</span> <span class="kc">True</span>
+
+                <span class="c1"># If no:</span>
+                <span class="k">else</span><span class="p">:</span>
+
+                    <span class="c1"># Use allowed segment skips:</span>
+                    <span class="k">if</span> <span class="n">one_before</span> <span class="ow">and</span> <span class="n">n_skips</span><span class="p">:</span>
+                        <span class="n">n_skips</span> <span class="o">-=</span> <span class="mi">1</span>
+                        <span class="n">n_segments</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">one_before</span> <span class="o">=</span> <span class="kc">True</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+
+                        <span class="c1"># If this is the end of a segment:</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">one_before</span> 
+                            <span class="ow">and</span> <span class="n">n_segments</span> <span class="o">&gt;=</span> <span class="n">MIN_N_SEGMENTS</span>
+                            <span class="ow">and</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sat_stars</span><span class="o">.</span><span class="n">values</span><span class="p">())):</span>
+
+
+                            <span class="n">region_dict</span> <span class="o">=</span> <span class="p">{</span>
+                                <span class="s2">&quot;MPI_RANK&quot;</span><span class="p">:</span> <span class="n">MPI_RANK</span>
+                            <span class="p">}</span>
+
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;r_start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_start</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;r_stop&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_stop</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;annuli_step&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annuli_step</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;log(mu_2)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">mu_2</span><span class="p">)</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;max xbox&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xbmax</span><span class="p">)</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;max log(nstr)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">log_n_stars_max</span><span class="p">)</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;n_stars&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_stars</span><span class="p">)</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;n_segments&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_segments</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;n_seg_increase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_seg_increase</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;n_seg_decrease&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_seg_decrease</span>
+
+                            <span class="c1"># The dominate satellite number (domsat_id).</span>
+                            <span class="c1"># domsats&quot;s % of all stars (domsat_purity).</span>
+                            <span class="n">region_dict</span> <span class="o">=</span> <span class="n">dom_satid</span><span class="p">(</span><span class="n">sat_stars</span><span class="p">,</span> <span class="n">region_dict</span><span class="p">)</span>
+
+
+                            <span class="c1"># The feature&quot;s angular extent</span>
+                            <span class="c1"># (angular_extent).</span>
+                            <span class="n">angular_extent</span> <span class="o">=</span> <span class="n">_deg0</span> <span class="o">-</span> <span class="n">starting_deg</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;starting deg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">starting_deg</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;angular extent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">angular_extent</span>
+
+                            <span class="c1"># An integer value for each halo (halo_num).</span>
+                            <span class="n">halo_num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">halo</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+                            <span class="c1"># region_dict[&quot;halo_num&quot;] = halo_num</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;halo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">halo</span>
+
+                            <span class="c1"># Mass of parent satellite (mass).</span>
+                            <span class="n">mass</span> <span class="o">=</span> <span class="n">m_book</span><span class="p">[</span><span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;domsat_id&quot;</span><span class="p">]]</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;mass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mass</span>
+
+                            <span class="c1"># Accretion time of parent satellite (atime).</span>
+                            <span class="n">atime</span> <span class="o">=</span> <span class="n">t_book</span><span class="p">[</span><span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;domsat_id&quot;</span><span class="p">]]</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;atime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">atime</span>
+
+                            <span class="c1"># Circle factor (jcirc).</span>
+                            <span class="n">jcirc</span> <span class="o">=</span> <span class="n">j_book</span><span class="p">[</span><span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;domsat_id&quot;</span><span class="p">]]</span>
+                            <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;jcirc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">jcirc</span>
+
+                            <span class="c1"># A new row for the r_table (row).</span>
+                            <span class="c1"># Each feature is a row in the table.</span>
+                            <span class="n">row</span> <span class="o">=</span> <span class="p">[</span>
+
+                                <span class="c1"># Halo.</span>
+                                <span class="n">halo_num</span><span class="p">,</span>
+
+                                <span class="c1"># Annulus location values.</span>
+                                <span class="n">r</span><span class="p">,</span>
+                                <span class="n">r_start</span><span class="p">,</span>
+                                <span class="n">r_stop</span><span class="p">,</span>
+                                <span class="n">annuli_step</span><span class="p">,</span>
+                                <span class="c1"># n_mt_seg,</span>
+
+                                <span class="c1"># Annulus content values.</span>
+                                <span class="c1"># log_n_boxes_in_ann,</span>
+                                <span class="c1"># log_n_stars_in_ann,</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">mu_2</span><span class="p">),</span>
+
+                                <span class="c1"># Feature content values.</span>
+                                <span class="nb">max</span><span class="p">(</span><span class="n">xbmax</span><span class="p">),</span>
+                                <span class="nb">max</span><span class="p">(</span><span class="n">log_n_stars_max</span><span class="p">),</span>
+                                <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;domsat_purity&quot;</span><span class="p">],</span>
+                                <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;domsat_id&quot;</span><span class="p">],</span>
+                                <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;standout&quot;</span><span class="p">],</span>
+                                <span class="n">region_dict</span><span class="p">[</span><span class="s2">&quot;n_sats_end&quot;</span><span class="p">],</span>
+                                <span class="n">mass</span><span class="p">,</span>
+                                <span class="n">atime</span><span class="p">,</span>
+                                <span class="n">jcirc</span><span class="p">,</span>
+
+                                <span class="c1"># Feature location values.</span>
+                                <span class="n">starting_deg</span><span class="p">,</span>
+                                <span class="c1"># _deg0,</span>
+                                <span class="n">angular_extent</span><span class="p">,</span>
+                                <span class="c1"># n_segments,</span>
+                                <span class="c1"># n_boxes,</span>
+
+                                <span class="c1"># MPI values.</span>
+                                <span class="c1"># MPI_RANK</span>
+                            <span class="p">]</span>
+
+                            <span class="c1"># Add the row to the table.</span>
+                            <span class="n">r_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+                            <span class="c1"># Save point if added a new row.</span>
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r_table</span><span class="p">)</span> <span class="o">%</span> <span class="n">SAVE_INTERVAL</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">save_record_table</span><span class="p">(</span><span class="n">_table</span><span class="o">=</span><span class="n">r_table</span><span class="p">)</span>
+                                <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+
+
+                            <span class="k">if</span> <span class="n">MPI_RANK</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                                <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s2">&quot;new region&quot;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">region_dict</span><span class="p">)</span>
+                            <span class="k">del</span> <span class="n">region_dict</span>
+
+                        <span class="c1"># Clean up.</span>
+                        <span class="n">halo_num</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="n">mass</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="n">atime</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="n">angular_extent</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Reset grid space count (n_stars).</span>
+                        <span class="n">n_boxes</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Reset n_stars to 0.</span>
+                        <span class="n">n_stars</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Reset run length to 0.</span>
+                        <span class="n">n_segments</span> <span class="o">=</span> <span class="mi">0</span>
+
+                        <span class="c1"># Remember that there&quot;s no previous segment</span>
+                        <span class="n">one_before</span> <span class="o">=</span> <span class="kc">False</span>
+
+                        <span class="c1"># Reset starting_deg.</span>
+                        <span class="n">starting_deg</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="n">n_seg_increase</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="n">n_seg_decrease</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="n">last_nstars</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+
+            <span class="c1"># Terminal progress message.</span>
+            <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;annulus time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">a_tic</span><span class="p">))</span>
+            <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s1">&#39;end annulus&#39;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+
+        <span class="c1"># Halo save point.</span>
+        <span class="n">save_record_table</span><span class="p">(</span><span class="n">_table</span><span class="o">=</span><span class="n">r_table</span><span class="p">)</span>
+        <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+        <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;halo time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">h_tic</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s1">&#39;end halo&#39;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+
+
+    <span class="c1"># Final save point.</span>
+    <span class="n">save_record_table</span><span class="p">(</span><span class="n">_table</span><span class="o">=</span><span class="n">r_table</span><span class="p">)</span>
+    <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+
+    <span class="c1"># Exit message.</span>
+    <span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;program time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">report</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="n">_info</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span></div>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Sol W Courtney.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
