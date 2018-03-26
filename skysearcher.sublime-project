@@ -8,7 +8,7 @@
 				".ipynb_checkpoints"
 			],
 			"follow_symlinks": true,
-			//  "name": "SKYSEARCHER_ROOT",
+			"name": "SKYSEARCHER_ROOT",
 			"path": "/home/sol/Github/skysearcher"
 		}
 	],
