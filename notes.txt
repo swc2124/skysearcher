@@ -21,3 +21,61 @@ If you’re looking for things to do between now and 29th
 	3) Then go on to start asking the question - can we relate the properties of the features to the satellites from which they came (e.g. mass and accretion time)?General 
 			- e.g. scale or nstars vs mass???? - might have to be in small radius range
 			- (something you’ve been talking about for a while): color vs mass and/or age (maybe color of brightest stars???)
+
+
+2018-03-18 23:21:24
+LaTex support
+	https://latextools.readthedocs.io/en/latest/available-builders/
+
+2018-03-22 11:45:26
+Cross-referencing Python objects
+
+The following roles refer to objects in modules and are possibly hyperlinked if a matching identifier is found:
+
+:py:mod:
+
+    Reference a module; a dotted name may be used. This should also be used for package names.
+
+:py:func:
+
+    Reference a Python function; dotted names may be used. The role text needs not include trailing parentheses to enhance readability; they will be added automatically by Sphinx if the add_function_parentheses config value is True (the default).
+
+:py:data:
+
+    Reference a module-level variable.
+
+:py:const:
+
+    Reference a “defined” constant. This may be a Python variable that is not intended to be changed.
+
+:py:class:
+
+    Reference a class; a dotted name may be used.
+
+:py:meth:
+
+    Reference a method of an object. The role text can include the type name and the method name; if it occurs within the description of a type, the type name can be omitted. A dotted name may be used.
+
+:py:attr:
+
+    Reference a data attribute of an object.
+
+:py:exc:
+
+    Reference an exception. A dotted name may be used.
+
+:py:obj:
+
+    Reference an object of unspecified type. Useful e.g. as the default_role.
+
+    New in version 0.4.
+
+The name enclosed in this markup can include a module name and/or a class name. For example, :py:func:`filter` could refer to a function named filter in the current module, or the built-in function of that name. In contrast, :py:func:`foo.filter` clearly refers to the filter function in the foo module.
+
+Normally, names in these roles are searched first without any further qualification, then with the current module name prepended, then with the current module and class name (if any) prepended. If you prefix the name with a dot, this order is reversed. For example, in the documentation of Python’s codecs module, :py:func:`open` always refers to the built-in function, while :py:func:`.open` refers to codecs.open().
+
+A similar heuristic is used to determine whether the name is an attribute of the currently documented class.
+
+Also, if the name is prefixed with a dot, and no exact match is found, the target is taken as a suffix and all object names with that suffix are searched. For example, :py:meth:`.TarFile.close` references the tarfile.TarFile.close() function, even if the current module is not tarfile. Since this can get ambiguous, if there is more than one possible match, you will get a warning from Sphinx.
+
+Note that you can combine the ~ and . prefixes: :py:meth:`~.TarFile.close` will reference the tarfile.TarFile.close() method, but the visible link caption will only be close().

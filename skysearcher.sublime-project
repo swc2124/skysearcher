@@ -1,0 +1,66 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"__pycache__",
+				".ipynb_checkpoints"
+			],
+			"follow_symlinks": true,
+			//  "name": "SKYSEARCHER_ROOT",
+			"path": "/home/sol/Github/skysearcher"
+		}
+	],
+	"settings":
+	{	
+		
+		"anaconda_linting": false,
+		// "TEXroot": "~/Github/skysearcher/paper/paper_",
+		"auto_complete_triggers":
+		[
+			{
+				"characters": "\\",
+				"selector": "text.tex.latex"
+			}
+		],
+		"builder": "basic",
+		"builder_settings":
+		{
+			"options": "--shell-escape",
+			"program": "xelatex"
+		},
+		"image_types":
+		[
+			"png",
+			"jpg",
+			"jpeg",
+			"pdf",
+			"eps"
+		],
+		"line_padding_bottom": 3,
+		"preview_image_mode": "hover",
+		"rulers":
+		[
+			78
+		],
+		"temp_files_exts":
+		[
+			".aux",
+			".fdb_latexmk",
+			".fls",
+			".log",
+			".bbl",
+			".blg",
+			".synctex.gz"
+		],
+		"tex_file_exts":
+		[
+			".tex",
+			".tikz"
+		],
+		"use_biblatex": true,
+		"word_wrap": false,
+		"wrap_width": 78
+	}
+}

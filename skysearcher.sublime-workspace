@@ -1,0 +1,1696 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"MPI",
+				"MPI_RANK\tstatement"
+			],
+			[
+				"r_",
+				"r_start"
+			],
+			[
+				"lis",
+				"listdir()\tos"
+			],
+			[
+				"tup",
+				"Tuple\ttyping"
+			],
+			[
+				"grid_",
+				"grid_list"
+			],
+			[
+				"mod",
+				"module"
+			],
+			[
+				"mpi",
+				"mpi_search"
+			],
+			[
+				"search",
+				"searchalgorithm"
+			],
+			[
+				"se",
+				"segment"
+			],
+			[
+				"skyse",
+				"skysearcher-run"
+			],
+			[
+				"sky",
+				"skysearcher-run"
+			],
+			[
+				"fl",
+				"flash()\tcurses"
+			],
+			[
+				"st",
+				"stdout\tinstance"
+			],
+			[
+				"cmd",
+				"cmdlinetool\tmodule"
+			],
+			[
+				"print",
+				"print_function\tinstance"
+			],
+			[
+				"time",
+				"time()\tdatetime"
+			],
+			[
+				"Ex",
+				"Example\tdoctest"
+			],
+			[
+				"Inde",
+				"IndexError\tclass"
+			],
+			[
+				"In",
+				"IndexError\tclass"
+			],
+			[
+				"wr",
+				"write()\tcode"
+			],
+			[
+				"__",
+				"__name__\tinstance"
+			],
+			[
+				"__nam",
+				"__name__\tinstance"
+			],
+			[
+				"set",
+				"setup\tmodule"
+			],
+			[
+				"table",
+				"\\tableofcontents                                  \tlatex-document"
+			],
+			[
+				"para",
+				"\\paragraph{title}                                 \tlatex-document"
+			],
+			[
+				"setlen",
+				"\\setlength{\\gnat}{length}                         \tlatex-dev"
+			],
+			[
+				"page",
+				"\\pagenumbering{numstyle}                          \tlatex-document"
+			],
+			[
+				"sectio",
+				"\\section[short]{title}                            \tlatex-document"
+			],
+			[
+				"begin",
+				"\\begin{table}[placement]                          \tlatex-document"
+			],
+			[
+				"beg",
+				"\\begin{tabular}{cols}                             \tlatex-document"
+			],
+			[
+				"capti",
+				"\\caption"
+			],
+			[
+				"ce",
+				"\\centering"
+			],
+			[
+				"figure",
+				"\\begin{figure}[placement]                         \tlatex-document"
+			],
+			[
+				"paragra",
+				"\\paragraph{title}                                 \tlatex-document"
+			],
+			[
+				"make",
+				"\\makeindex                                        \tlatex-document"
+			],
+			[
+				"to",
+				"\\today                                            \tlatex-document"
+			],
+			[
+				"date",
+				"\\date{text}                                       \tlatex-document"
+			],
+			[
+				"title",
+				"\\title{text}                                      \tlatex-document"
+			],
+			[
+				"gra",
+				"\\graphicspath{dir-list}                           \tgraphicx"
+			],
+			[
+				"documentcl",
+				"\\documentclass[options]{style}                    \tlatex-document"
+			],
+			[
+				"doc",
+				"\\documentclass"
+			],
+			[
+				"s",
+				"\\sec                                              \tlatex-mathsymbols"
+			],
+			[
+				"sec",
+				"\\sectionmark{code}                                \tlatex-document"
+			],
+			[
+				"sect",
+				"\\section[short]{title}                            \tlatex-document"
+			],
+			[
+				"_ter",
+				"_term4"
+			],
+			[
+				"_py",
+				"_py2"
+			],
+			[
+				"out",
+				"output_arr"
+			],
+			[
+				"sl",
+				"sleep()\ttime"
+			],
+			[
+				"isd",
+				"isdir()\tos"
+			],
+			[
+				"sys_config",
+				"sys_config_fh"
+			],
+			[
+				"sys_confi",
+				"sys_config_fh"
+			],
+			[
+				"key",
+				"key_fh"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"data",
+				"data_key"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"halo",
+				"halo_ebf_dir"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "doc/source/index.rst",
+			"settings":
+			{
+				"buffer_size": 3007,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "skysearcher/skysearch_lib.py",
+			"settings":
+			{
+				"buffer_size": 41090,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# -*- coding: utf-8 -*-\nfrom __future__ import absolute_import\nfrom __future__ import division\nfrom __future__ import print_function\nfrom __future__ import unicode_literals\n\n\n\"\"\"This is the main parallel skysearcher program.\n\nExample\n-------\n    >>> mpiexec -nproc -machinefile python mpi_search.py\n\n    -nproc {int} -- number of processes\n    -machinefile {file} -- list of hosts each on a new line\n\"\"\"\n\nif __name__ == \"__main__\":\n    from skysearch_lib import *\nelse:\n    from .skysearch_lib import *\n\n__all__ = [\"main\"]\n\n\ndef main():\n    \"\"\"This is the main parallel skysearcher program.\n\n    Example\n    -------\n        >>> mpiexec -n <nproc> -machinefile <mf> python mpi_search.py\n\n        -nproc {int} -- number of processes\n        -machinefile {file} -- list of hosts each on a new line\n    \"\"\"\n\n    # Load statice satillite data arrays.\n    # Sat mass (m_book).\n    # Sat acc_time (t_book).\n    # Sat jcirc (j_book).\n    m_book = np.load(os.path.join(DATA_DIR, \"satmass_array.npy\"))\n    t_book = np.load(os.path.join(DATA_DIR, \"satage_array.npy\"))\n    j_book = np.load(os.path.join(DATA_DIR, \"satj_array.npy\"))\n\n    # Misc values.\n    domsat_id = None\n    n_skips = 0\n    log_n_stars_max = [0]\n\n    # Stall processes.\n    if MPI_RANK == 0:\n        STDOUT.write(\"\\n\")\n        clear_tables(_target_dir=MPI_TABLE_DIR)\n        STDOUT.write(\"cleared\\n\\n\")\n        STDOUT.flush()\n\n    # Print initial banner message.\n    COMM.Barrier()\n    pause()\n    STDOUT.write(\" \".join([\n        \"rank\",\n        str(MPI_RANK),\n        str(MPI_PROC_NAME),\n        str(MPI_SIZE)]) + \"\\n\")\n    STDOUT.flush()\n\n    # Load a list of halo names & grid file paths.\n    COMM.Barrier()\n    pause()\n    if MPI_RANK == 0:\n        STDOUT.write(\"\\n\")\n        STDOUT.flush()\n\n    # Load file handles for numpy data arrays.\n    grids = grid_list()\n\n    # Read Mpc distance (d_mpc) from grid files.\n    dmpc_str = grids[0][1].split(os.path.sep)[-1].split(\"_\")[1]\n    d_mpc = float(dmpc_str.replace(\"Mpc\", \"\"))\n\n    # Make the mod for the distance.\n    mod = kpc_to_arcmin(d_mpc=d_mpc)\n\n    # Load the record table (r_table).\n    COMM.Barrier()\n    pause()\n    r_table = record_table(_names=TABLE_COLUMNS)\n\n    # Load list of radii (radii).\n    # i.e radii[x] = (r, r_start, r_stop)\n    COMM.Barrier()\n    pause()\n    _radii = radii()\n\n    # Designate work for MPI_RANK (work_index).\n    COMM.Barrier()\n    pause()\n    if MPI_RANK == 0:\n        STDOUT.write(\"\\n\")\n        STDOUT.flush()\n    work_index = range(MPI_RANK, len(_radii), MPI_SIZE)\n    \n    # Make print statements.\n    COMM.Barrier()\n    pause()\n    sec = \"    \"\n    jlist = []\n    for wk in \" \".join([str(i) for i in work_index]):\n        sec += wk\n        if len(sec) >= 78:\n            jlist.append(sec)\n            sec = \"    \"\n    msg = \"rank \" + str(MPI_RANK)\n\n    # Print work list to STDOUT.\n    COMM.Barrier()\n    pause()\n    pause()\n    STDOUT.write(msg + \"\\n\")\n    STDOUT.write(\"-\" * len(msg) + \"\\n\")\n    for ln in jlist:\n        STDOUT.write(ln + \"\\n\")\n        STDOUT.flush()\n    STDOUT.flush()\n\n    # Save record hdf5 table.\n    COMM.Barrier()\n    pause()\n    if MPI_RANK == 0:\n        STDOUT.write(\"\\n\")\n        STDOUT.flush()\n    save_record_table(_table=r_table)\n\n    # Flush Stdout buffer.\n    COMM.Barrier()\n    pause()\n    if MPI_RANK == 0:\n        STDOUT.write(\"\\n\")\n        STDOUT.flush()\n\n\n    # Total run time(tic).\n    tic = time()\n\n    for halo, grid_fh in grids:\n\n        # Get a list of satids and a table for counting\n        # satids per region (satid_list) (satid_table).\n        satid_list, satid_table = satid_setup(halo)\n\n        # Get the data grid for this halo (grid).\n        grid = load_grid(grid_fh)\n\n        # Print \"starting halo\" message.\n        STDOUT.write(\"rank \" + str(MPI_RANK) +\n                     \" [ LOADED ] \" + halo + \"\\n\")\n        STDOUT.flush()\n\n        # Adjust nstars for units and distance.\n        grid[:, :, 1] /= mod\n\n        # <commented out>\n        # Kernel function\n        # grid[:, :, 1] = gaussian_filter(grid[:,:,0],\n        # sigma=0.8, mode=\"constant\", cval=0, order=0)\n\n        # Step through the radii (r_start, r_stop).\n        for job_id in work_index:\n\n            # Start time (a_tic).\n            a_tic = time()\n\n            # r = radius in Kpc\n            # r_start = starting radius (always < r)\n            # r_stop = ending radius (always > r)\n            r, r_start, r_stop = _radii[job_id]\n\n            # This is so we don't need to index the whole table every\n            # loop of the following for loop (local_satid_table).\n            local_satid_table = satid_table[np.logical_and(\n                satid_table[\"Rads\"] >= r_start,\n                satid_table[\"Rads\"] < r_stop)]\n\n            # Get the mu for this annulus (mu).\n            mu, r_idx = mu_idx(grid, r_start, r_stop)\n\n            # <commented out>\n            # The number of boxes in the annulus (log_n_boxes_in_ann).\n            # log_n_boxes_in_ann = np.log10(len(np.nonzero(r_idx)[0]))\n\n            # <commented out>\n            # The number of stars in this annulus (log_n_stars_in_ann)\n            # log_n_stars_in_ann = np.log10(grid[:, :, 1][r_idx].sum())\n\n            # Boolean value to indicate the existence of\n            # a immediately previous accepted segment(one_before).\n            one_before = False\n\n            # Load array of annuli segments and\n            # step value (annuli) & (annuli_step).\n            # i.e. annuli_step = float\n            # i.e. annuli[x] = (deg_0, deg_1)\n            annuli, annuli_step = get_annuli(r)\n\n            # Number of empty segments (n_mt_seg).\n            n_mt_seg = 0\n\n            # Number of increasing segments (n_seg_increase).\n            # Number of decreasing segments (n_seg_decrease).\n            n_seg_increase = 0\n            n_seg_decrease = 0\n            last_nstars = 0\n\n            # Step through the annulus (-pi, pi].\n            # _deg0 = starting point.\n            # _deg1 = ending point\n            for _deg0, _deg1 in annuli:\n\n                # Get the mu and indices's for this sub-annulus-section\n                # (mu, r_idx2).\n                mu_2, r_idx2 = mu_idx2(grid, r_idx, _deg0, _deg1)\n\n                # The grid index for grid spaces within\n                # this segment (idx).\n                idx = get_idx(grid, _deg0, _deg1, r_idx2)\n\n                # The number of grid boxes this segment covers\n                # (n_boxes_tot).\n                n_boxes_in_seg = len(idx[0])\n\n                # If there are none, then continue.\n                if not n_boxes_in_seg:\n                    \"\"\"\n                    STDOUT.write(\n                        \"rank \"\n                        + str(MPI_RANK)\n                        +  \" [ EMPTY SEGMENT ] \"\n                        + halo\n                        + \" radius: \" + str(r) + \" Kpc\"\n                        + \" phi: \" + str(_deg0)\n                        + \"\\n\")\n                    STDOUT.flush()\n                    \"\"\"\n                    n_mt_seg += 1\n                    continue\n\n                # The array of grid spaces from this segment\"s\n                # contrast density value (xbox).\n                xbox = get_xbox(grid, idx, mu_2)\n\n                # Number of stars here (n_stars_here).\n                n_stars_here = grid[:, :, 1][idx].sum()\n\n                # TODO\n                # What is this doing?\n                if n_stars_here >= last_nstars:\n                    n_seg_increase += 1\n                else:\n                    n_seg_decrease += 1\n                last_nstars = n_stars_here\n\n                # ------------------------------------------------------\n                #        Does this segment qualify to be a feature?\n                # ------------------------------------------------------\n                # Is the local min above xbox_cut?\n                # If yes:\n                if (\n                        xbox.min() >= XBOX_CUT\n                        and np.log10(n_stars_here) >= MIN_LOG_NSTARS):\n\n                    # If this is a new feature...\n                    if not one_before:\n\n                        # open a list for the max values\n                        # for this feature (xbmax).\n                        xbmax = []\n\n                        # open a list for max Log10(n_stars) (n_stars_max).\n                        log_n_stars_max = []\n\n                        # Start a dictionary for counting stars\n                        # per satid (sat_stars).\n                        sat_stars = new_sat_stars(satid_list)\n\n                        # Set grid space count (n_stars).\n                        n_boxes = 0\n\n                        # Set star count (n_stars).\n                        n_stars = 0\n\n                        # Set the run length (n_segments) to 0.\n                        n_segments = 0\n\n                        # Remember the starting angular\n                        # value (starting_deg).\n                        starting_deg = _deg0\n\n                        # Set allowed segment skips (n_skips).\n                        n_skips = N_SKIPS\n\n                    # Do this for every accepted segment:\n                    # -----------------------------------\n                    # Put all region info into a list (r_info).\n                    r_info = [r_start, r_stop, _deg0, _deg1]\n\n                    # Add this features min, mean and max\n                    # to the existing lists.\n                    xbmax.append(xbox.max())\n\n                    # Count stars per sat.\n                    sat_stars = count_strs(\n                        sat_stars,\n                        r_info,\n                        local_satid_table)\n\n                    # Add boxes to total boxes.\n                    n_boxes += n_boxes_in_seg\n\n                    # Add stars to total stars for feature.\n                    n_stars += n_stars_here\n\n                    # Add n_stars to list for later.\n                    log_n_stars_max.append(np.log10(n_stars_here))\n\n                    # Increase run length (run_length) by 1.\n                    n_segments += 1\n\n                    # Remember that there is a feature\n                    # currently being processed (one_before).\n                    one_before = True\n\n                # If no:\n                else:\n\n                    # Use allowed segment skips:\n                    if one_before and n_skips:\n                        n_skips -= 1\n                        n_segments += 1\n                        one_before = True\n\n                    else:\n\n                        # If this is the end of a segment:\n                        if (one_before and n_segments >= MIN_N_SEGMENTS):\n\n                            # The feature\"s angular extent\n                            # (angular_extent).\n                            angular_extent = _deg0 - starting_deg\n\n                            # The dominate satellite number (domsat_id).\n                            # domsats\"s % of all stars (domsat_purity).\n                            _va = dom_satid(sat_stars)\n                            domsat_id, domsat_purity, standout, nsats = _va\n\n                            # An integer value for each halo (halo_num).\n                            halo_num = int(halo[-2:])\n\n                            # Mass of parent satellite (mass).\n                            mass = m_book[domsat_id]\n\n                            # Accretion time of parent satellite (atime).\n                            atime = t_book[domsat_id]\n\n                            # Circle factor (jcirc).\n                            jcirc = j_book[domsat_id]\n\n                            # A new row for the r_table (row).\n                            # Each feature is a row in the table.\n                            row = [\n\n                                # Halo.\n                                halo_num,\n\n                                # Annulus location values.\n                                r,\n                                r_start,\n                                r_stop,\n                                annuli_step,\n                                # n_mt_seg,\n\n                                # Annulus content values.\n                                # log_n_boxes_in_ann,\n                                # log_n_stars_in_ann,\n                                np.log10(mu_2),\n\n                                # Feature content values.\n                                max(xbmax),\n                                max(log_n_stars_max),\n                                domsat_purity,\n                                domsat_id,\n                                standout,\n                                nsats,\n                                mass,\n                                atime,\n                                jcirc,\n\n                                # Feature location values.\n                                starting_deg,\n                                # _deg0,\n                                angular_extent,\n                                # n_segments,\n                                # n_boxes,\n\n                                # MPI values.\n                                # MPI_RANK\n                            ]\n\n                            # Add the row to the table.\n                            r_table.add_row(row)\n\n                            # Save point if added a new row.\n                            if len(r_table) % SAVE_INTERVAL == 0:\n                                save_record_table(_table=r_table)\n\n                        # Clean up.\n                        halo_num = None\n                        mass = None\n                        atime = None\n                        angular_extent = 0\n                        domsat_id = None\n                        domsat_purity = None\n\n                        # Reset grid space count (n_stars).\n                        n_boxes = 0\n\n                        # Reset n_stars to 0.\n                        n_stars = 0\n\n                        # Reset run length to 0.\n                        n_segments = 0\n\n                        # Remember that there\"s no previous segment\n                        one_before = False\n\n                        # Reset starting_deg.\n                        starting_deg = None\n                        n_seg_increase = 0\n                        n_seg_decrease = 0\n                        last_nstars = 0\n\n            # Terminal progress message.\n            line = (\"rank \" + str(MPI_RANK) + \" : halo\" + halo[-2:] + \" - \" +\n                    str(round(r, 1)) + \" Kpc : --> \" +\n                    str(round((time() - a_tic), 1)) + \" secs\")\n            STDOUT.write(line + \"\\n\")\n            STDOUT.flush()\n\n        # Halo save point.\n        save_record_table(_table=r_table)\n\n    # Final save point.\n    save_record_table(_table=r_table)\n\n    # Exit message.\n    msg = (\"rank \" + str(MPI_RANK) + \" [ FINISHED ] [ \" +\n           str(round((time() - tic) / 60.0, 1)) + \" minutes ]\\n\")\n    STDOUT.write(msg)\n    STDOUT.flush()\n    exit(0)\n\n\nif __name__ == \"__main__\":\n    main()\n`",
+			"file": "skysearcher/mpi_search.py",
+			"file_size": 15013,
+			"file_write_time": 131663534653697318,
+			"settings":
+			{
+				"buffer_size": 15013,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "doc/source/glossary.rst",
+			"settings":
+			{
+				"buffer_size": 10948,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"Traditional"
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					"Clean up Files"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"PdfLaTeX"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "aut",
+		"selected_items":
+		[
+			[
+				"aut",
+				"AutoDocstring: Current"
+			],
+			[
+				"Snippet: ",
+				"Snippet: cycle"
+			],
+			[
+				"doc",
+				"AutoDocstring: All"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"auto",
+				"AutoDocstring: All"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"latextools",
+				"LaTeXTools: Build cache of LaTeX packages"
+			],
+			[
+				"pack",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"packager",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 657.0
+	},
+	"console":
+	{
+		"height": 261.0,
+		"history":
+		[
+			"(",
+			"delete_temp_files",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/sol/Github/skysearcher",
+		"/home/sol/Github/skysearcher/doc",
+		"/home/sol/Github/skysearcher/doc/source",
+		"/home/sol/Github/skysearcher/doc/source/_static",
+		"/home/sol/Github/skysearcher/doc/source/_templates",
+		"/home/sol/Github/skysearcher/skysearcher"
+	],
+	"file_history":
+	[
+		"/home/sol/Github/skysearcher/skysearcher/new_cfg.py",
+		"/home/sol/Github/skysearcher/skysearcher/skysearch_lib.py",
+		"/home/sol/Github/skysearcher/doc/source/_static/searchalgorithm/searchalgorithm.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/gettingstarted/systemcompatibility.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/gettingstarted/install.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/gettingstarted/gettingstarted.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/gettingstarted/filesystem.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/functions/functions.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/gettingstarted/download.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/commandline/run.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/commandline/newcfg.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/commandline/commandline.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/configurationfile/configfile.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/configurationfile/parameters.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/configurationfile/newconfigfile.rst",
+		"/home/sol/Github/skysearcher/doc/source/conf.py",
+		"/home/sol/Github/skysearcher/doc/source/index.rst",
+		"/home/sol/Github/skysearcher/doc/source/glossary.rst",
+		"/home/sol/Github/skysearcher/doc/build/html/_static/commandline/newcfg.html",
+		"/home/sol/Github/skysearcher/doc/build/html/_static/searchalgorithm/searchalgorithm.html",
+		"/home/sol/Github/skysearcher/doc/build/html/index.html",
+		"/home/sol/Github/skysearcher/doc/build/html/glossary.html",
+		"/home/sol/Github/skysearcher/doc/build/html/genindex.html",
+		"/home/sol/Github/skysearcher/doc/build/html/search.html",
+		"/home/sol/Github/skysearcher/skysearcher.sublime-project",
+		"/home/sol/Github/skysearcher/skysearcher/mpi_search.py",
+		"/home/sol/Github/skysearcher/doc/source/_static/glossary.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/searchalgorithm.rst",
+		"/home/sol/Github/skysearcher/newcfg.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/functions.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/newcfg.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/configurationfile/newconfigfile",
+		"/home/sol/Github/skysearcher/doc/source/_static/systemcompatibility.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/download.rst",
+		"/home/sol/Github/skysearcher/filesystem.rst",
+		"/home/sol/Github/skysearcher/install.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/gettingstarted.rst",
+		"/home/sol/Github/skysearcher/.gitignore",
+		"/home/sol/Github/skysearcher/setup.py",
+		"/home/sol/Github/skysearcher/.gitattributes",
+		"/home/sol/Github/skysearcher/doc/source/_static/commandline.rst",
+		"/home/sol/Github/skysearcher/notes.txt",
+		"/home/sol/Github/skysearcher/skysearcher/cmdlinetool.py",
+		"/home/sol/Github/skysearcher/skysearcher/__init__.py",
+		"/home/sol/.config/sublime-text-3/Packages/Alignment/Default (Linux).sublime-keymap",
+		"/home/sol/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/home/sol/Github/skysearcher/skysearcher/rc_backup",
+		"/home/sol/Github/skysearcher/skysearcher/rc.cfg",
+		"/home/sol/Github/skysearcher/setup.cfg",
+		"/home/sol/Github/skysearcher/.readthedocs.yml",
+		"/home/sol/Github/skysearcher/doc/source/_static/skysearcher.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/_command_line.rst",
+		"/home/sol/Github/skysearcher/doc/source/_templates/layout.html",
+		"/home/sol/Github/skysearcher/doc/source/_static/default.css",
+		"/home/sol/Github/skysearcher/doc/make.bat",
+		"/home/sol/.config/sublime-text-3/Packages/AutoDocstring/AutoDocstring.sublime-settings",
+		"/home/sol/.config/sublime-text-3/Packages/User/AutoDocstring.sublime-settings",
+		"/home/sol/Github/skysearcher/doc/Makefile",
+		"/home/sol/Github/skysurvey/setup.py",
+		"/home/sol/sublime_text_3/Packages/RestructuredText.sublime-package",
+		"/home/sol/Github/skysearcher/doc/build/html/_static/basic.css",
+		"/home/sol/Github/skysearcher/doc/build/html/objects.inv",
+		"/home/sol/Github/skysearcher/doc/build/html/searchindex.js",
+		"/home/sol/Github/skysearcher/doc/source/_static/filesystem.html",
+		"/home/sol/Github/skysearcher/doc/build/html/_static/filesystem.html",
+		"/home/sol/Github/skysearcher/doc/source/skysearcher.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/skysearcherlib.rst",
+		"/home/sol/Github/skysearcher/doc/source/modules.rst",
+		"/home/sol/Github/skysearcher/.pypirc",
+		"/home/sol/Github/skysearcher/doc/build/html/backup.html",
+		"/home/sol/Github/skysearcher/doc/source/_static/intro.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/output.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/process.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/plots.rst",
+		"/home/sol/Github/skysearcher/doc/source/_static/input.rst",
+		"/home/sol/Github/skysearcher/paper/paper_.tex",
+		"/home/sol/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/sol/.config/sublime-text-3/Packages/LaTeXTools/Default (Linux).sublime-keymap",
+		"/home/sol/Github/skysearcher/paper/paper_old.tex",
+		"/home/sol/.config/sublime-text-3/Packages/LaTeX Snippets/commenttitle.sublime-snippet",
+		"/home/sol/Github/skysearcher/paper/paper.tex",
+		"/home/sol/Github/skysearcher/paper/paper_new.tex",
+		"/home/sol/Github/skysearcher/paper/paper.synctex.gz",
+		"/home/sol/Github/skysearcher/paper/02_Settings.tex",
+		"/media/sol/WINDOWS10/Users/swc21/OneDrive/Documents/Paper/paper_v2.tex",
+		"/media/sol/WINDOWS10/Users/swc21/OneDrive/Documents/Paper/paper_v1.tex",
+		"/home/sol/Github/skysearcher/paper/10_BasicIdea.tex",
+		"/home/sol/Github/skysearcher/paper/30_GeneralProps.tex",
+		"/home/sol/Github/skysearcher/paper/40_Accuracy.tex",
+		"/home/sol/Github/skysearcher/paper/20_Computation.tex",
+		"/home/sol/.config/sublime-text-3/Packages/User/BeautifyLatex.sublime-settings",
+		"/home/sol/.config/sublime-text-3/Packages/LaTeXTools/snippets/phdthesis.bibtex-snippet",
+		"/home/sol/.config/sublime-text-3/Packages/LaTeX Snippets/README.md",
+		"/home/sol/.config/sublime-text-3/Packages/LaTeX/Snippets/Section.sublime-snippet",
+		"/home/sol/.config/sublime-text-3/Packages/BeautifyLatex/BeautifyLatex.sublime-settings",
+		"/home/sol/Github/skysearcher/paper/01_UsePackages.tex",
+		"/home/sol/Github/skysearcher/paper/03_Title.tex",
+		"/home/sol/Github/skysearcher/paper/04_Abstract.tex",
+		"/home/sol/Github/skysearcher/paper/05_MainImage.tex",
+		"/home/sol/.config/sublime-text-3/Packages/BeautifyLatex/Default (Linux).sublime-keymap",
+		"/home/sol/Github/skysearcher/paper/UsePackages.tex",
+		"/home/sol/Github/skysearcher/paper/DocumentClass.tex",
+		"/home/sol/Github/skysearcher/paper/Settings.tex",
+		"/home/sol/Github/skysearcher/paper/Title.tex",
+		"/home/sol/Github/skysearcher/paper/Abstract.tex",
+		"/home/sol/Github/skysearcher/paper/paper.aux",
+		"/home/sol/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
+		"/home/sol/Github/skysearcher/skysearcher/schudelmaneuver/schudelmaneuver_.py",
+		"/home/sol/Github/sass-spec/spec/basic/00_empty/expected_output.css",
+		"/home/sol/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/sol/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/Default (Linux).sublime-keymap",
+		"/home/sol/.config/sublime-text-3/Packages/Pretty YAML/Pretty YAML.sublime-settings",
+		"/home/sol/Github/swc2124.github.io/_sass/_base.scss",
+		"/home/sol/Github/swc2124.github.io/_sass/_layout.scss",
+		"/home/sol/Github/swc2124.github.io/css/main.scss",
+		"/home/sol/.config/sublime-text-3/Packages/FileSystem Autocompletion/Default (Linux).sublime-keymap",
+		"/home/sol/Github/swc2124.github.io/_layouts/post.html",
+		"/home/sol/Github/swc2124.github.io/_pages/04_contact.md",
+		"/home/sol/Github/swc2124.github.io/_layouts/page.html",
+		"/home/sol/Github/swc2124.github.io/_layouts/default.html",
+		"/home/sol/Github/leelandcourtney/_sass/_syntax-highlighting.scss",
+		"/home/sol/Github/swc2124.github.io/_includes/analytics.html",
+		"/home/sol/Github/swc2124.github.io/_includes/aside.html",
+		"/home/sol/Github/swc2124.github.io/_includes/footer.html",
+		"/home/sol/Github/swc2124.github.io/_includes/head.html",
+		"/home/sol/Github/swc2124.github.io/_includes/header.html",
+		"/home/sol/Github/swc2124.github.io/_config.yml",
+		"/home/sol/Github/leelandcourtney/_layouts/post.html"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			":\"",
+			"sec",
+			".with_traceback()",
+			"Mpc",
+			"Kpc",
+			"configuration-parameters",
+			"Kpc",
+			"*set in the configuration file.*",
+			"Configfile-accept-reject",
+			"Configfile-search-extent",
+			"Configfile-table",
+			"table",
+			"Configfile-",
+			"configfile",
+			"units",
+			"list",
+			"halo",
+			"mpi_search.py",
+			"numpy",
+			"data",
+			" mpi_search.py",
+			"_deg0",
+			":term:`",
+			"r_idx2",
+			"_deg0",
+			"Kpc",
+			"r_start",
+			" : mpi_sear",
+			"_idx_",
+			"MPI_TABLE_DIR",
+			"False",
+			"\\n",
+			"\\",
+			"2.",
+			"0.        , ...,    0.        ,",
+			"0.        ",
+			"$PATH",
+			"~/",
+			"/home/sol/anaconda3/lib/python3.6/site-packages",
+			"satillite",
+			"satellite",
+			"mpi",
+			":py:",
+			"*set in the configuration file.*",
+			"Path",
+			"Example",
+			",\n",
+			"..",
+			":numbered:",
+			"60",
+			"        ",
+			">>>",
+			"TYPE",
+			"func",
+			"data",
+			": ",
+			" : ",
+			"skysearch_lib",
+			" :",
+			" =",
+			"\t",
+			"*Set in the configuration file*.",
+			"*Set in the configuration file*",
+			" : ",
+			" ]``",
+			"``[ ",
+			"diff",
+			"user",
+			"const",
+			"\t\t\t\t\t",
+			"\t\t\t\t\t\t",
+			"\t\t\t\t",
+			"\t\t\t",
+			"\n\t\t\t",
+			"\t\t\t",
+			"/home/sol/anaconda3",
+			"        ",
+			"                     ",
+			"                    ",
+			"                   ",
+			"                  ",
+			"                 ",
+			"                ",
+			"               ",
+			"              ",
+			"             ",
+			"            ",
+			"           ",
+			"          ",
+			"         ",
+			"        ",
+			"- [ ",
+			"#  ",
+			"    from .skysearch_lib import ",
+			"DATA_DIR",
+			"../",
+			"machine",
+			"skysearch_lib",
+			"Error",
+			"raise",
+			"'",
+			"../../data/",
+			".skysearch_lib",
+			"data",
+			"\"Devel",
+			"'",
+			"pypirc",
+			"'",
+			"        ",
+			"            ",
+			"           ",
+			"          ",
+			"         ",
+			"        ",
+			">>> ",
+			"    ",
+			"TYPE",
+			"TABLE_DIR",
+			"TABLE_EXT",
+			" =",
+			"/home",
+			"\t\t",
+			" ",
+			"                                                                           ",
+			"                                                                          ",
+			"                                                                         ",
+			"                                                                        ",
+			"                                                                       "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"\"",
+			".",
+			"STDOUT",
+			"MPI_RANK",
+			"MPI_SIZE",
+			"MPI_PROC_NAME",
+			"COMM",
+			"STDOUT",
+			"_CONFIG",
+			"_ANNULUS_PHI_STEP",
+			"TABLE_COLUMNS",
+			"MPI_PROC_NAME",
+			"MPI_RANK",
+			"MPI_SIZE",
+			"MPIRANK",
+			"COMM",
+			"\"",
+			"\"\"\"",
+			"\"",
+			"input",
+			"%% --"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "doc/source/index.rst",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3007,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.15.region_keys":
+							[
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/RestructuredText Improved/reStructuredText Improved.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "skysearcher/skysearch_lib.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 41090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								38780,
+								36934
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
+							[
+							],
+							"SL.92.region_keys":
+							[
+								"SL.flake8.Gutter.region.redish markup.deleted.sublime_linter markup.error.sublime_linter.dot",
+								"SL.flake8.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"SL.flake8.Highlights.|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|128",
+								"SL.flake8.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|128",
+								"sublime_linter.protected_regions"
+							],
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "\\",
+									"selector": "text.tex.latex"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/MagicPython/grammars/MagicPython.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 24553.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "skysearcher/mpi_search.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15013,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6321,
+								6321
+							]
+						],
+						"settings":
+						{
+							"SL.143.region_keys":
+							[
+								"SL.flake8.Gutter.region.redish markup.deleted.sublime_linter markup.error.sublime_linter.dot",
+								"SL.flake8.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"SL.flake8.Highlights.|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|128",
+								"SL.flake8.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|128",
+								"sublime_linter.protected_regions"
+							],
+							"SL.17.region_keys":
+							[
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										6321,
+										6322
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										6294,
+										6295
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/MagicPython/grammars/MagicPython.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4445.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "doc/source/glossary.rst",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								613,
+								627
+							]
+						],
+						"settings":
+						{
+							"SL.18.region_keys":
+							[
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"git_gutter_is_enabled": true,
+							"spell_check": true,
+							"syntax": "Packages/RestructuredText Improved/reStructuredText Improved.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2277.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 89.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.452961672474,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 164.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latextools":
+	{
+		"height": 409.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 152.0
+	},
+	"pinned_build_system": "",
+	"project": "skysearcher.sublime-project",
+	"replace":
+	{
+		"height": 114.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 309.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
