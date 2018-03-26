@@ -1,232 +1,153 @@
-
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Functions &mdash; skysearcher version 0.0.1</title>
-  
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+    <!--<![endif]-->
 
-  
-  
-  
-  
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Functions &mdash; skysearcher version 0.0.1</title>
+        <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+        <link rel="index" title="Index" href="../../genindex.html" />
+        <link rel="search" title="Search" href="../../search.html" />
+        <link rel="top" title="skysearcher version 0.0.1" href="../../index.html" />
+        <link rel="next" title="Glossary" href="../../glossary.html" />
+        <link rel="prev" title="The search algorithm" href="../searchalgorithm/searchalgorithm.html" />
+        <script src="../js/modernizr.min.js"></script>
+    </head>
 
-  
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="skysearcher version 0.0.1" href="../../index.html"/>
-        <link rel="next" title="Glossary" href="../../glossary.html"/>
-        <link rel="prev" title="The search algorithm" href="../searchalgorithm/searchalgorithm.html"/> 
-
-  
-  <script src="../js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="../../index.html" class="icon icon-home"> skysearcher
+    <body class="wy-body-for-nav" role="document">
+        <div class="wy-grid-for-nav">
+            <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+                <div class="wy-side-scroll">
+                    <div class="wy-side-nav-search">
+                        <a href="../../index.html" class="icon icon-home"> skysearcher
           
 
           
           </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/gettingstarted.html"><strong>Getting started</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/systemcompatibility.html">Sysem compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/download.html">Download skysearcher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/filesystem.html">The file system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/install.html">Install skysearcher</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../gettingstarted/install.html#using-pip">Using pip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gettingstarted/install.html#using-setup-py">Using setup.py</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Configuration file</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../configurationfile/configfile.html"><strong>Configuration file</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configurationfile/newconfigfile.html">Making a new configuration file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configurationfile/parameters.html">Configuration parameters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#path">PATH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#search-extent">Search Extent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#accept-reject">Accept Reject</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#run-time">Run Time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#data">DATA</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Commandline tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../commandline/commandline.html"><strong>Command line tools</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../commandline/newcfg.html">skysearcher-newcfg</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../commandline/run.html">skysearcher-run</a></li>
-</ul>
-<p class="caption"><span class="caption-text">The search algorithm</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../searchalgorithm/searchalgorithm.html"><strong>The search algorithm</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../searchalgorithm/searchalgorithm.html#for-each-halo-file">For each halo file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../searchalgorithm/searchalgorithm.html#for-each-radius-assigned-to-this-process">For each radius assigned to this process</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Functions</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Functions</strong></a></li>
-</ul>
-<p class="caption"><span class="caption-text">Glossary</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../glossary.html"><strong>Glossary</strong></a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">skysearcher</a>
-        
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-      <li><strong>Functions</strong></li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../../_sources/_static/functions/functions.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <p><a class="reference internal" href="../../genindex.html"><span class="std std-ref">Index</span></a></p>
-<div class="section" id="module-skysearcher.skysearch_lib">
-<span id="functions"></span><h1><strong>Functions</strong><a class="headerlink" href="#module-skysearcher.skysearch_lib" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.time">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">time</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; floating point number<a class="headerlink" href="#skysearcher.skysearch_lib.time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the current time in seconds since the Epoch.
-Fractions of a second may be present if the system clock provides them.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.clear_tables">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">clear_tables</code><span class="sig-paren">(</span><em>_target_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#clear_tables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.clear_tables" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear all MPI temp tables from <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a>
-before creating new ones.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>_target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – PATH to target directory.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> – In case they cant be deleted.</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a> may not be defined.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                        <div role="search">
+                            <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+                                <input type="text" name="q" placeholder="Search docs" />
+                                <input type="hidden" name="check_keywords" value="yes" />
+                                <input type="hidden" name="area" value="default" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                        <p class="caption"><span class="caption-text">Getting started</span></p>
+                        <ul>
+                            <li class="toctree-l1"><a class="reference internal" href="../gettingstarted/gettingstarted.html"><strong>Getting started</strong></a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../gettingstarted/systemcompatibility.html">Sysem compatibility</a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../gettingstarted/download.html">Download skysearcher</a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../gettingstarted/filesystem.html">The file system</a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../gettingstarted/install.html">Install skysearcher</a>
+                                <ul>
+                                    <li class="toctree-l2"><a class="reference internal" href="../gettingstarted/install.html#using-pip">Using pip</a></li>
+                                    <li class="toctree-l2"><a class="reference internal" href="../gettingstarted/install.html#using-setup-py">Using setup.py</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="caption"><span class="caption-text">Configuration file</span></p>
+                        <ul>
+                            <li class="toctree-l1"><a class="reference internal" href="../configurationfile/configfile.html"><strong>Configuration file</strong></a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../configurationfile/newconfigfile.html">Making a new configuration file</a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../configurationfile/parameters.html">Configuration parameters</a>
+                                <ul>
+                                    <li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#path">PATH</a></li>
+                                    <li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#search-extent">Search Extent</a></li>
+                                    <li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#accept-reject">Accept Reject</a></li>
+                                    <li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#run-time">Run Time</a></li>
+                                    <li class="toctree-l2"><a class="reference internal" href="../configurationfile/parameters.html#data">DATA</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="caption"><span class="caption-text">Commandline tools</span></p>
+                        <ul>
+                            <li class="toctree-l1"><a class="reference internal" href="../commandline/commandline.html"><strong>Command line tools</strong></a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../commandline/newcfg.html">skysearcher-newcfg</a></li>
+                            <li class="toctree-l1"><a class="reference internal" href="../commandline/run.html">skysearcher-run</a></li>
+                        </ul>
+                        <p class="caption"><span class="caption-text">The search algorithm</span></p>
+                        <ul>
+                            <li class="toctree-l1"><a class="reference internal" href="../searchalgorithm/searchalgorithm.html"><strong>The search algorithm</strong></a>
+                                <ul>
+                                    <li class="toctree-l2"><a class="reference internal" href="../searchalgorithm/searchalgorithm.html#for-each-halo-file">For each halo file</a></li>
+                                    <li class="toctree-l2"><a class="reference internal" href="../searchalgorithm/searchalgorithm.html#for-each-radius-assigned-to-this-process">For each radius assigned to this process</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="caption"><span class="caption-text">Functions</span></p>
+                        <ul class="current">
+                            <li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Functions</strong></a></li>
+                        </ul>
+                        <p class="caption"><span class="caption-text">Glossary</span></p>
+                        <ul>
+                            <li class="toctree-l1"><a class="reference internal" href="../../glossary.html"><strong>Glossary</strong></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+                <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                    <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                    <a href="../../index.html">skysearcher</a>
+                </nav>
+                <div class="wy-nav-content">
+                    <div class="rst-content">
+                        <div role="navigation" aria-label="breadcrumbs navigation">
+                            <ul class="wy-breadcrumbs">
+                                <li><a href="../../index.html">Docs</a> &raquo;</li>
+                                <li><strong>Functions</strong></li>
+                                <li class="wy-breadcrumbs-aside">
+                                    <a href="../../_sources/_static/functions/functions.rst.txt" rel="nofollow"> View page source</a>
+                                </li>
+                            </ul>
+                            <hr/>
+                        </div>
+                        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                            <div itemprop="articleBody">
+                                <p><a class="reference internal" href="../../genindex.html"><span class="std std-ref">Index</span></a></p>
+                                <div class="section" id="module-skysearcher.skysearch_lib">
+                                    <span id="functions"></span>
+                                    <h1><strong>Functions</strong><a class="headerlink" href="#module-skysearcher.skysearch_lib" title="Permalink to this headline">¶</a></h1>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.time">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">time</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; floating point number<a class="headerlink" href="#skysearcher.skysearch_lib.time" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Return the current time in seconds since the Epoch. Fractions of a second may be present if the system clock provides them.</p>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.clear_tables">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">clear_tables</code><span class="sig-paren">(</span><em>_target_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#clear_tables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.clear_tables" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Clear all MPI temp tables from <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a> before creating new ones.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <p class="first"><strong>_target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – PATH to target directory.</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Raises:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first last simple">
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> – In case they cant be deleted.</li>
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a> may not be defined.</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">MPI_TABLE_DIR</span><span class="p">)</span>
 <span class="go">[&#39;17.hdf5&#39;,</span>
@@ -240,50 +161,61 @@ before creating new ones.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">MPI_TABLE_DIR</span><span class="p">)</span>
 <span class="go">[]</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.pause">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">pause</code><span class="sig-paren">(</span><em>rnk=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#pause"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.pause" title="Permalink to this definition">¶</a></dt>
-<dd><p>Slow down MPI process according to their <a class="reference internal" href="../../glossary.html#term-rank"><span class="xref std std-term">rank</span></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rnk</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Integer representing MPI process rank</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">skysearcher</span><span class="o">.</span><span class="n">skysearch_lib</span> <span class="kn">import</span> <span class="nn">pause</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.pause">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">pause</code><span class="sig-paren">(</span><em>rnk=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#pause"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.pause" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Slow down MPI process according to their <a class="reference internal" href="../../glossary.html#term-rank"><span class="xref std std-term">rank</span></a>.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body"><strong>rnk</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Integer representing MPI process rank</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">skysearcher</span><span class="o">.</span><span class="n">skysearch_lib</span> <span class="kn">import</span> <span class="nn">pause</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pause</span><span class="p">(</span><span class="n">rnk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">clear_tables</code><span class="sig-paren">(</span><em>_target_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#clear_tables"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Clear all MPI temp tables from <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a>
-before creating new ones.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>_target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – PATH to target directory.</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> – In case they cant be deleted.</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a> may not be defined.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt>
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">clear_tables</code><span class="sig-paren">(</span><em>_target_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#clear_tables"><span class="viewcode-link">[source]</span></a></dt>
+                                        <dd>
+                                            <p>Clear all MPI temp tables from <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a> before creating new ones.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <p class="first"><strong>_target_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – PATH to target directory.</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Raises:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first last simple">
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> – In case they cant be deleted.</li>
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – <a class="reference internal" href="../../glossary.html#term-mpi-table-dir"><span class="xref std std-term">MPI_TABLE_DIR</span></a> may not be defined.</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">MPI_TABLE_DIR</span><span class="p">)</span>
 <span class="go">[&#39;17.hdf5&#39;,</span>
@@ -297,27 +229,32 @@ before creating new ones.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">MPI_TABLE_DIR</span><span class="p">)</span>
 <span class="go">[]</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.grid_list">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">grid_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#grid_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.grid_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load file handles for numpy data arrays.</p>
-<p>Provide a list of all available numpy data arrays (<a class="reference internal" href="../../glossary.html#term-grids"><span class="xref std std-term">grids</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of grids to be used in search.
-(halo,  PATH)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.grid_list">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">grid_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#grid_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.grid_list" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Load file handles for numpy data arrays.</p>
+                                            <p>Provide a list of all available numpy data arrays (<a class="reference internal" href="../../glossary.html#term-grids"><span class="xref std std-term">grids</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">List of grids to be used in search. (halo, PATH)</td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grids</span> <span class="o">=</span> <span class="n">grid_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grids</span>
 <span class="go">[(&#39;halo07&#39;, &#39;$PATH/skysearcher/data/grids/halo07_4.0Mpc_h158_grid.npy&#39;),</span>
@@ -328,88 +265,111 @@ before creating new ones.</p>
 <span class="go"> (&#39;halo15&#39;, &#39;$PATH/skysearcher/data/grids/halo15_4.0Mpc_h158_grid.npy&#39;),</span>
 <span class="go"> (&#39;halo02&#39;, &#39;$PATH/skysearcher/data/grids/halo02_4.0Mpc_h158_grid.npy&#39;)]</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="skysearcher.skysearch_lib.kpc_to_arcmin">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">kpc_to_arcmin</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#kpc_to_arcmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.kpc_to_arcmin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make the <a class="reference internal" href="../../glossary.html#term-mod"><span class="xref std std-term">mod</span></a> for the distance.</p>
-<p>Convert <a class="reference internal" href="../../glossary.html#term-kpc"><span class="xref std std-term">Kpc</span></a> to <a class="reference internal" href="../../glossary.html#term-arc-min"><span class="xref std std-term">Arc-min</span></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d_mpc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – Distance in <a class="reference internal" href="../../glossary.html#term-mpc"><span class="xref std std-term">Mpc</span></a>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Ratio of <a class="reference internal" href="../../glossary.html#term-kpc"><span class="xref std std-term">Kpc</span></a> to <a class="reference internal" href="../../glossary.html#term-arc-min"><span class="xref std std-term">Arc-min</span></a>.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="n">kpc_to_arcmin</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="attribute">
+                                        <dt id="skysearcher.skysearch_lib.kpc_to_arcmin">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">kpc_to_arcmin</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#kpc_to_arcmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.kpc_to_arcmin" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Make the <a class="reference internal" href="../../glossary.html#term-mod"><span class="xref std std-term">mod</span></a> for the distance.</p>
+                                            <p>Convert <a class="reference internal" href="../../glossary.html#term-kpc"><span class="xref std std-term">Kpc</span></a> to <a class="reference internal" href="../../glossary.html#term-arc-min"><span class="xref std std-term">Arc-min</span></a>.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body"><strong>d_mpc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – Distance in <a class="reference internal" href="../../glossary.html#term-mpc"><span class="xref std std-term">Mpc</span></a>.</td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">Ratio of <a class="reference internal" href="../../glossary.html#term-kpc"><span class="xref std std-term">Kpc</span></a> to <a class="reference internal" href="../../glossary.html#term-arc-min"><span class="xref std std-term">Arc-min</span></a>.</td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="n">kpc_to_arcmin</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mod</span> <span class="o">=</span> <span class="n">kpc_to_arcmin</span><span class="p">(</span><span class="n">d_mpc</span><span class="o">=</span><span class="mf">4.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mod</span>
 <span class="go">0.7386310975322501</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.record_table">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">record_table</code><span class="sig-paren">(</span><em>_names=[('halo', 'i'), ('radius', 'i'), ('r0', 'f'), ('r1', 'f'), ('annuli_step', 'f'), ('Log10(mu)', 'f'), ('xbox_max', 'f'), ('Log10(n_stars_max)', 'f'), ('domsat_purity', 'f'), ('domsat_id', 'i'), ('domsat_sig', 'f'), ('nsats', 'f'), ('domsat_mass', 'f'), ('domsat_atime', 'f'), ('domsat_j', 'f'), ('deg0', 'f'), ('extent', 'f')], _meta=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#record_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.record_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load the record table (<a class="reference internal" href="../../glossary.html#term-r-table"><span class="xref std std-term">r_table</span></a>).</p>
-<p>Make a new astropy table to use for MPI output.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – List of column names and data types to be used.
-(column name, dtype)</li>
-<li><strong>_meta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – Attach meta data to table or not.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Record table to use for storing MPI data.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">astropy.tables.Table</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.record_table">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">record_table</code><span class="sig-paren">(</span><em>_names=[('halo', 'i'), ('radius', 'i'), ('r0', 'f'), ('r1', 'f'), ('annuli_step', 'f'), ('Log10(mu)', 'f'), ('xbox_max', 'f'), ('Log10(n_stars_max)', 'f'), ('domsat_purity', 'f'), ('domsat_id', 'i'), ('domsat_sig', 'f'), ('nsats', 'f'), ('domsat_mass', 'f'), ('domsat_atime', 'f'), ('domsat_j', 'f'), ('deg0', 'f'), ('extent', 'f')], _meta=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#record_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.record_table" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Load the record table (<a class="reference internal" href="../../glossary.html#term-r-table"><span class="xref std std-term">r_table</span></a>).</p>
+                                            <p>Make a new astropy table to use for MPI output.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – List of column names and data types to be used. (column name, dtype)</li>
+                                                                <li><strong>_meta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – Attach meta data to table or not.</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">Record table to use for storing MPI data.</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last">astropy.tables.Table</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">record_table</span><span class="p">(</span><span class="n">_names</span><span class="o">=</span><span class="n">TABLE_COLUMNS</span><span class="p">)</span>
 <span class="go">&lt;Table length=0&gt;</span>
 <span class="go"> halo radius    r0      r1   annuli_step ... domsat_atime domsat_j   deg0   extent</span>
 <span class="go">int32 int32  float32 float32   float32   ...   float32    float32  float32 float32</span>
 <span class="go">----- ------ ------- ------- ----------- ... ------------ -------- ------- -------</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.radii">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#radii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.radii" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load list of radii (<a class="reference internal" href="../../glossary.html#term-radii"><span class="xref std std-term">_radii</span></a>).
-i.e radii[x] = (<a class="reference internal" href="../../glossary.html#term-r"><span class="xref std std-term">r</span></a>, <a class="reference internal" href="../../glossary.html#term-60"><span class="xref std std-term">r_start</span></a>, <a class="reference internal" href="../../glossary.html#term-61"><span class="xref std std-term">r_stop</span></a>)</p>
-<p>The list of radii to search.  Set from rc.cfg file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of radii in the form (center, inner, outer)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="n">radii</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.radii">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#radii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.radii" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Load list of radii (<a class="reference internal" href="../../glossary.html#term-radii"><span class="xref std std-term">_radii</span></a>). i.e radii[x] = (<a class="reference internal" href="../../glossary.html#term-r"><span class="xref std std-term">r</span></a>, <a class="reference internal" href="../../glossary.html#term-60"><span class="xref std std-term">r_start</span></a>, <a class="reference internal" href="../../glossary.html#term-61"><span class="xref std std-term">r_stop</span></a>)</p>
+                                            <p>The list of radii to search. Set from rc.cfg file.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">List of radii in the form (center, inner, outer)</td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="n">radii</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_radii</span> <span class="o">=</span> <span class="n">radii</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_radii</span>
 <span class="go">[(5, 4.75, 5.25),</span>
@@ -420,84 +380,113 @@ i.e radii[x] = (<a class="reference internal" href="../../glossary.html#term-r">
 <span class="go"> (12, 11.4, 12.6),</span>
 <span class="go"> (13, 12.35, 13.65)]</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.save_record_table">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">save_record_table</code><span class="sig-paren">(</span><em>_table</em>, <em>_rnk=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#save_record_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.save_record_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save record hdf5 table.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_table</strong> (<em>astropy.table.Table</em>) – Data table for storing search data</li>
-<li><strong>_rnk</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – <a class="reference internal" href="../../glossary.html#term-mpi-rank"><span class="xref std std-term">MPI_RANK</span></a></li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> – Description</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – Missing 1 required positional argument: ‘_table’</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.save_record_table">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">save_record_table</code><span class="sig-paren">(</span><em>_table</em>, <em>_rnk=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#save_record_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.save_record_table" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Save record hdf5 table.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_table</strong> (<em>astropy.table.Table</em>) – Data table for storing search data</li>
+                                                                <li><strong>_rnk</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – <a class="reference internal" href="../../glossary.html#term-mpi-rank"><span class="xref std std-term">MPI_RANK</span></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Raises:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first last simple">
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> – Description</li>
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – Missing 1 required positional argument: ‘_table’</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r_table</span> <span class="o">=</span> <span class="n">record_table</span><span class="p">(</span><span class="n">_names</span><span class="o">=</span><span class="n">TABLE_COLUMNS</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">save_record_table</span><span class="p">(</span><span class="n">_table</span><span class="o">=</span><span class="n">r_table</span><span class="p">)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.fix_rslice">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">fix_rslice</code><span class="sig-paren">(</span><em>_grid</em>, <em>_dtype=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#fix_rslice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.fix_rslice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Summary</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_grid</strong> (<em>TYPE</em>) – Description</li>
-<li><strong>_dtype</strong> (<em>TYPE</em><em>, </em><em>optional</em>) – Description</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Description</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">TYPE</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IndexError</span></code></a> – Description</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.load_grid">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">load_grid</code><span class="sig-paren">(</span><em>_grid_fh</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#load_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.load_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the data <a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a> for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_grid_fh</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – File handle (absolute PATH) for a grid file.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of Tuples [(halo_name, halo_data_path), …]</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.fix_rslice">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">fix_rslice</code><span class="sig-paren">(</span><em>_grid</em>, <em>_dtype=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#fix_rslice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.fix_rslice" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Summary</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_grid</strong> (<em>TYPE</em>) – Description</li>
+                                                                <li><strong>_dtype</strong> (<em>TYPE</em><em>, </em><em>optional</em>) – Description</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">Description</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">TYPE</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Raises:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IndexError</span></code></a> – Description</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.load_grid">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">load_grid</code><span class="sig-paren">(</span><em>_grid_fh</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#load_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.load_grid" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Get the data <a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a> for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body"><strong>_grid_fh</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – File handle (absolute PATH) for a grid file.</td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">List of Tuples [(halo_name, halo_data_path), …]</td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grids</span> <span class="o">=</span> <span class="n">grid_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid_info</span> <span class="o">=</span> <span class="n">grids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid_info</span>
@@ -561,40 +550,53 @@ i.e radii[x] = (<a class="reference internal" href="../../glossary.html#term-r">
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(600, 600, 7)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.satid_setup">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">satid_setup</code><span class="sig-paren">(</span><em>_halo</em>, <em>attempts=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#satid_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.satid_setup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a list of <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s and a table for counting satids
-per region (<a class="reference internal" href="../../glossary.html#term-55"><span class="xref std std-term">satid_list</span></a>) (<a class="reference internal" href="../../glossary.html#term-56"><span class="xref std std-term">satid_table</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_halo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Halo name i.e. “halo02”</li>
-<li><strong>attempts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – No longer used.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(list, astropy.table.Table)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> – Unable to open file.  No such file or directory.</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – Missing 1 required positional argument: ‘_halo’</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.satid_setup">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">satid_setup</code><span class="sig-paren">(</span><em>_halo</em>, <em>attempts=0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#satid_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.satid_setup" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Get a list of <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s and a table for counting satids per region (<a class="reference internal" href="../../glossary.html#term-55"><span class="xref std std-term">satid_list</span></a>) (<a class="reference internal" href="../../glossary.html#term-56"><span class="xref std std-term">satid_table</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_halo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Halo name i.e. “halo02”</li>
+                                                                <li><strong>attempts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – No longer used.</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">(list, astropy.table.Table)</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Raises:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first last simple">
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> – Unable to open file. No such file or directory.</li>
+                                                                <li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – Missing 1 required positional argument: ‘_halo’</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">halo</span> <span class="o">=</span> <span class="s2">&quot;halo07&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">satid_list</span><span class="p">,</span> <span class="n">satid_table</span> <span class="o">=</span> <span class="n">satid_setup</span><span class="p">(</span><span class="n">halo</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">satid_list</span>
@@ -625,35 +627,45 @@ per region (<a class="reference internal" href="../../glossary.html#term-55"><sp
 <span class="gp">&gt;&gt;&gt; </span><span class="n">satid_table</span><span class="p">[</span><span class="s2">&quot;satids&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">satid_list</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.mu_idx">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">mu_idx</code><span class="sig-paren">(</span><em>_grid</em>, <em>_r0</em>, <em>_r1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#mu_idx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.mu_idx" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the mean number of stars for this annulus (<a class="reference internal" href="../../glossary.html#term-6"><span class="xref std std-term">mu</span></a>) and an array of
-indices’s representing the corresponding array segments (<a class="reference internal" href="../../glossary.html#term-r-idx"><span class="xref std std-term">r_idx</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>)</li>
-<li><strong>_r0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Starting radius (always &lt; <a class="reference internal" href="../../glossary.html#term-r"><span class="xref std std-term">r</span></a>)</li>
-<li><strong>_r1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Ending radius (always &gt; <a class="reference internal" href="../../glossary.html#term-r"><span class="xref std std-term">r</span></a>)</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(float, numpy.ndarray)</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.mu_idx">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">mu_idx</code><span class="sig-paren">(</span><em>_grid</em>, <em>_r0</em>, <em>_r1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#mu_idx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.mu_idx" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Get the mean number of stars for this annulus (<a class="reference internal" href="../../glossary.html#term-6"><span class="xref std std-term">mu</span></a>) and an array of indices’s representing the corresponding array segments (<a class="reference internal" href="../../glossary.html#term-r-idx"><span class="xref std std-term">r_idx</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>)</li>
+                                                                <li><strong>_r0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Starting radius (always &lt; <a class="reference internal" href="../../glossary.html#term-r"><span class="xref std std-term">r</span></a>)</li>
+                                                                <li><strong>_r1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Ending radius (always &gt; <a class="reference internal" href="../../glossary.html#term-r"><span class="xref std std-term">r</span></a>)</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">(float, numpy.ndarray)</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grids</span> <span class="o">=</span> <span class="n">grid_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid_info</span> <span class="o">=</span> <span class="n">grids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">halo</span><span class="p">,</span> <span class="n">grid_fh</span> <span class="o">=</span> <span class="n">grid_info</span>
@@ -672,36 +684,46 @@ indices’s representing the corresponding array segments (<a class="reference i
 <span class="go">       [False, False, False, ..., False, False, False],</span>
 <span class="go">       [False, False, False, ..., False, False, False]], dtype=bool)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.mu_idx2">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">mu_idx2</code><span class="sig-paren">(</span><em>_grid</em>, <em>_r_indx</em>, <em>d0</em>, <em>d1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#mu_idx2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.mu_idx2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the mean number of stars for this sub-annulus-section (<a class="reference internal" href="../../glossary.html#term-6"><span class="xref std std-term">mu</span></a>) and
-the array indices’s for the corresponding array elements (<a class="reference internal" href="../../glossary.html#term-r-idx2"><span class="xref std std-term">r_idx2</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>)</li>
-<li><strong>_r_indx</strong> (<em>numpy.ndarray</em>) – Indices’s of array elements within the current <a class="reference internal" href="../../glossary.html#term-annulus"><span class="xref std std-term">annulus</span></a>.</li>
-<li><strong>d0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Starting point (-pi, pi].</li>
-<li><strong>d1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Ending point (-pi, pi].</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float, numpy.ndarray</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.mu_idx2">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">mu_idx2</code><span class="sig-paren">(</span><em>_grid</em>, <em>_r_indx</em>, <em>d0</em>, <em>d1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#mu_idx2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.mu_idx2" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Get the mean number of stars for this sub-annulus-section (<a class="reference internal" href="../../glossary.html#term-6"><span class="xref std std-term">mu</span></a>) and the array indices’s for the corresponding array elements (<a class="reference internal" href="../../glossary.html#term-r-idx2"><span class="xref std std-term">r_idx2</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>)</li>
+                                                                <li><strong>_r_indx</strong> (<em>numpy.ndarray</em>) – Indices’s of array elements within the current <a class="reference internal" href="../../glossary.html#term-annulus"><span class="xref std std-term">annulus</span></a>.</li>
+                                                                <li><strong>d0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Starting point (-pi, pi].</li>
+                                                                <li><strong>d1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Ending point (-pi, pi].</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">float, numpy.ndarray</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grids</span> <span class="o">=</span> <span class="n">grid_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid_info</span> <span class="o">=</span> <span class="n">grids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">halo</span><span class="p">,</span> <span class="n">grid_fh</span> <span class="o">=</span> <span class="n">grid_info</span>
@@ -804,35 +826,41 @@ the array indices’s for the corresponding array elements (<a class="reference 
 <span class="go">       [False, False, False, ..., False, False, False],</span>
 <span class="go">       [False, False, False, ..., False, False, False]], dtype=bool)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.get_annuli">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">get_annuli</code><span class="sig-paren">(</span><em>_r</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#get_annuli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.get_annuli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load array of annuli segments and step value (<a class="reference internal" href="../../glossary.html#term-annuli"><span class="xref std std-term">annuli</span></a>) &amp;
-(<a class="reference internal" href="../../glossary.html#term-annuli-step"><span class="xref std std-term">annuli_step</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Radius Kpc.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>(list of tuples, float)</dt>
-<dd>list of tuples:
-annuli_step = float
-annuli[x] = (deg_0, deg_1)
-annuli, annuli_step</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.get_annuli">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">get_annuli</code><span class="sig-paren">(</span><em>_r</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#get_annuli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.get_annuli" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Load array of annuli segments and step value (<a class="reference internal" href="../../glossary.html#term-annuli"><span class="xref std std-term">annuli</span></a>) &amp; (
+                                                <a class="reference internal" href="../../glossary.html#term-annuli-step"><span class="xref std std-term">annuli_step</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body"><strong>_r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Radius Kpc.</td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <dl class="docutils">
+                                                                <dt>(list of tuples, float)</dt>
+                                                                <dd>list of tuples: annuli_step = float annuli[x] = (deg_0, deg_1) annuli, annuli_step</dd>
+                                                            </dl>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">annuli</span><span class="p">,</span> <span class="n">annuli_step</span> <span class="o">=</span> <span class="n">get_annuli</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">annuli</span>
@@ -846,35 +874,46 @@ annuli, annuli_step</dd>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">annuli_step</span>
 <span class="go">0.0086340369527229677</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="skysearcher.skysearch_lib.get_idx">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">get_idx</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#get_idx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.get_idx" title="Permalink to this definition">¶</a></dt>
-<dd><p>The grid index for grid spaces within this segment (<a class="reference internal" href="../../glossary.html#term-idx"><span class="xref std std-term">idx</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this <a class="reference internal" href="../../glossary.html#term-halo"><span class="xref std std-term">halo</span></a> (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>).</li>
-<li><strong>_d0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Starting point.</li>
-<li><strong>_d1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Ending point.</li>
-<li><strong>_ridx</strong> (<em>numpy.ndarray</em>) – An array of indices’s representing the corresponding array segments.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="attribute">
+                                        <dt id="skysearcher.skysearch_lib.get_idx">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">get_idx</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#get_idx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.get_idx" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>The grid index for grid spaces within this segment (<a class="reference internal" href="../../glossary.html#term-idx"><span class="xref std std-term">idx</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this <a class="reference internal" href="../../glossary.html#term-halo"><span class="xref std std-term">halo</span></a> (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>).</li>
+                                                                <li><strong>_d0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Starting point.</li>
+                                                                <li><strong>_d1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Ending point.</li>
+                                                                <li><strong>_ridx</strong> (<em>numpy.ndarray</em>) – An array of indices’s representing the corresponding array segments.</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last">numpy.ndarray</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skysearcher.skysearch_lib</span> <span class="k">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grids</span> <span class="o">=</span> <span class="n">grid_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">grid_info</span> <span class="o">=</span> <span class="n">grids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">halo</span><span class="p">,</span> <span class="n">grid_fh</span> <span class="o">=</span> <span class="n">grid_info</span>
@@ -983,58 +1022,77 @@ annuli, annuli_step</dd>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">numpy.ndarray</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="skysearcher.skysearch_lib.get_xbox">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">get_xbox</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#get_xbox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.get_xbox" title="Permalink to this definition">¶</a></dt>
-<dd><p>The array of grid spaces from this segment’s contrast density value (<a class="reference internal" href="../../glossary.html#term-xbox"><span class="xref std std-term">xbox</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>)</li>
-<li><strong>_idx</strong> (<em>numpy.ndarray</em>) – </li>
-<li><strong>_mu</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mean number of stars per array element</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_boxes_in_seg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="attribute">
+                                        <dt id="skysearcher.skysearch_lib.get_xbox">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">get_xbox</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#get_xbox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.get_xbox" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>The array of grid spaces from this segment’s contrast density value (<a class="reference internal" href="../../glossary.html#term-xbox"><span class="xref std std-term">xbox</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_grid</strong> (<em>numpy.ndarray</em>) – The data grid for this halo (<a class="reference internal" href="../../glossary.html#term-grid"><span class="xref std std-term">grid</span></a>)</li>
+                                                                <li><strong>_idx</strong> (<em>numpy.ndarray</em>) – </li>
+                                                                <li><strong>_mu</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mean number of stars per array element</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last">numpy.ndarray</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n_boxes_in_seg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xbox</span> <span class="o">=</span> <span class="n">get_xbox</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n_stars_here</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.new_sat_stars">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">new_sat_stars</code><span class="sig-paren">(</span><em>_id_lst</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#new_sat_stars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.new_sat_stars" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start a dictionary for counting stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> (<a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_id_lst</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s‘ for this <a class="reference internal" href="../../glossary.html#term-halo"><span class="xref std std-term">halo</span></a></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s for keys and corresponding number of stars for each <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> counted.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sat_stars</span> <span class="o">=</span> <span class="n">new_sat_stars</span><span class="p">(</span><span class="n">satid_list</span><span class="p">)</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.new_sat_stars">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">new_sat_stars</code><span class="sig-paren">(</span><em>_id_lst</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#new_sat_stars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.new_sat_stars" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Start a dictionary for counting stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> (<a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body"><strong>_id_lst</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s‘ for this <a class="reference internal" href="../../glossary.html#term-halo"><span class="xref std std-term">halo</span></a></td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">Dictionary with <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s for keys and corresponding number of stars for each <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> counted.</td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sat_stars</span> <span class="o">=</span> <span class="n">new_sat_stars</span><span class="p">(</span><span class="n">satid_list</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sat_stars</span>
 <span class="go">{0: 0,</span>
 <span class="go"> 1: 0,</span>
@@ -1045,142 +1103,164 @@ annuli, annuli_step</dd>
 <span class="go"> 111: 0,</span>
 <span class="go"> 112: 0}</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="skysearcher.skysearch_lib.count_strs">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">count_strs</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#count_strs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.count_strs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Count stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary for stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> (<a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a>).</li>
-<li><strong>_region</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Put all region info into a list (<a class="reference internal" href="../../glossary.html#term-r-info"><span class="xref std std-term">r_info</span></a>).</li>
-<li><strong>_table</strong> (<em>astropy.table.Table</em>) – <a class="reference internal" href="../../glossary.html#term-local-satid-table"><span class="xref std std-term">Local_satid_table</span></a>: This is so we don’t need to index the whole table every loop of the following for loop (<a class="reference internal" href="../../glossary.html#term-local-satid-table"><span class="xref std std-term">local_satid_table</span></a>).</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An updated <a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a> dictionary with <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s for keys and corresponding number of stars for each satid counted.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sat_stars</span> <span class="o">=</span> <span class="n">new_sat_stars</span><span class="p">(</span><span class="n">satid_list</span><span class="p">)</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="attribute">
+                                        <dt id="skysearcher.skysearch_lib.count_strs">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">count_strs</code><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#count_strs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.count_strs" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Count stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary for stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> (<a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a>).</li>
+                                                                <li><strong>_region</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Put all region info into a list (<a class="reference internal" href="../../glossary.html#term-r-info"><span class="xref std std-term">r_info</span></a>).</li>
+                                                                <li><strong>_table</strong> (<em>astropy.table.Table</em>) – <a class="reference internal" href="../../glossary.html#term-local-satid-table"><span class="xref std std-term">Local_satid_table</span></a>: This is so we don’t need to index the whole table every loop of the following for loop (<a class="reference internal" href="../../glossary.html#term-local-satid-table"><span class="xref std std-term">local_satid_table</span></a>).</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first">An updated <a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a> dictionary with <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a>’s for keys and corresponding number of stars for each satid counted.</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sat_stars</span> <span class="o">=</span> <span class="n">new_sat_stars</span><span class="p">(</span><span class="n">satid_list</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">local_satid_table</span> <span class="o">=</span> <span class="n">satid_table</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
 <span class="go">...:   satid_table[&quot;Rads&quot;] &gt;= r_start,</span>
 <span class="go">...:   satid_table[&quot;Rads&quot;] &lt; r_stop)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start</span><span class="p">,</span> <span class="n">r_stop</span><span class="p">,</span> <span class="n">_deg0</span><span class="p">,</span> <span class="n">_deg1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sat_stars</span> <span class="o">=</span> <span class="n">count_strs</span><span class="p">(</span><span class="n">sat_stars</span><span class="p">,</span> <span class="n">r_info</span><span class="p">,</span> <span class="n">local_satid_table</span><span class="p">)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.dom_satid">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">dom_satid</code><span class="sig-paren">(</span><em>input_dict</em>, <em>_dict</em>, <em>rtn=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#dom_satid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.dom_satid" title="Permalink to this definition">¶</a></dt>
-<dd><p>The dominate satellite number (<a class="reference internal" href="../../glossary.html#term-71"><span class="xref std std-term">domsat_id</span></a>).  Domsats’s % of all
-stars (<a class="reference internal" href="../../glossary.html#term-domsat-purity"><span class="xref std std-term">domsat_purity</span></a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dictionary for counting stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> (<a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a>).</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(_domsat_id, _domsat_per, _standout, n_sats)
-<a class="reference internal" href="../../glossary.html#term-domsat-id"><span class="xref std std-term">_domsat_id</span></a> : Dominate satellite id.
-<a class="reference internal" href="../../glossary.html#term-domsat-per"><span class="xref std std-term">_domsat_per</span></a> : Percentage that the _domsat_id represents from all satid’s.
-<a class="reference internal" href="../../glossary.html#term-standout"><span class="xref std std-term">_standout</span></a> : _domsat_per / 0.01
-<a class="reference internal" href="../../glossary.html#term-n-sats"><span class="xref std std-term">n_sats</span></a> : Number of staid’s present.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">domsat_id</span><span class="p">,</span> <span class="n">domsat_purity</span><span class="p">,</span> <span class="n">standout</span><span class="p">,</span> <span class="n">nsats</span> <span class="o">=</span> <span class="n">dom_satid</span><span class="p">(</span><span class="n">sat_stars</span><span class="p">)</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.dom_satid">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">dom_satid</code><span class="sig-paren">(</span><em>input_dict</em>, <em>_dict</em>, <em>rtn=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#dom_satid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.dom_satid" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>The dominate satellite number (<a class="reference internal" href="../../glossary.html#term-71"><span class="xref std std-term">domsat_id</span></a>). Domsats’s % of all stars (<a class="reference internal" href="../../glossary.html#term-domsat-purity"><span class="xref std std-term">domsat_purity</span></a>).</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body"><strong>_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dictionary for counting stars per <a class="reference internal" href="../../glossary.html#term-48"><span class="xref std std-term">satid</span></a> (<a class="reference internal" href="../../glossary.html#term-sat-stars"><span class="xref std std-term">sat_stars</span></a>).</td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">(_domsat_id, _domsat_per, _standout, n_sats)
+                                                            <a class="reference internal" href="../../glossary.html#term-domsat-id"><span class="xref std std-term">_domsat_id</span></a> : Dominate satellite id.
+                                                            <a class="reference internal" href="../../glossary.html#term-domsat-per"><span class="xref std std-term">_domsat_per</span></a> : Percentage that the _domsat_id represents from all satid’s.
+                                                            <a class="reference internal" href="../../glossary.html#term-standout"><span class="xref std std-term">_standout</span></a> : _domsat_per / 0.01
+                                                            <a class="reference internal" href="../../glossary.html#term-n-sats"><span class="xref std std-term">n_sats</span></a> : Number of staid’s present.</td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">domsat_id</span><span class="p">,</span> <span class="n">domsat_purity</span><span class="p">,</span> <span class="n">standout</span><span class="p">,</span> <span class="n">nsats</span> <span class="o">=</span> <span class="n">dom_satid</span><span class="p">(</span><span class="n">sat_stars</span><span class="p">)</span>
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="skysearcher.skysearch_lib.report">
-<code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">report</code><span class="sig-paren">(</span><em>_type</em>, <em>_info</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.report" title="Permalink to this definition">¶</a></dt>
-<dd><p>_dict = sorted(_dict, key=_dict.__getitem__, reverse=True)
-if _type == “starting halo”:
-STDOUT.write(“rank ” + str(MPI_RANK) +
-” [ LOADED ] ” + halo + “n”)
-STDOUT.flush()
-if _type == “end annulus”:
-line = (“rank ” + str(MPI_RANK) + ” : halo” + halo[-2:] + ” - ” +
-str(round(r, 1)) + ” Kpc : –&gt; ” +
-str(round((time() - a_tic), 1)) + ” secs”)
-STDOUT.write(line + “n”)
-STDOUT.flush
-if _type == “end halo”:
-if _type == “exit”:
-msg = (“rank ” + str(MPI_RANK) + ” [ FINISHED ] [ ” +
-str(round((time() - tic) / 60.0, 1)) + ” minutes ]n”)
-STDOUT.write(msg)
-STDOUT.flush()
-–&gt; TIME</p>
-</dd></dl>
-
-<span class="target" id="module-skysearcher.mpi_search"></span><dl class="function">
-<dt id="skysearcher.mpi_search.main">
-<code class="descclassname">skysearcher.mpi_search.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/mpi_search.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.mpi_search.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the main parallel skysearcher program.</p>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">nproc</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">mf</span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">mpi_search</span><span class="o">.</span><span class="n">py</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="function">
+                                        <dt id="skysearcher.skysearch_lib.report">
+                                            <code class="descclassname">skysearcher.skysearch_lib.</code><code class="descname">report</code><span class="sig-paren">(</span><em>_type</em>, <em>_info</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/skysearch_lib.html#report"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.skysearch_lib.report" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>_dict = sorted(_dict, key=_dict.__getitem__, reverse=True) if _type == “starting halo”: STDOUT.write(“rank ” + str(MPI_RANK) + ” [ LOADED ] ” + halo + “n”) STDOUT.flush() if _type == “end annulus”: line = (“rank ” + str(MPI_RANK) + ” : halo” + halo[-2:] + ” - ” + str(round(r, 1)) + ” Kpc : –&gt; ” + str(round((time() - a_tic), 1)) + ” secs”) STDOUT.write(line + “n”) STDOUT.flush if _type == “end halo”: if _type == “exit”: msg = (“rank ” + str(MPI_RANK) + ” [ FINISHED ] [ ” + str(round((time() - tic) / 60.0, 1)) + ” minutes ]n”) STDOUT.write(msg) STDOUT.flush() –&gt; TIME</p>
+                                        </dd>
+                                    </dl>
+                                    <span class="target" id="module-skysearcher.mpi_search"></span>
+                                    <dl class="function">
+                                        <dt id="skysearcher.mpi_search.main">
+                                            <code class="descclassname">skysearcher.mpi_search.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/mpi_search.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.mpi_search.main" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>This is the main parallel skysearcher program.</p>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">nproc</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">mf</span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">mpi_search</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
-</div>
-<p>-nproc {int} – number of processes
--machinefile {file} – list of hosts each on a new line</p>
-</dd></dl>
-
-<span class="target" id="module-skysearcher.new_cfg"></span><dl class="function">
-<dt id="skysearcher.new_cfg.new_rc">
-<code class="descclassname">skysearcher.new_cfg.</code><code class="descname">new_rc</code><span class="sig-paren">(</span><em>rc_fh=None</em>, <em>output=True</em>, <em>tbl_ext='hdf5'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/new_cfg.html#new_rc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.new_cfg.new_rc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new rc configuration file to the provided file handle.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>rc_fh</strong> (<em>None</em><em>, </em><em>optional</em>) – File name of the output config file.</li>
-<li><strong>tbl_ext</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – Description</li>
-<li><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – If True then print newly generated configfile contents to sdout.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first simple">
-<li><strong>{str} -- full path and name of rc file</strong><strong> (</strong><strong>default</strong> (<em>rc_fh</em>) – </li>
-<li><strong>{str} -- extention for tables.</strong><strong> (</strong><strong>default</strong> (<em>tbl_ext</em>) – </li>
-</ul>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">rc file handle str.</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ConfigParser</span>
+                                            </div>
+                                            <p>-nproc {int} – number of processes -machinefile {file} – list of hosts each on a new line</p>
+                                        </dd>
+                                    </dl>
+                                    <span class="target" id="module-skysearcher.new_cfg"></span>
+                                    <dl class="function">
+                                        <dt id="skysearcher.new_cfg.new_rc">
+                                            <code class="descclassname">skysearcher.new_cfg.</code><code class="descname">new_rc</code><span class="sig-paren">(</span><em>rc_fh=None</em>, <em>output=True</em>, <em>tbl_ext='hdf5'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/skysearcher/new_cfg.html#new_rc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skysearcher.new_cfg.new_rc" title="Permalink to this definition">¶</a></dt>
+                                        <dd>
+                                            <p>Create a new rc configuration file to the provided file handle.</p>
+                                            <table class="docutils field-list" frame="void" rules="none">
+                                                <col class="field-name" />
+                                                <col class="field-body" />
+                                                <tbody valign="top">
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Parameters:</th>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>rc_fh</strong> (<em>None</em><em>, </em><em>optional</em>) – File name of the output config file.</li>
+                                                                <li><strong>tbl_ext</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – Description</li>
+                                                                <li><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – If True then print newly generated configfile contents to sdout.</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name" colspan="2">Keyword Arguments:</th>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <td>&#160;</td>
+                                                        <td class="field-body">
+                                                            <ul class="first simple">
+                                                                <li><strong>{str} -- full path and name of rc file</strong><strong> (</strong><strong>default</strong> (<em>rc_fh</em>) – </li>
+                                                                <li><strong>{str} -- extention for tables.</strong><strong> (</strong><strong>default</strong> (<em>tbl_ext</em>) – </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-odd field">
+                                                        <th class="field-name">Returns:</th>
+                                                        <td class="field-body">
+                                                            <p class="first"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="field-even field">
+                                                        <th class="field-name">Return type:</th>
+                                                        <td class="field-body">
+                                                            <p class="first last">rc file handle str.</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="rubric">Example</p>
+                                            <div class="highlight-default notranslate">
+                                                <div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ConfigParser</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">RawConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;rc.cfg&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
-<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">user@machine$ python new_cfg.py</span>
+                                            </div>
+                                            <div class="highlight-cfg notranslate">
+                                                <div class="highlight"><pre><span></span><span class="na">user@machine$ python new_cfg.py</span>
 <span class="k">[ PATH ]</span>
 <span class="na">data_dir</span> <span class="o">=</span> <span class="s">~/$USER/skysearcher/data</span>
 <span class="na">plot_dir</span> <span class="o">=</span> <span class="s">~/$USER/skysearcher/data/plots</span>
@@ -1213,86 +1293,57 @@ STDOUT.flush()
 <span class="k">[ Data ]</span>
 <span class="na">d_mpc</span> <span class="o">=</span> <span class="s">4.0</span>
 </pre></div>
-</div>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">ConfigParser: <a class="reference external" href="http://docs.python.org/2/library/configparser.html">http://docs.python.org/2/library/configparser.html</a></p>
-</div>
-</dd></dl>
-
-<p><a class="reference internal" href="../../genindex.html"><span class="std std-ref">Index</span></a></p>
-</div>
-
-
-           </div>
-           <div class="articleComments">
-            
-           </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../searchalgorithm/searchalgorithm.html" class="btn btn-neutral" title="The search algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2018, Sol W Courtney.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
+                                            </div>
+                                            <div class="admonition seealso">
+                                                <p class="first admonition-title">See also</p>
+                                                <p class="last">ConfigParser: <a class="reference external" href="http://docs.python.org/2/library/configparser.html">http://docs.python.org/2/library/configparser.html</a></p>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <p><a class="reference internal" href="../../genindex.html"><span class="std std-ref">Index</span></a></p>
+                                </div>
+                            </div>
+                            <div class="articleComments">
+                            </div>
+                        </div>
+                        <footer>
+                            <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+                                <a href="../../glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+                                <a href="../searchalgorithm/searchalgorithm.html" class="btn btn-neutral" title="The search algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+                            </div>
+                            <hr/>
+                            <div role="contentinfo">
+                                <p>
+                                    &copy; Copyright 2018, Sol W Courtney.
+                                </p>
+                            </div>
+                            Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+                        </footer>
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
+        <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
+            URL_ROOT: '../../',
+            VERSION: '0.0.1',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE: true,
             SOURCELINK_SUFFIX: '.txt'
         };
-    </script>
-      <script type="text/javascript" src="../jquery.js"></script>
-      <script type="text/javascript" src="../underscore.js"></script>
-      <script type="text/javascript" src="../doctools.js"></script>
 
-  
+        </script>
+        <script type="text/javascript" src="../jquery.js"></script>
+        <script type="text/javascript" src="../underscore.js"></script>
+        <script type="text/javascript" src="../doctools.js"></script>
+        <script type="text/javascript" src="../js/theme.js"></script>
+        <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.StickyNav.enable();
+        });
 
-  
-  
-    <script type="text/javascript" src="../js/theme.js"></script>
-  
+        </script>
+    </body>
 
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
 </html>
