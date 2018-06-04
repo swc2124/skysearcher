@@ -173,7 +173,7 @@ try:
                 # EXPERIMENTAL XBOX INDEXING TEST
                 #os.system('cls')
                 #idx = ss_lib.EXPERIMENTAL_IDX(grid, _deg0, _deg1, r_idx, annuli_step, EXP_n_steps)
-                
+
                 if not len(idx[0]):
                     skips -= 1
                     if skips == 0:
