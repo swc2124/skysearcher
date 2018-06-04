@@ -1,6 +1,8 @@
-# skysearcher
-My feature finding program for galactic stellar/baryonic fractions of dark matter halos. Python and IPython.
-Documentation at https://swc2124.github.io/skysearcher/index.html#
+Welcome to `skysearcher`
+------------------------
+The `skysearcher` package is my feature finding program for galactic stellar/baryonic fractions of dark matter halos.
+
+Full documentation on [website](https://swc2124.github.io/skysearcher/index.html)
 
 Configuration parameters
 ------------------------
