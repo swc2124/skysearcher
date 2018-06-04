@@ -9,6 +9,7 @@ Configuration parameters
 All ``PATH`` parameters are absolute.
 
 1. PATH
+
     DATA_DIR : str
         
         Path to data directory
@@ -46,6 +47,7 @@ All ``PATH`` parameters are absolute.
         Extension for array files. (default: {"npy"})
 
 2. Search Extent
+    
     R_START : int
         
         Starting radius in units of :term:`Kpc` to start search from.
@@ -67,6 +69,7 @@ All ``PATH`` parameters are absolute.
         How many sections to divide each annulus by.
 
 3. Accept Reject
+    
     XBOX_CUT : float
 
         Minimum contrast density a feature must have.
@@ -84,11 +87,13 @@ All ``PATH`` parameters are absolute.
         Allowed number of skipped segments before ending feature.
 
 4. Run Time
+    
     SAVE_INTERVAL : int
       
         Number of features to hold between saves.
 
 5. DATA
+    
     D_MPC : float
 
         Distance to target halo in units of :term:`Mpc`.
