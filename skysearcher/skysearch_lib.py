@@ -288,7 +288,7 @@ def render_and_pad(reqd_width, components, sep=""):
 
 def clear_tables(_target_dir):
     """
-    Clear all MPI temp tables from :term:`MPI_TABLE_DIR` 
+    Clear all MPI temp tables from :term:`MPI_TABLE_DIR`
     before creating new ones.
 
     Parameters
@@ -361,7 +361,7 @@ def grid_list():
     Returns
     -------
     list
-        List of grids to be used in search. 
+        List of grids to be used in search.
         (halo,  PATH)
 
     Example
@@ -432,14 +432,15 @@ def record_table(_names=TABLE_COLUMNS, _meta=True):
     astropy.tables.Table
         Record table to use for storing MPI data.
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> record_table(_names=TABLE_COLUMNS)
-        <Table length=0>
-         halo radius    r0      r1   annuli_step ... domsat_atime domsat_j   deg0   extent
-        int32 int32  float32 float32   float32   ...   float32    float32  float32 float32
-        ----- ------ ------- ------- ----------- ... ------------ -------- ------- -------
+    Examples
+    --------
+    >>> from skysearcher.skysearch_lib import *
+    >>> record_table(_names=TABLE_COLUMNS)
+    <Table length=0>
+     halo radius    r0      r1   annuli_step ... domsat_atime domsat_j   deg0   extent
+    int32 int32  float32 float32   float32   ...   float32    float32  float32 float32
+    ----- ------ ------- ------- ----------- ... ------------ -------- ------- -------
+
     """
     output_colums_ = []
     output_dtyps_ = []
@@ -470,18 +471,19 @@ def radii():
     list
         List of radii in the form (center, inner, outer)
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import radii
-        >>> _radii = radii()
-        >>> _radii 
-        [(5, 4.75, 5.25),
-         (6, 5.7, 6.3),
-         (7, 6.65, 7.35),
-         ...
-         (11, 10.45, 11.55),
-         (12, 11.4, 12.6),
-         (13, 12.35, 13.65)]
+    Examples
+    --------
+    >>> from skysearcher.skysearch_lib import radii
+    >>> _radii = radii()
+    >>> _radii
+    [(5, 4.75, 5.25),
+     (6, 5.7, 6.3),
+     (7, 6.65, 7.35),
+     ...
+     (11, 10.45, 11.55),
+     (12, 11.4, 12.6),
+     (13, 12.35, 13.65)]
+
     """
     radii_list_ = []
     for r in list(range(R_START, R_STOP, R_STEP)):
@@ -514,11 +516,12 @@ def save_record_table(_table, _rnk=MPI_RANK):
     TypeError
         Missing 1 required positional argument: '_table'
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> r_table = record_table(_names=TABLE_COLUMNS)
-        >>> save_record_table(_table=r_table)
+    Examples
+    --------
+    >>> from skysearcher.skysearch_lib import *
+    >>> r_table = record_table(_names=TABLE_COLUMNS)
+    >>> save_record_table(_table=r_table)
+
     """
     try:
         _table.write(_table.meta["fh"],
@@ -556,6 +559,7 @@ def fix_rslice(_grid, _dtype=np.float32):
     ------
     IndexError
         Description
+
     """
     grid_ = np.concatenate(
         (_grid.astype(_dtype), np.zeros(
@@ -591,71 +595,72 @@ def load_grid(_grid_fh):
     list
         List of Tuples [(halo_name, halo_data_path), ...]
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> grids = grid_list()
-        >>> grid_info = grids[0]
-        >>> grid_info
-        ('halo07',
-         '$PATH/skysearcher/data/grids/halo07_4.0Mpc_h158_grid.npy')
-        >>> halo, grid_fh = grid_info
-        >>> halo
-        'halo07'
-        >>> grid_fh
-        '$PATH/skysearcher/data/grids/halo07_4.0Mpc_h158_grid.npy'
-        >>> grid = load_grid(grid_fh)
-        >>> grid
-        array([[[   0., 0., 0., ..., 0., 423.55697632, -2.3561945 ],
-                [   0., 0., 0., ..., 0., 422.85043335, -2.35786676],
-                [   0., 0., 0., ..., 0., 422.14511108, -2.35954452],
-                ..., 
-                [   0., 0., 0., ..., 0., 422.14511108, 2.35954452],
-                [   0., 0., 0., ..., 0., 422.85043335, 2.35786676],
-                [   0., 0., 0., ..., 0., 423.55697632, 2.3561945 ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.85043335, -2.35452223],
-                [   0., 0., 0., ..., 0., 422.14276123, -2.3561945 ],
-                [   0., 0., 0., ..., 0., 421.43624878, -2.35787249],
-                ..., 
-                [   0., 0., 0., ..., 0., 421.43624878, 2.35787249],
-                [   0., 0., 0., ..., 0., 422.14276123, 2.3561945 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 2.35452223]
-                ],
-               [[   0., 0., 0., ..., 0., 422.14511108, -2.35284448],
-                [   0., 0., 0., ..., 0., 421.43624878, -2.35451674],
-                [   0., 0., 0., ..., 0., 420.72854614, -2.3561945 ],
-                ..., 
-                [   0., 0., 0., ..., 0., 420.72854614, 2.3561945 ],
-                [   0., 0., 0., ..., 0., 421.43624878, 2.35451674],
-                [   0., 0., 0., ..., 0., 422.14511108, 2.35284448]],
-                ..., 
-               [[   0., 0., 0., ..., 0., 422.14511108, -0.7887482 ],
-                [   0., 0., 0., ..., 0., 421.43624878, -0.787076  ],
-                [   0., 0., 0., ..., 0., 420.72854614, -0.78539819],
-                ..., 
-                [   0., 0., 0., ..., 0., 420.72854614, 0.78539819],
-                [   0., 0., 0., ..., 0., 421.43624878, 0.787076  ],
-                [   0., 0., 0., ..., 0., 422.14511108, 0.7887482 ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.85043335, -0.78707045],
-                [   0., 0., 0., ..., 0., 422.14276123, -0.78539819],
-                [   0., 0., 0., ..., 0., 421.43624878, -0.78372031],
-                ..., 
-                [   0., 0., 0., ..., 0., 421.43624878, 0.78372031],
-                [   0., 0., 0., ..., 0., 422.14276123, 0.78539819],
-                [   0., 0., 0., ..., 0., 422.85043335, 0.78707045]
-                ],
-               [[   0., 0., 0., ..., 0., 423.55697632, -0.78539819],
-                [   0., 0., 0., ..., 0., 422.85043335, -0.78372592],
-                [   0., 0., 0., ..., 0., 422.14511108, -0.78204811],
-                ..., 
-                [   0., 0., 0., ..., 0., 422.14511108, 0.78204811],
-                [   0., 0., 0., ..., 0., 422.85043335, 0.78372592],
-                [   0., 0., 0., ..., 0., 423.55697632, 0.78539819]
-               ]], dtype=float32)
-        >>> grid.shape
-        (600, 600, 7)
+    Examples
+    --------
+    >>> from skysearcher.skysearch_lib import *
+    >>> grids = grid_list()
+    >>> grid_info = grids[0]
+    >>> grid_info
+    ('halo07',
+     '$PATH/skysearcher/data/grids/halo07_4.0Mpc_h158_grid.npy')
+    >>> halo, grid_fh = grid_info
+    >>> halo
+    'halo07'
+    >>> grid_fh
+    '$PATH/skysearcher/data/grids/halo07_4.0Mpc_h158_grid.npy'
+    >>> grid = load_grid(grid_fh)
+    >>> grid
+    array([[[   0., 0., 0., ..., 0., 423.55697632, -2.3561945 ],
+            [   0., 0., 0., ..., 0., 422.85043335, -2.35786676],
+            [   0., 0., 0., ..., 0., 422.14511108, -2.35954452],
+            ...,
+            [   0., 0., 0., ..., 0., 422.14511108, 2.35954452],
+            [   0., 0., 0., ..., 0., 422.85043335, 2.35786676],
+            [   0., 0., 0., ..., 0., 423.55697632, 2.3561945 ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.85043335, -2.35452223],
+            [   0., 0., 0., ..., 0., 422.14276123, -2.3561945 ],
+            [   0., 0., 0., ..., 0., 421.43624878, -2.35787249],
+            ...,
+            [   0., 0., 0., ..., 0., 421.43624878, 2.35787249],
+            [   0., 0., 0., ..., 0., 422.14276123, 2.3561945 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 2.35452223]
+            ],
+           [[   0., 0., 0., ..., 0., 422.14511108, -2.35284448],
+            [   0., 0., 0., ..., 0., 421.43624878, -2.35451674],
+            [   0., 0., 0., ..., 0., 420.72854614, -2.3561945 ],
+            ...,
+            [   0., 0., 0., ..., 0., 420.72854614, 2.3561945 ],
+            [   0., 0., 0., ..., 0., 421.43624878, 2.35451674],
+            [   0., 0., 0., ..., 0., 422.14511108, 2.35284448]],
+            ...,
+           [[   0., 0., 0., ..., 0., 422.14511108, -0.7887482 ],
+            [   0., 0., 0., ..., 0., 421.43624878, -0.787076  ],
+            [   0., 0., 0., ..., 0., 420.72854614, -0.78539819],
+            ...,
+            [   0., 0., 0., ..., 0., 420.72854614, 0.78539819],
+            [   0., 0., 0., ..., 0., 421.43624878, 0.787076  ],
+            [   0., 0., 0., ..., 0., 422.14511108, 0.7887482 ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.85043335, -0.78707045],
+            [   0., 0., 0., ..., 0., 422.14276123, -0.78539819],
+            [   0., 0., 0., ..., 0., 421.43624878, -0.78372031],
+            ...,
+            [   0., 0., 0., ..., 0., 421.43624878, 0.78372031],
+            [   0., 0., 0., ..., 0., 422.14276123, 0.78539819],
+            [   0., 0., 0., ..., 0., 422.85043335, 0.78707045]
+            ],
+           [[   0., 0., 0., ..., 0., 423.55697632, -0.78539819],
+            [   0., 0., 0., ..., 0., 422.85043335, -0.78372592],
+            [   0., 0., 0., ..., 0., 422.14511108, -0.78204811],
+            ...,
+            [   0., 0., 0., ..., 0., 422.14511108, 0.78204811],
+            [   0., 0., 0., ..., 0., 422.85043335, 0.78372592],
+            [   0., 0., 0., ..., 0., 423.55697632, 0.78539819]
+           ]], dtype=float32)
+    >>> grid.shape
+    (600, 600, 7)
+
     """
     return fix_rslice(np.load(_grid_fh))
 
@@ -684,38 +689,40 @@ def satid_setup(_halo, attempts=0):
     TypeError
         Missing 1 required positional argument: '_halo'
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> halo = "halo07"
-        >>> satid_list, satid_table = satid_setup(halo)
-        >>> satid_list
-        [215,
-         217,
-         218,
-         ...,
-         316,
-         317,
-         318]
-        >>> satid_table
-        <Table length=8243050>
-        satids    Phi     Rads 
-        int16     rad     kpc  
-        uint16  float16  uint16
-        ------ --------- ------
-           225   -3.0566    229
-           225   -3.0605    229
-           254   -3.0664    229
-           ...       ...    ...
-           225  0.076111    229
-           225  0.080444    229
-           225  0.084778    229
-        >>> satid_table.keys()
-        ['satids', 'Phi', 'Rads']
-        >>> satid_table["satids"].min() >= min(satid_list)
-        True
-        >>> satid_table["satids"].max() <= max(satid_list)
-        True
+    Examples
+    --------
+
+    >>> from skysearcher.skysearch_lib import *
+    >>> halo = "halo07"
+    >>> satid_list, satid_table = satid_setup(halo)
+    >>> satid_list
+    [215,
+     217,
+     218,
+     ...,
+     316,
+     317,
+     318]
+    >>> satid_table
+    <Table length=8243050>
+    satids    Phi     Rads
+    int16     rad     kpc
+    uint16  float16  uint16
+    ------ --------- ------
+       225   -3.0566    229
+       225   -3.0605    229
+       254   -3.0664    229
+       ...       ...    ...
+       225  0.076111    229
+       225  0.080444    229
+       225  0.084778    229
+    >>> satid_table.keys()
+    ['satids', 'Phi', 'Rads']
+    >>> satid_table["satids"].min() >= min(satid_list)
+    True
+    >>> satid_table["satids"].max() <= max(satid_list)
+    True
+
     """
     table_fh = os.path.join(TABLE_DIR, _halo + os.path.extsep + TABLE_EXT)
     try:
@@ -736,7 +743,7 @@ def satid_setup(_halo, attempts=0):
 def mu_idx(_grid, _r0, _r1):
     """
     Get the mean number of stars for this annulus (:term:`mu`) and an array of
-    indices's representing the corresponding array segments (:term:`r_idx`). 
+    indices's representing the corresponding array segments (:term:`r_idx`).
 
     Parameters
     ----------
@@ -752,26 +759,27 @@ def mu_idx(_grid, _r0, _r1):
     tuple
         (float, numpy.ndarray)
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> grids = grid_list()
-        >>> grid_info = grids[0]
-        >>> halo, grid_fh = grid_info
-        >>> grid = load_grid(grid_fh)
-        >>> _radii = radii()
-        >>> r, r_start, r_stop = _radii[0]
-        >>> mu, r_idx = mu_idx(grid, r_start, r_stop)
-        >>> mu
-        6650.8335
-        >>> r_idx
-        array([[False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               ..., 
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False]], dtype=bool)
+    Examples
+    --------
+    >>> from skysearcher.skysearch_lib import *
+    >>> grids = grid_list()
+    >>> grid_info = grids[0]
+    >>> halo, grid_fh = grid_info
+    >>> grid = load_grid(grid_fh)
+    >>> _radii = radii()
+    >>> r, r_start, r_stop = _radii[0]
+    >>> mu, r_idx = mu_idx(grid, r_start, r_stop)
+    >>> mu
+    6650.8335
+    >>> r_idx
+    array([[False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           ...,
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False]], dtype=bool)
+
     """
     grid_idx_ = np.logical_and(
         _grid[:, :, 5] >= _r0,
@@ -807,108 +815,108 @@ def mu_idx2(_grid, _r_indx, d0, d1):
 
     Example
     -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> grids = grid_list()
-        >>> grid_info = grids[0]
-        >>> halo, grid_fh = grid_info
-        >>> grid = load_grid(grid_fh)
-        >>> grid
-        array([[[   0., 0., 0., ..., 0., 423.55697632, -2.3561945 ],
-                [   0., 0., 0., ..., 0., 422.85043335, -2.35786676],
-                [   0., 0., 0., ..., 0., 422.14511108, -2.35954452],
-                ..., 
-                [   0., 0., 0., ..., 0., 422.14511108, 2.35954452 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 2.35786676 ],
-                [   0., 0., 0., ..., 0., 423.55697632, 2.3561945  ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.85043335, -2.35452223],
-                [   0., 0., 0., ..., 0., 422.14276123, -2.3561945 ],
-                [   0., 0., 0., ..., 0., 421.43624878, -2.35787249],
-                ..., 
-                [   0., 0., 0., ..., 0., 421.43624878, 2.35787249 ],
-                [   0., 0., 0., ..., 0., 422.14276123, 2.3561945  ],
-                [   0., 0., 0., ..., 0., 422.85043335, 2.35452223 ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.14511108, -2.35284448],
-                [   0., 0., 0., ..., 0., 421.43624878, -2.35451674],
-                [   0., 0., 0., ..., 0., 420.72854614, -2.3561945 ],
-                ..., 
-                [   0., 0., 0., ..., 0., 420.72854614, 2.3561945  ],
-                [   0., 0., 0., ..., 0., 421.43624878, 2.35451674 ],
-                [   0., 0., 0., ..., 0., 422.14511108, 2.35284448 ]],
-                ..., 
-               [[   0., 0., 0., ..., 0., 422.14511108, -0.7887482 ],
-                [   0., 0., 0., ..., 0., 421.43624878, -0.787076  ],
-                [   0., 0., 0., ..., 0., 420.72854614, -0.78539819],
-                ..., 
-                [   0., 0., 0., ..., 0., 420.72854614, 0.78539819 ],
-                [   0., 0., 0., ..., 0., 421.43624878, 0.787076   ],
-                [   0., 0., 0., ..., 0., 422.14511108, 0.7887482  ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.85043335, -0.78707045],
-                [   0., 0., 0., ..., 0., 422.14276123, -0.78539819],
-                [   0., 0., 0., ..., 0., 421.43624878, -0.78372031],
-                ..., 
-                [   0., 0., 0., ..., 0., 421.43624878, 0.78372031 ],
-                [   0., 0., 0., ..., 0., 422.14276123, 0.78539819 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 0.78707045 ]
-                ],
-               [[   0., 0., 0., ..., 0., 423.55697632, -0.78539819],
-                [   0., 0., 0., ..., 0., 422.85043335, -0.78372592],
-                [   0., 0., 0., ..., 0., 422.14511108, -0.78204811],
-                ..., 
-                [   0., 0., 0., ..., 0., 422.14511108, 0.78204811 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 0.78372592 ],
-                [   0., 0., 0., ..., 0., 423.55697632, 0.78539819 ]
-               ]], dtype=float32)
-        >>> grid.shape
-        (600, 600, 7)
-        >>> _radii = radii()
-        >>> r, r_start, r_stop = _radii[0]
-        >>> r
-        5
-        >>> r_start
-        4.75
-        >>> r_stop
-        5.25
-        >>> mu, r_idx = mu_idx(grid, r_start, r_stop)
-        >>> mu
-        6650.8335
-        >>> r_idx
-        array([[False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               ..., 
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False]], dtype=bool)
-        >>> annuli, annuli_step = get_annuli(r)
-        >>> annuli 
-        [(-3.1730085801256909, -3.1642795331377247),
-         (-3.1642795331377247, -3.1555504861497585),
-         (-3.1555504861497585, -3.1468214391617924),
-         ...,
-         (3.1468214391617924, 3.1555504861497585),
-         (3.1555504861497585, 3.1642795331377247),
-         (3.1642795331377247, 3.1730085801256909)]
-        >>> annuli_step
-        0.0087290469879661367
-        >>> _deg0, _deg1 = annuli[0]
-        >>> _deg0
-        -3.1730085801256909
-        >>> _deg1
-        -3.1642795331377247
-        >>> mu, r_idx2 = mu_idx2(grid, r_idx, _deg0, _deg1)
-        >>> mu
-        1.0
-        >>> r_idx2
-        array([[False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               ..., 
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False]], dtype=bool)    
+    >>> from skysearcher.skysearch_lib import *
+    >>> grids = grid_list()
+    >>> grid_info = grids[0]
+    >>> halo, grid_fh = grid_info
+    >>> grid = load_grid(grid_fh)
+    >>> grid
+    array([[[   0., 0., 0., ..., 0., 423.55697632, -2.3561945 ],
+            [   0., 0., 0., ..., 0., 422.85043335, -2.35786676],
+            [   0., 0., 0., ..., 0., 422.14511108, -2.35954452],
+            ...,
+            [   0., 0., 0., ..., 0., 422.14511108, 2.35954452 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 2.35786676 ],
+            [   0., 0., 0., ..., 0., 423.55697632, 2.3561945  ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.85043335, -2.35452223],
+            [   0., 0., 0., ..., 0., 422.14276123, -2.3561945 ],
+            [   0., 0., 0., ..., 0., 421.43624878, -2.35787249],
+            ...,
+            [   0., 0., 0., ..., 0., 421.43624878, 2.35787249 ],
+            [   0., 0., 0., ..., 0., 422.14276123, 2.3561945  ],
+            [   0., 0., 0., ..., 0., 422.85043335, 2.35452223 ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.14511108, -2.35284448],
+            [   0., 0., 0., ..., 0., 421.43624878, -2.35451674],
+            [   0., 0., 0., ..., 0., 420.72854614, -2.3561945 ],
+            ...,
+            [   0., 0., 0., ..., 0., 420.72854614, 2.3561945  ],
+            [   0., 0., 0., ..., 0., 421.43624878, 2.35451674 ],
+            [   0., 0., 0., ..., 0., 422.14511108, 2.35284448 ]],
+            ...,
+           [[   0., 0., 0., ..., 0., 422.14511108, -0.7887482 ],
+            [   0., 0., 0., ..., 0., 421.43624878, -0.787076  ],
+            [   0., 0., 0., ..., 0., 420.72854614, -0.78539819],
+            ...,
+            [   0., 0., 0., ..., 0., 420.72854614, 0.78539819 ],
+            [   0., 0., 0., ..., 0., 421.43624878, 0.787076   ],
+            [   0., 0., 0., ..., 0., 422.14511108, 0.7887482  ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.85043335, -0.78707045],
+            [   0., 0., 0., ..., 0., 422.14276123, -0.78539819],
+            [   0., 0., 0., ..., 0., 421.43624878, -0.78372031],
+            ...,
+            [   0., 0., 0., ..., 0., 421.43624878, 0.78372031 ],
+            [   0., 0., 0., ..., 0., 422.14276123, 0.78539819 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 0.78707045 ]
+            ],
+           [[   0., 0., 0., ..., 0., 423.55697632, -0.78539819],
+            [   0., 0., 0., ..., 0., 422.85043335, -0.78372592],
+            [   0., 0., 0., ..., 0., 422.14511108, -0.78204811],
+            ...,
+            [   0., 0., 0., ..., 0., 422.14511108, 0.78204811 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 0.78372592 ],
+            [   0., 0., 0., ..., 0., 423.55697632, 0.78539819 ]
+           ]], dtype=float32)
+    >>> grid.shape
+    (600, 600, 7)
+    >>> _radii = radii()
+    >>> r, r_start, r_stop = _radii[0]
+    >>> r
+    5
+    >>> r_start
+    4.75
+    >>> r_stop
+    5.25
+    >>> mu, r_idx = mu_idx(grid, r_start, r_stop)
+    >>> mu
+    6650.8335
+    >>> r_idx
+    array([[False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           ...,
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False]], dtype=bool)
+    >>> annuli, annuli_step = get_annuli(r)
+    >>> annuli
+    [(-3.1730085801256909, -3.1642795331377247),
+     (-3.1642795331377247, -3.1555504861497585),
+     (-3.1555504861497585, -3.1468214391617924),
+     ...,
+     (3.1468214391617924, 3.1555504861497585),
+     (3.1555504861497585, 3.1642795331377247),
+     (3.1642795331377247, 3.1730085801256909)]
+    >>> annuli_step
+    0.0087290469879661367
+    >>> _deg0, _deg1 = annuli[0]
+    >>> _deg0
+    -3.1730085801256909
+    >>> _deg1
+    -3.1642795331377247
+    >>> mu, r_idx2 = mu_idx2(grid, r_idx, _deg0, _deg1)
+    >>> mu
+    1.0
+    >>> r_idx2
+    array([[False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           ...,
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False]], dtype=bool)
 
     """
     # TODO add this to rc.cfg file.
@@ -953,20 +961,32 @@ def get_annuli(_r):
 
     Example
     -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> r = 10
-        >>> annuli, annuli_step = get_annuli(r)
-        >>> annuli 
-        [(-3.1730085801256909, -3.1642795331377247),
-         (-3.1642795331377247, -3.1555504861497585),
-         (-3.1555504861497585, -3.1468214391617924),
-         ...
-         (3.1468214391617924, 3.1555504861497585),
-         (3.1555504861497585, 3.1642795331377247),
-         (3.1642795331377247, 3.1730085801256909)]
-        >>> annuli_step
-        0.0086340369527229677
+    >>> from skysearcher.skysearch_lib import *
+    >>> r = 10
+    >>> annuli, annuli_step = get_annuli(r)
+    >>> annuli
+    [(-3.1730085801256909, -3.1642795331377247),
+     (-3.1642795331377247, -3.1555504861497585),
+     (-3.1555504861497585, -3.1468214391617924),
+     ...
+     (3.1468214391617924, 3.1555504861497585),
+     (3.1555504861497585, 3.1642795331377247),
+     (3.1642795331377247, 3.1730085801256909)]
+    >>> annuli_step
+    0.0086340369527229677
+
     """
+
+    _num = ANNULUS_PHI_STEP + int(_r * 1.5)
+    # print("num:", _num, "sections |", "radius:", _r, "Kpc")
+    arr_, step_ = np.linspace(
+        start=-np.pi * 1.01,
+        stop=np.pi * 1.01,
+        num=_num,
+        endpoint=False,
+        retstep=True,
+        dtype=np.float64)
+
     """
     # Alternative method.
     global _ANNULUS_PHI_STEP
@@ -990,15 +1010,6 @@ def get_annuli(_r):
     print(_num, "sections at radius:", round(_r, 2), "Kpc")
     return list(zip(arr_, arr_ + _ANNULUS_PHI_STEP)), _ANNULUS_PHI_STEP
     """
-    _num = ANNULUS_PHI_STEP + int(_r * 1.5)
-    # print("num:", _num, "sections |", "radius:", _r, "Kpc")
-    arr_, step_ = np.linspace(
-        start=-np.pi * 1.01,
-        stop=np.pi * 1.01,
-        num=_num,
-        endpoint=False,
-        retstep=True,
-        dtype=np.float64)
     return list(zip(arr_, arr_ + step_)), step_
 
 
@@ -1022,116 +1033,117 @@ def get_idx(_grid, _d0, _d1, _ridx):
     -------
     numpy.ndarray
 
-    Example
-    -------
-        >>> from skysearcher.skysearch_lib import *
-        >>> grids = grid_list()
-        >>> grid_info = grids[0]
-        >>> halo, grid_fh = grid_info
-        >>> grid = load_grid(grid_fh)
-        >>> grid
-        array([[[   0., 0., 0., ..., 0., 423.55697632, -2.3561945 ],
-                [   0., 0., 0., ..., 0., 422.85043335, -2.35786676],
-                [   0., 0., 0., ..., 0., 422.14511108, -2.35954452],
-                ..., 
-                [   0., 0., 0., ..., 0., 422.14511108, 2.35954452 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 2.35786676 ],
-                [   0., 0., 0., ..., 0., 423.55697632, 2.3561945  ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.85043335, -2.35452223],
-                [   0., 0., 0., ..., 0., 422.14276123, -2.3561945 ],
-                [   0., 0., 0., ..., 0., 421.43624878, -2.35787249],
-                ..., 
-                [   0., 0., 0., ..., 0., 421.43624878, 2.35787249 ],
-                [   0., 0., 0., ..., 0., 422.14276123, 2.3561945  ],
-                [   0., 0., 0., ..., 0., 422.85043335, 2.35452223 ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.14511108, -2.35284448],
-                [   0., 0., 0., ..., 0., 421.43624878, -2.35451674],
-                [   0., 0., 0., ..., 0., 420.72854614, -2.3561945 ],
-                ..., 
-                [   0., 0., 0., ..., 0., 420.72854614, 2.3561945  ],
-                [   0., 0., 0., ..., 0., 421.43624878, 2.35451674 ],
-                [   0., 0., 0., ..., 0., 422.14511108, 2.35284448 ]],
-                ..., 
-               [[   0., 0., 0., ..., 0., 422.14511108, -0.7887482 ],
-                [   0., 0., 0., ..., 0., 421.43624878, -0.787076  ],
-                [   0., 0., 0., ..., 0., 420.72854614, -0.78539819],
-                ..., 
-                [   0., 0., 0., ..., 0., 420.72854614, 0.78539819 ],
-                [   0., 0., 0., ..., 0., 421.43624878, 0.787076   ],
-                [   0., 0., 0., ..., 0., 422.14511108, 0.7887482  ]
-                ],
-               [[   0., 0., 0., ..., 0., 422.85043335, -0.78707045],
-                [   0., 0., 0., ..., 0., 422.14276123, -0.78539819],
-                [   0., 0., 0., ..., 0., 421.43624878, -0.78372031],
-                ..., 
-                [   0., 0., 0., ..., 0., 421.43624878, 0.78372031 ],
-                [   0., 0., 0., ..., 0., 422.14276123, 0.78539819 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 0.78707045 ]
-                ],
-               [[   0., 0., 0., ..., 0., 423.55697632, -0.78539819],
-                [   0., 0., 0., ..., 0., 422.85043335, -0.78372592],
-                [   0., 0., 0., ..., 0., 422.14511108, -0.78204811],
-                ..., 
-                [   0., 0., 0., ..., 0., 422.14511108, 0.78204811 ],
-                [   0., 0., 0., ..., 0., 422.85043335, 0.78372592 ],
-                [   0., 0., 0., ..., 0., 423.55697632, 0.78539819 ]
-               ]], dtype=float32)
-        >>> grid.shape
-        (600, 600, 7)
-        >>> _radii = radii()
-        >>> r, r_start, r_stop = _radii[0]
-        >>> r
-        5
-        >>> r_start
-        4.75
-        >>> r_stop
-        5.25
-        >>> mu, r_idx = mu_idx(grid, r_start, r_stop)
-        >>> mu
-        6650.8335
-        >>> r_idx
-        array([[False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               ..., 
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False]], dtype=bool)
-        >>> annuli, annuli_step = get_annuli(r)
-        >>> annuli 
-        [(-3.1730085801256909, -3.1642795331377247),
-         (-3.1642795331377247, -3.1555504861497585),
-         (-3.1555504861497585, -3.1468214391617924),
-         ...,
-         (3.1468214391617924, 3.1555504861497585),
-         (3.1555504861497585, 3.1642795331377247),
-         (3.1642795331377247, 3.1730085801256909)]
-        >>> annuli_step
-        0.0087290469879661367
-        >>> _deg0, _deg1 = annuli[0]
-        >>> _deg0
-        -3.1730085801256909
-        >>> _deg1
-        -3.1642795331377247
-        >>> mu, r_idx2 = mu_idx2(grid, r_idx, _deg0, _deg1)
-        >>> mu
-        1.0
-        >>> r_idx2
-        array([[False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               ..., 
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False],
-               [False, False, False, ..., False, False, False]], dtype=bool) 
-        >>> idx = get_idx(grid, _deg0, _deg1, r_idx2)
-        (array([], dtype=int64), array([], dtype=int64))
-        >>> type(idx)
-        tuple
-        >>> type(idx[0])
-        numpy.ndarray
+    Examples
+    --------
+    >>> from skysearcher.skysearch_lib import *
+    >>> grids = grid_list()
+    >>> grid_info = grids[0]
+    >>> halo, grid_fh = grid_info
+    >>> grid = load_grid(grid_fh)
+    >>> grid
+    array([[[   0., 0., 0., ..., 0., 423.55697632, -2.3561945 ],
+            [   0., 0., 0., ..., 0., 422.85043335, -2.35786676],
+            [   0., 0., 0., ..., 0., 422.14511108, -2.35954452],
+            ...,
+            [   0., 0., 0., ..., 0., 422.14511108, 2.35954452 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 2.35786676 ],
+            [   0., 0., 0., ..., 0., 423.55697632, 2.3561945  ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.85043335, -2.35452223],
+            [   0., 0., 0., ..., 0., 422.14276123, -2.3561945 ],
+            [   0., 0., 0., ..., 0., 421.43624878, -2.35787249],
+            ...,
+            [   0., 0., 0., ..., 0., 421.43624878, 2.35787249 ],
+            [   0., 0., 0., ..., 0., 422.14276123, 2.3561945  ],
+            [   0., 0., 0., ..., 0., 422.85043335, 2.35452223 ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.14511108, -2.35284448],
+            [   0., 0., 0., ..., 0., 421.43624878, -2.35451674],
+            [   0., 0., 0., ..., 0., 420.72854614, -2.3561945 ],
+            ...,
+            [   0., 0., 0., ..., 0., 420.72854614, 2.3561945  ],
+            [   0., 0., 0., ..., 0., 421.43624878, 2.35451674 ],
+            [   0., 0., 0., ..., 0., 422.14511108, 2.35284448 ]],
+            ...,
+           [[   0., 0., 0., ..., 0., 422.14511108, -0.7887482 ],
+            [   0., 0., 0., ..., 0., 421.43624878, -0.787076  ],
+            [   0., 0., 0., ..., 0., 420.72854614, -0.78539819],
+            ...,
+            [   0., 0., 0., ..., 0., 420.72854614, 0.78539819 ],
+            [   0., 0., 0., ..., 0., 421.43624878, 0.787076   ],
+            [   0., 0., 0., ..., 0., 422.14511108, 0.7887482  ]
+            ],
+           [[   0., 0., 0., ..., 0., 422.85043335, -0.78707045],
+            [   0., 0., 0., ..., 0., 422.14276123, -0.78539819],
+            [   0., 0., 0., ..., 0., 421.43624878, -0.78372031],
+            ...,
+            [   0., 0., 0., ..., 0., 421.43624878, 0.78372031 ],
+            [   0., 0., 0., ..., 0., 422.14276123, 0.78539819 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 0.78707045 ]
+            ],
+           [[   0., 0., 0., ..., 0., 423.55697632, -0.78539819],
+            [   0., 0., 0., ..., 0., 422.85043335, -0.78372592],
+            [   0., 0., 0., ..., 0., 422.14511108, -0.78204811],
+            ...,
+            [   0., 0., 0., ..., 0., 422.14511108, 0.78204811 ],
+            [   0., 0., 0., ..., 0., 422.85043335, 0.78372592 ],
+            [   0., 0., 0., ..., 0., 423.55697632, 0.78539819 ]
+           ]], dtype=float32)
+    >>> grid.shape
+    (600, 600, 7)
+    >>> _radii = radii()
+    >>> r, r_start, r_stop = _radii[0]
+    >>> r
+    5
+    >>> r_start
+    4.75
+    >>> r_stop
+    5.25
+    >>> mu, r_idx = mu_idx(grid, r_start, r_stop)
+    >>> mu
+    6650.8335
+    >>> r_idx
+    array([[False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           ...,
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False]], dtype=bool)
+    >>> annuli, annuli_step = get_annuli(r)
+    >>> annuli
+    [(-3.1730085801256909, -3.1642795331377247),
+     (-3.1642795331377247, -3.1555504861497585),
+     (-3.1555504861497585, -3.1468214391617924),
+     ...,
+     (3.1468214391617924, 3.1555504861497585),
+     (3.1555504861497585, 3.1642795331377247),
+     (3.1642795331377247, 3.1730085801256909)]
+    >>> annuli_step
+    0.0087290469879661367
+    >>> _deg0, _deg1 = annuli[0]
+    >>> _deg0
+    -3.1730085801256909
+    >>> _deg1
+    -3.1642795331377247
+    >>> mu, r_idx2 = mu_idx2(grid, r_idx, _deg0, _deg1)
+    >>> mu
+    1.0
+    >>> r_idx2
+    array([[False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           ...,
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False],
+           [False, False, False, ..., False, False, False]], dtype=bool)
+    >>> idx = get_idx(grid, _deg0, _deg1, r_idx2)
+    (array([], dtype=int64), array([], dtype=int64))
+    >>> type(idx)
+    tuple
+    >>> type(idx[0])
+    numpy.ndarray
+
     """
     seg_idx_ = np.nonzero(
         np.logical_and(
@@ -1161,9 +1173,10 @@ def get_xbox(_grid, _idx, _mu):
 
     Example
     -------
-        >>> n_boxes_in_seg = len(idx[0])
-        >>> xbox = get_xbox(grid, idx, mu)
-        >>> n_stars_here = grid[:, :, 1][idx].sum()
+    >>> n_boxes_in_seg = len(idx[0])
+    >>> xbox = get_xbox(grid, idx, mu)
+    >>> n_stars_here = grid[:, :, 1][idx].sum()
+
     """
     if _mu == 0.0:
         _mu = 1.0
@@ -1182,20 +1195,21 @@ def new_sat_stars(_id_lst):
     Returns
     -------
     dict
-        Dictionary with :term:`satid`'s for keys and corresponding number of stars for each :term:`satid` counted. 
+        Dictionary with :term:`satid`'s for keys and corresponding number of stars for each :term:`satid` counted.
 
-    Example
-    -------
-        >>> sat_stars = new_sat_stars(satid_list)
-        >>> sat_stars
-        {0: 0,
-         1: 0,
-         2: 0,
-         3: 0,
-         ...
-         110: 0,
-         111: 0,
-         112: 0}
+    Examples
+    --------
+    >>> sat_stars = new_sat_stars(satid_list)
+    >>> sat_stars
+    {0: 0,
+     1: 0,
+     2: 0,
+     3: 0,
+     ...
+     110: 0,
+     111: 0,
+     112: 0}
+
     """
     fresh_dict = {}
     for _id in _id_lst:
@@ -1302,12 +1316,13 @@ def count_strs(_dict, _region, _table):
 
     Example
     -------
-        >>> sat_stars = new_sat_stars(satid_list)
-        >>> local_satid_table = satid_table[np.logical_and(
-        ...:   satid_table["Rads"] >= r_start,
-        ...:   satid_table["Rads"] < r_stop)]
-        >>> r_info = [r_start, r_stop, _deg0, _deg1]
-        >>> sat_stars = count_strs(sat_stars, r_info, local_satid_table)
+    >>> sat_stars = new_sat_stars(satid_list)
+    >>> local_satid_table = satid_table[np.logical_and(
+    ...:   satid_table["Rads"] >= r_start,
+    ...:   satid_table["Rads"] < r_stop)]
+    >>> r_info = [r_start, r_stop, _deg0, _deg1]
+    >>> sat_stars = count_strs(sat_stars, r_info, local_satid_table)
+
     """
     _r_start, _r_stop, _deg0, _deg1 = _region
     _lims = np.nonzero(np.logical_and(
@@ -1340,7 +1355,8 @@ def dom_satid(input_dict, _dict, rtn=False):
 
     Example
     -------
-        >>> domsat_id, domsat_purity, standout, nsats = dom_satid(sat_stars)
+    >>> domsat_id, domsat_purity, standout, nsats = dom_satid(sat_stars)
+
     """
     best_sat = (1, 0)  # (nstars, id)
     second_best = (1, 0)
@@ -1394,7 +1410,7 @@ def br(_str, _sclr=CYAN, _bclr=GREEN):
     return ct("[ ", _bclr) + ct(_str, _sclr) + ct(" ]", _bclr)
 
 def prnk(_rnk, _mode="normal"):
-    
+
     if _mode == "normal":
 
         p0 = ""
@@ -1518,13 +1534,13 @@ def report(_type, _info):
         value_lnth = 0
         for key, value in _info.items():
             if key in printed:
-                continue 
+                continue
             if len(key) > key_lnth:
                 key_lnth = len(key)
 
             if len(value) > value_lnth:
                 value_lnth = len(value)
-        
+
         base_len += value_lnth + key_lnth
 
 
@@ -1634,7 +1650,7 @@ def report(_type, _info):
         _2 = prnk(_info["MPI_RANK"])
         _3 = render_and_pad(_size, _line)
         _4 = "" # ct(" |", _color)
-        print(_1 + _2 + _3 + _4) 
+        print(_1 + _2 + _3 + _4)
         # headder(_styl="-", _clr=_color)
         STDOUT.flush()
 
@@ -1655,7 +1671,7 @@ def report(_type, _info):
         # headder(_clr=_color)
         # emptyline(_clr=_color)
         print(_1 + _2 + _3 + _4)
-        # emptyline(_clr=_color) 
+        # emptyline(_clr=_color)
         # headder(_clr=_color)
         STDOUT.flush()
 
@@ -1745,8 +1761,8 @@ def report(_type, _info):
         _2 = prnk(_info["MPI_RANK"])
         _3 = render_and_pad(_size, _line)
         _4 = ct(" |", _color)
-        print(_1 + _2 + _3 + _4) 
-        
+        print(_1 + _2 + _3 + _4)
+
         # Main contents.
         values = [_color, RED, YELLOW, RED]
         for key in list(_info.keys()):
@@ -1760,11 +1776,11 @@ def report(_type, _info):
             _ln = [_l1, _l2, _l3, _l4]
             _size = boxsize  + 14
             _line = zip(values, _ln)
-            
+
             _1 = render_and_pad(_size, _line)
             _2 = ct(" |", _color)
             print(_1 + _2)
-            STDOUT.flush()        
+            STDOUT.flush()
 
         headder(_styl="-", _clr=_color)
         STDOUT.flush()
