@@ -12,23 +12,23 @@ All ``PATH`` parameters are absolute.
 
     DATA_DIR : str
         
-        Path to data directory
+        The path to the data directory
 
     PLOT_DIR : str
         
-        Path to plot output directory.
+        The path to the plot output directory.
 
     TABLE_DIR : str
         
-        Path to hdf5 table input and output directory.
+        The path to the hdf5 table input and output directory.
 
     MPI_TABLE_DIR : str
         
-        Path to mpi hdf5 table directory within :term:`TABLE_DIR`.
+        The path to the MPI HDF5 table directory within :term:`TABLE_DIR`.
 
     GRID_DIR : str
         
-        Path to numpy array input files directory.
+        The path to Numpy array input files directory.
 
     TABLE_FORMAT : str
         
@@ -54,7 +54,7 @@ All ``PATH`` parameters are absolute.
 
     R_STOP : int
         
-        Ending search radius in units of :term:`Kpc`.
+        The maximum search radius in units of :term:`Kpc`.
 
     R_STEP : int
         
@@ -62,11 +62,11 @@ All ``PATH`` parameters are absolute.
 
     R_SCALE : float
         
-        Percent to multiply radius by to get + and - :term:`Kpc` for annulus.
+        Percent to multiply the radius by to get + and - :term:`Kpc` for annulus.
 
     ANNULUS_PHI_STEP : float
         
-        How many sections to divide each annulus by.
+        How many sections to divide each annulus into.
 
 3. Accept Reject
     
@@ -76,7 +76,7 @@ All ``PATH`` parameters are absolute.
 
     MIN_LOG_NSTARS : float
        
-        Minimum log10 value for number of stars a feature must have.
+        Minimum log10 value for the number of stars a feature must have.
 
     MIN_N_SEGMENTS : int
 
@@ -90,7 +90,7 @@ All ``PATH`` parameters are absolute.
     
     SAVE_INTERVAL : int
       
-        Number of features to hold between saves.
+        The number of features to hold between saves.
 
 5. DATA
     
